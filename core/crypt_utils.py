@@ -6,7 +6,7 @@ def decryptOnePassword(password: str | bytes, private_key: bytes) -> str:
         password = f.decrypt(password)
     except Exception as e:
         print(e)
-        return('Decrypt error')
+        return('Decrypt Error')
     else:
         return password.decode('utf-8')
 

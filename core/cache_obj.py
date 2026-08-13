@@ -1,4 +1,4 @@
-import random
+import random, time
 from types import NoneType
 from cryptography.hazmat.primitives.kdf.argon2 import Argon2id
 
@@ -34,10 +34,11 @@ def updateCache(list_visibility: str='None', user_path: str='None'):
         lanes=4,
         memory_cost=64 * 1024,
     )
-    
+
     for key, value in private_dict.items():
-        hide_list.append(key+"  "+"[##"+"#"*random.randint(2, 5)+"]")
+        hide_list.append(key+" | "+"[##"+"#"*random.randint(2, 5)+"]")
         decrypted_list.append(key+"  "+crypt_utils.decryptOnePassword(password=value, private_key=private_key)) 
+
 
     if user_path != 'None':
         AppCache.user_path = user_path

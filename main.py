@@ -7,13 +7,13 @@ import add_password_window
 from core import parse, lists_obj, key_obj, crypt_utils, cache_obj, helpers
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog
-from PySide6.QtCore import QTimer, Qt
+from PySide6.QtCore import QTimer
 import sys
 import platform
 import pyperclip
 
 #App version
-app_version = '1.3.1'
+app_version = '1.1'
 
 # All windows classes
 class MainWindow(QMainWindow):
@@ -23,7 +23,6 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
     def connectFunctions(self):
-        
         self.ui.OpenFile.clicked.connect(executeOpenFile)
         self.ui.CreateFile.clicked.connect(executeNewFile)
         self.ui.VisibilityPassButton.clicked.connect(changePasswordsVisibility)
