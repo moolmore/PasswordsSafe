@@ -1,7 +1,7 @@
 @echo off
 rem Define configuration variables
 set APP_NAME=PasswordsSafe
-set ICON_PATH=./ON_REALEASE/windows_icon.ico
+set ICON_PATH=./icons/windows_icon.ico
 set MAIN_SCRIPT=main.py
 
 rem Clean up previous build artifacts
@@ -27,7 +27,10 @@ pyinstaller --noconsole --onefile ^
     --exclude-module=PySide6.QtMultimedia ^
     --exclude-module=PySide6.QtCharts ^
     --exclude-module=PySide6.QtDataVisualization ^
-    --add-data "assets/Google_Sans/GoogleSans-VariableFont_GRAD,opsz,wght.ttf;assets/Google_Sans" ^
+    --add-data "fonts/GoogleSans-Bold.ttf;fonts" ^
+    --add-data "fonts/GoogleSans-Medium.ttf;fonts" ^
+    --add-data "fonts/GoogleSans-Regular.ttf;fonts" ^
+    --add-data "fonts/GoogleSans-SemiBold.ttf;fonts" ^
     "%MAIN_SCRIPT%"
 
 rem Check if the build was successful

@@ -1,13 +1,8 @@
 
 import os, base64
 from cryptography.hazmat.primitives.kdf.argon2 import Argon2id
-
-
-
 from . import lists_obj
 import platform
-
-
 
 def processNewFile(user_key, user_path) -> tuple:
     kdf = Argon2id(
@@ -47,14 +42,15 @@ def checkNewKey(user_input: str) -> None:
     else:
         raise ValueError('Key min 3 symbols and 6 max')
 
-def checkNewName(user_input: str) -> None:
+def checkNewName(user_input: str, is_new_pass: bool) -> None:
     if 15 >= len(user_input) >= 3: 
         if user_input.isascii():
                     for symbol in list(user_input):
                         if symbol == ' ':
                             raise ValueError('Key with whitespaces')
-                    if user_input in list(lists_obj.UserPasswordsList.passwords_list.keys()):
-                        raise ValueError('Name alredy uses')
+                    if is_new_pass:
+                        if user_input in list(lists_obj.UserPasswordsList.passwords_list.keys()):
+                            raise ValueError('Name alredy uses')
                     if user_input == '__keyVerif':
                         raise ValueError('This name is blocked')             
         else:

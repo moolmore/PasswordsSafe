@@ -218,7 +218,7 @@ def changePasswordsVisibility():
 def applyEditPassword():
     try:
         _newName = Edit_Password_Window.ui.newNameEdit.text()
-        helpers.checkNewName(user_input=_newName)
+        helpers.checkNewName(user_input=_newName, is_new_pass=False)
     except Exception as e:
         Edit_Password_Window.ui.ErrorsLable_2.setVisible(True)
         Edit_Password_Window.ui.ErrorsLable_2.setText(str(e))
