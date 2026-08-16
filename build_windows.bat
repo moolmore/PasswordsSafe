@@ -27,6 +27,7 @@ pyinstaller --noconsole --onefile ^
     --exclude-module=PySide6.QtMultimedia ^
     --exclude-module=PySide6.QtCharts ^
     --exclude-module=PySide6.QtDataVisualization ^
+    --add-data "assets/Google_Sans/GoogleSans-VariableFont_GRAD,opsz,wght.ttf;assets/Google_Sans" ^
     "%MAIN_SCRIPT%"
 
 rem Check if the build was successful
