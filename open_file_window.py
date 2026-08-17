@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'open_fileiAdYty.ui'
+## Form generated from reading UI file 'open_filepzgvup.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -18,6 +18,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QPushButton,
     QSizePolicy, QWidget)
 from assets import images
+
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
@@ -108,10 +109,12 @@ class Ui_Form(object):
         font6 = QFont()
         font6.setFamilies([u"Inter 24pt"])
         font6.setPointSize(26)
-        font6.setBold(False)
+        font6.setWeight(QFont.Medium)
+        font6.setItalic(False)
         self.label.setFont(font6)
         self.label.setStyleSheet(u"color: rgb(227, 227, 227);\n"
-"background-color: rgba(255, 255, 255, 0);")
+"background-color: rgba(255, 255, 255, 0);\n"
+"font: 500 26pt \"Inter 24pt\";")
         self.label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.ErrorsIcon = QLabel(Form)
         self.ErrorsIcon.setObjectName(u"ErrorsIcon")
