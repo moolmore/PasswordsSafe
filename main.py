@@ -1,8 +1,9 @@
 import platform
 from core import parse, lists_obj, key_obj, crypt_utils, cache_obj, helpers
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog, QGraphicsBlurEffect
 from PySide6.QtCore import QTimer
 import sys
+import random
 import pyperclip
 
 if platform.system() == 'Darwin':
@@ -11,10 +12,17 @@ if platform.system() == 'Darwin':
     from ui import edit_password_darwin as edit_password_window
     from ui import new_file_darwin as new_file_window
     from ui import open_file_darwin as open_file_window
+elif platform.system() == 'Windows':
+    from ui import main_menu_win64 as main_window
+    from ui import add_password_win64 as add_password_window
+    from ui import edit_password_win64 as edit_password_window
+    from ui import new_file_win64 as new_file_window
+    from ui import open_file_win64 as open_file_window
 else:
     raise ValueError('App "Passwords Safe" allows only macOS and Windows')
+
 #App version
-app_version = '1.3.4'
+app_version = '1.4'
 
 # All windows classes
 class MainWindow(QMainWindow):
@@ -22,9 +30,24 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.ui = main_window.Ui_MainWindow()
         self.ui.setupUi(self)
+        self.ManagmentElementsList = [
+            # Только объекты, хозяин! (｡•́︿•̀｡)
+            self.ui.OpenFile,
+            self.ui.CreateFile,
+            self.ui.VisibilityPassButton,
+            self.ui.AddPassButton,
+            self.ui.DeletePassButton,
+            self.ui.EditPassButton,
+            self.ui.CopyPassButton,
+            self.ui.SearchButton,
+            self.ui.Search_Input
+        ]
+        self.blurElements = self.ManagmentElementsList[2:9]
+        self.blurElements.append(self.ui.label)
+        self.blurElements.append(self.ui.label_2)
+
 
     def connectFunctions(self):
-        
         self.ui.OpenFile.clicked.connect(executeOpenFile)
         self.ui.CreateFile.clicked.connect(executeNewFile)
         self.ui.VisibilityPassButton.clicked.connect(changePasswordsVisibility)
@@ -35,13 +58,8 @@ class MainWindow(QMainWindow):
         self.ui.SearchButton.clicked.connect(searchPassword)
         self.ui.Search_Input.textChanged.connect(checkSearchNull)
     def enableAllButtons(self):
-        self.ui.VisibilityPassButton.setEnabled(True)
-        self.ui.EditPassButton.setEnabled(True)
-        self.ui.AddPassButton.setEnabled(True)
-        self.ui.DeletePassButton.setEnabled(True)
-        self.ui.CopyPassButton.setEnabled(True)
-        self.ui.Search_Input.setEnabled(True)
-        self.ui.SearchButton.setEnabled(True)
+        for element in self.ManagmentElementsList:
+            element.setEnabled(True)
     def updateList(self):
         self.ui.PasswordList.clear()
         if cache_obj.AppCache.search_active:
@@ -56,12 +74,29 @@ class MainWindow(QMainWindow):
                 self.ui.PasswordList.addItems(cache_obj.AppCache.dec_list)
         self.ui.PasswordList.sortItems()
 
+    # BLUR ON ELEMENTS OF MANAGMENT
+
+    def setBlurOnElements(self):
+        for element in self.blurElements:
+            blur = QGraphicsBlurEffect()
+            blur.setBlurRadius(3.5)  
+            blur.setBlurHints(QGraphicsBlurEffect.QualityHint)
+            element.setGraphicsEffect(blur)
+            element.hash0 = blur
+
+
+    def removeBlurFromElements(self):
+        for element in self.blurElements:
+            element.setGraphicsEffect(None)
+            del element.hash0
+    # BLUR ON ELEMENTS OF MANAGMENT
+
     def getCurItem(self) -> str:
         return self.ui.PasswordList.currentItem().text().split('  ')[0]
     def changeTitleSec(self):
         self.setWindowTitle('Passwords Safe' + ' - Password copied')
         QTimer.singleShot(1500, lambda: self.setWindowTitle('Passwords Safe'))
-
+    
 class OpenFileWindow(QWidget):
     def __init__(self):
         super().__init__()
@@ -116,6 +151,7 @@ def executeMain():
     global Main_Window
     Main_Window = MainWindow()
     Main_Window.connectFunctions()
+    Main_Window.setBlurOnElements()
     Main_Window.ui.lableVersion.setText(f'Platform: {platform.system()}    Version: {app_version}')
     Main_Window.show()
 
@@ -186,6 +222,7 @@ def applyOpenFile():
         Main_Window.ui.lableListBackground.setText('')
         #Show list in app
         Main_Window.enableAllButtons()
+        Main_Window.removeBlurFromElements()
         Main_Window.updateList()
 
 def applyNewFile():
@@ -203,6 +240,7 @@ def applyNewFile():
         Main_Window.ui.lableListBackground.setText('')
         #Show list in app
         Main_Window.enableAllButtons()
+        Main_Window.removeBlurFromElements()
         Main_Window.updateList()
 
 def setDirDialog():
@@ -289,6 +327,7 @@ def checkSearchNull():
 # Buttons slots block end
 
 def main():
+    
     App = QApplication()
     executeMain()
     sys.exit(App.exec())
