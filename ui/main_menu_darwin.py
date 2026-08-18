@@ -1,20 +1,25 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_menufRlrDu.ui'
+## Form generated from reading UI file 'main_menuDrANAs.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication,
-    QMetaObject,QRect,
-    QSize,Qt)
-from PySide6.QtGui import (QCursor,QFont)
-from PySide6.QtWidgets import (QLabel, QLineEdit, QListWidget,
-    QPushButton, QSizePolicy,
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QListWidget,
+    QListWidgetItem, QMainWindow, QPushButton, QSizePolicy,
     QTabWidget, QWidget)
+
+from .assets import images
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -222,13 +227,14 @@ class Ui_MainWindow(object):
         self.lableListBackground.setGeometry(QRect(25, 127, 329, 418))
         font3 = QFont()
         font3.setFamilies([u"Google Sans"])
-        font3.setPointSize(24)
+        font3.setPointSize(23)
         font3.setWeight(QFont.DemiBold)
         font3.setKerning(True)
         font3.setStyleStrategy(QFont.PreferAntialias)
         self.lableListBackground.setFont(font3)
         self.lableListBackground.setAutoFillBackground(False)
         self.lableListBackground.setStyleSheet(u"border-radius: 15px;\n"
+"color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.56, y2:1, stop:0 rgba(98, 98, 98, 255), stop:1 rgba(125, 177, 136, 255));\n"
 "letter-spacing: 1px;\n"
 "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 85, 194), stop:0.137931 rgba(69, 69, 69, 197));\n"
 "selection-background-color: rgba(119, 165, 133, 184);\n"
@@ -362,8 +368,8 @@ class Ui_MainWindow(object):
         self.SearchButton.setText("")
         self.Search_Input.setText("")
         self.label.setText(QCoreApplication.translate("MainWindow", u"Search password name", None))
-        self.lableListBackground.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#c1c1c1;\">Welcome to Passwords Safe!</span></p><p align=\"center\"><span style=\" font-size:18pt; color:#c1c1c1;\">Open a passwords file or create new.</span></p></body></html>", None))
-        self.lableVersion.setText(QCoreApplication.translate("MainWindow", u"os version lable", None))
+        self.lableListBackground.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:700; color:#a1c292;\">Welcome to Passwords safe</span></p><p align=\"center\"><span style=\" color:#b5b5b5;\">This is a cryptographic manager of passwords<br/><br/></span><span style=\" text-decoration: underline; color:#b5b5b5;\">Open</span><span style=\" color:#b5b5b5;\"> a file or </span><span style=\" text-decoration: underline; color:#b5b5b5;\">create new</span><span style=\" color:#b5b5b5;\"> passwords list</span></p></body></html>", None))
+        self.lableVersion.setText(QCoreApplication.translate("MainWindow", u"-", None))
         self.label_6.setText("")
         self.label_2.setText("")
     # retranslateUi

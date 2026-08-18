@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'open_filepzgvup.ui'
+## Form generated from reading UI file 'new_fileAXAFkH.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -17,15 +17,13 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QPushButton,
     QSizePolicy, QWidget)
-from assets import images
+from .assets import images
 
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
         Form.resize(504, 340)
-        Form.setMinimumSize(QSize(504, 340))
-        Form.setMaximumSize(QSize(504, 340))
         font = QFont()
         font.setFamilies([u".AppleSystemUIFont"])
         Form.setFont(font)
@@ -34,13 +32,10 @@ class Ui_Form(object):
         self.PathInput.setObjectName(u"PathInput")
         self.PathInput.setGeometry(QRect(79, 66, 304, 29))
         font1 = QFont()
-        font1.setFamilies([u"Inter 24pt"])
+        font1.setFamilies([u"Google Sans"])
         font1.setPointSize(18)
-        font1.setWeight(QFont.DemiBold)
-        font1.setItalic(False)
-        font1.setUnderline(False)
-        font1.setStrikeOut(False)
-        font1.setKerning(True)
+        font1.setWeight(QFont.Medium)
+        font1.setStyleStrategy(QFont.PreferAntialias)
         self.PathInput.setFont(font1)
         self.PathInput.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "border: 1px solid rgba(255, 255, 255, 0);\n"
@@ -48,33 +43,34 @@ class Ui_Form(object):
         self.PathInput.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.label_2 = QLabel(Form)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(-1, 132, 507, 33))
-        self.label_2.setMinimumSize(QSize(177, 0))
+        self.label_2.setGeometry(QRect(0, 132, 504, 32))
         font2 = QFont()
-        font2.setFamilies([u"Inter 24pt"])
+        font2.setFamilies([u"Google Sans"])
         font2.setPointSize(26)
         self.label_2.setFont(font2)
         self.label_2.setStyleSheet(u"color: rgb(227, 227, 227);\n"
 "background-color: rgba(255, 255, 255, 0);")
+        self.label_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.KeyInput = QLineEdit(Form)
         self.KeyInput.setObjectName(u"KeyInput")
         self.KeyInput.setGeometry(QRect(210, 180, 77, 23))
         font3 = QFont()
-        font3.setFamilies([u"Inter 24pt"])
+        font3.setFamilies([u"Google Sans"])
         font3.setPointSize(18)
         self.KeyInput.setFont(font3)
         self.KeyInput.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.KeyInput.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "border: 1px solid rgba(255, 255, 255, 0);\n"
 "color: rgb(195, 195, 195);")
-        self.KeyInput.setFrame(True)
-        self.KeyInput.setEchoMode(QLineEdit.EchoMode.Password)
+        self.KeyInput.setEchoMode(QLineEdit.EchoMode.PasswordEchoOnEdit)
         self.KeyInput.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.ApplyButton = QPushButton(Form)
         self.ApplyButton.setObjectName(u"ApplyButton")
         self.ApplyButton.setGeometry(QRect(207, 286, 91, 35))
         font4 = QFont()
-        font4.setFamilies([u"Inter 24pt"])
+        font4.setFamilies([u"Google Sans"])
+        font4.setPointSize(14)
+        font4.setWeight(QFont.DemiBold)
         self.ApplyButton.setFont(font4)
         self.ApplyButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.ApplyButton.setStyleSheet(u"QPushButton {\n"
@@ -95,7 +91,7 @@ class Ui_Form(object):
         self.ErrorsLable.setEnabled(True)
         self.ErrorsLable.setGeometry(QRect(0, 254, 504, 33))
         font5 = QFont()
-        font5.setFamilies([u"Inter 24pt"])
+        font5.setFamilies([u"Google Sans"])
         font5.setPointSize(12)
         font5.setWeight(QFont.Medium)
         self.ErrorsLable.setFont(font5)
@@ -105,21 +101,17 @@ class Ui_Form(object):
         self.ErrorsLable.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.label = QLabel(Form)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(-2, 21, 506, 32))
-        font6 = QFont()
-        font6.setFamilies([u"Inter 24pt"])
-        font6.setPointSize(26)
-        font6.setWeight(QFont.Medium)
-        font6.setItalic(False)
-        self.label.setFont(font6)
+        self.label.setGeometry(QRect(1, 21, 503, 32))
+        self.label.setFont(font2)
         self.label.setStyleSheet(u"color: rgb(227, 227, 227);\n"
-"background-color: rgba(255, 255, 255, 0);\n"
-"font: 500 26pt \"Inter 24pt\";")
-        self.label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+"background-color: rgba(255, 255, 255, 0);")
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.ErrorsIcon = QLabel(Form)
         self.ErrorsIcon.setObjectName(u"ErrorsIcon")
         self.ErrorsIcon.setGeometry(QRect(0, 235, 504, 20))
-        self.ErrorsIcon.setFont(font4)
+        font6 = QFont()
+        font6.setFamilies([u"Google Sans"])
+        self.ErrorsIcon.setFont(font6)
         self.ErrorsIcon.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "image: url(:/newPrefix/error_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);")
         self.ErrorsIcon.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -179,16 +171,16 @@ class Ui_Form(object):
     # setupUi
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"Open passwords file", None))
-        self.PathInput.setText(QCoreApplication.translate("Form", u"/Users/demon/Documents", None))
-        self.label_2.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\">Cryptographic key</p></body></html>", None))
+        Form.setWindowTitle(QCoreApplication.translate("Form", u"New passwords file", None))
+        self.PathInput.setText("")
+        self.label_2.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\">Decryption key</p></body></html>", None))
         self.KeyInput.setText("")
-        self.ApplyButton.setText(QCoreApplication.translate("Form", u"Open file", None))
+        self.ApplyButton.setText(QCoreApplication.translate("Form", u"Apply", None))
 #if QT_CONFIG(tooltip)
         self.ErrorsLable.setToolTip(QCoreApplication.translate("Form", u"<html><head/><body><p>Error</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
         self.ErrorsLable.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\">Error display</p></body></html>", None))
-        self.label.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\">Passwords file</p></body></html>", None))
+        self.label.setText(QCoreApplication.translate("Form", u"<html><head/><body><p>Passwords file [.json]</p></body></html>", None))
         self.ErrorsIcon.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
         self.QuickDirButton.setText("")
         self.ErrorsBack.setText("")

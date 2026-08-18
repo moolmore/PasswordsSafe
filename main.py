@@ -1,19 +1,20 @@
-
-import main_window
-import open_file_window
-import new_file_window
-import edit_password_window
-import add_password_window
-from core import parse, lists_obj, key_obj, crypt_utils, cache_obj, helpers
-
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog
-from PySide6.QtCore import QTimer, Qt
-import sys
 import platform
+from core import parse, lists_obj, key_obj, crypt_utils, cache_obj, helpers
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog
+from PySide6.QtCore import QTimer
+import sys
 import pyperclip
 
+if platform.system() == 'Darwin':
+    from ui import main_menu_darwin as main_window
+    from ui import add_password_darwin as add_password_window
+    from ui import edit_password_darwin as edit_password_window
+    from ui import new_file_darwin as new_file_window
+    from ui import open_file_darwin as open_file_window
+else:
+    raise ValueError('App "Passwords Safe" allows only macOS and Windows')
 #App version
-app_version = '1.3.1'
+app_version = '1.3.4'
 
 # All windows classes
 class MainWindow(QMainWindow):
@@ -238,7 +239,7 @@ def applyEditPassword():
 def applyNewPassword():
     try:
         _newName = Add_Pass_Window.ui.newNameEdit.text()
-        helpers.checkNewName(user_input=_newName)
+        helpers.checkNewName(user_input=_newName, is_new_pass=True)
     except Exception as e:
         Add_Pass_Window.ui.ErrorsLable_2.setVisible(True)
         Add_Pass_Window.ui.ErrorsLable_2.setText(str(e))
