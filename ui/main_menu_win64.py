@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_menusUGBEc.ui'
+## Form generated from reading UI file 'main_menu_update_2PJudHD.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -19,19 +19,18 @@ from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QListWidget,
     QListWidgetItem, QMainWindow, QPushButton, QSizePolicy,
     QTabWidget, QWidget)
 from .assets import images
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(381, 574)
+        MainWindow.resize(508, 608)
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
-        MainWindow.setMinimumSize(QSize(381, 574))
-        MainWindow.setMaximumSize(QSize(381, 574))
+        MainWindow.setMinimumSize(QSize(508, 608))
+        MainWindow.setMaximumSize(QSize(508, 608))
         font = QFont()
         font.setFamilies([u"Cascadia Code"])
         font.setBold(False)
@@ -39,14 +38,15 @@ class Ui_MainWindow(object):
         MainWindow.setFont(font)
         MainWindow.setAcceptDrops(True)
         MainWindow.setWindowOpacity(1.000000000000000)
-        MainWindow.setStyleSheet(u"border: none;")
+        MainWindow.setStyleSheet(u"border: none;\n"
+"background-color: rgb(53, 53, 53);")
         MainWindow.setTabShape(QTabWidget.TabShape.Rounded)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         sizePolicy.setHeightForWidth(self.centralwidget.sizePolicy().hasHeightForWidth())
         self.centralwidget.setSizePolicy(sizePolicy)
-        self.centralwidget.setMaximumSize(QSize(381, 574))
-        self.centralwidget.setStyleSheet(u"background-color: rgb(53, 53, 53);")
+        self.centralwidget.setMaximumSize(QSize(508, 608))
+        self.centralwidget.setStyleSheet(u"")
         self.CreateFile = QPushButton(self.centralwidget)
         self.CreateFile.setObjectName(u"CreateFile")
         self.CreateFile.setGeometry(QRect(80, 20, 32, 32))
@@ -161,37 +161,15 @@ class Ui_MainWindow(object):
         self.VisibilityPassButton.setIconSize(QSize(16, 16))
         self.label_4 = QPushButton(self.centralwidget)
         self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(30, 10, 91, 51))
+        self.label_4.setGeometry(QRect(30, 10, 94, 50))
         self.label_4.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
 "border-radius: 20px;\n"
 "border: 1px solid rgb(110, 110, 110);\n"
 "")
-        self.SearchButton = QPushButton(self.centralwidget)
-        self.SearchButton.setObjectName(u"SearchButton")
-        self.SearchButton.setEnabled(True)
-        self.SearchButton.setGeometry(QRect(301, 70, 51, 32))
-        self.SearchButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.SearchButton.setStyleSheet(u"QPushButton {\n"
-"image: url(:/newPrefix/search_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);\n"
-"border-radius: 16px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"border: 1px solid rgb(110, 110, 110);\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	\n"
-"	background-color: rgb(78, 109, 88);\n"
-"}")
-        self.SearchButton.setIconSize(QSize(16, 16))
-        self.SearchButton.setCheckable(False)
-        self.SearchButton.setAutoRepeat(False)
         self.Search_Input = QLineEdit(self.centralwidget)
         self.Search_Input.setObjectName(u"Search_Input")
         self.Search_Input.setEnabled(False)
-        self.Search_Input.setGeometry(QRect(30, 70, 261, 32))
+        self.Search_Input.setGeometry(QRect(64, 75, 380, 32))
         font1 = QFont()
         font1.setFamilies([u"Google Sans"])
         font1.setPointSize(18)
@@ -210,30 +188,17 @@ class Ui_MainWindow(object):
         self.Search_Input.setEchoMode(QLineEdit.EchoMode.Normal)
         self.Search_Input.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.Search_Input.setDragEnabled(False)
-        self.label = QLabel(self.centralwidget)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(30, 102, 261, 21))
-        font2 = QFont()
-        font2.setFamilies([u"Google Sans"])
-        font2.setPointSize(10)
-        font2.setBold(False)
-        font2.setStyleStrategy(QFont.PreferDefault)
-        self.label.setFont(font2)
-        self.label.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
-"color: rgb(99, 99, 99);")
-        self.label.setScaledContents(False)
-        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.lableListBackground = QLabel(self.centralwidget)
         self.lableListBackground.setObjectName(u"lableListBackground")
-        self.lableListBackground.setGeometry(QRect(25, 127, 329, 418))
-        font3 = QFont()
-        font3.setFamilies([u"Google Sans"])
-        font3.setPointSize(17)
-        font3.setWeight(QFont.Medium)
-        font3.setKerning(True)
-        font3.setStyleStrategy(QFont.PreferAntialias)
-        font3.setHintingPreference(QFont.PreferNoHinting)
-        self.lableListBackground.setFont(font3)
+        self.lableListBackground.setGeometry(QRect(25, 127, 452, 447))
+        font2 = QFont()
+        font2.setFamilies([u"Google Sans"])
+        font2.setPointSize(17)
+        font2.setWeight(QFont.Medium)
+        font2.setKerning(True)
+        font2.setStyleStrategy(QFont.PreferAntialias)
+        font2.setHintingPreference(QFont.PreferNoHinting)
+        self.lableListBackground.setFont(font2)
         self.lableListBackground.setAutoFillBackground(False)
         self.lableListBackground.setStyleSheet(u"border-radius: 15px;\n"
 "color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.56, y2:1, stop:0 rgba(98, 98, 98, 255), stop:1 rgba(125, 177, 136, 255));\n"
@@ -246,14 +211,14 @@ class Ui_MainWindow(object):
         self.lableListBackground.setWordWrap(True)
         self.PasswordList = QListWidget(self.centralwidget)
         self.PasswordList.setObjectName(u"PasswordList")
-        self.PasswordList.setGeometry(QRect(25, 127, 329, 418))
-        font4 = QFont()
-        font4.setFamilies([u"Google Sans"])
-        font4.setPointSize(14)
-        font4.setBold(False)
-        font4.setKerning(True)
-        font4.setStyleStrategy(QFont.PreferDefault)
-        self.PasswordList.setFont(font4)
+        self.PasswordList.setGeometry(QRect(25, 127, 452, 447))
+        font3 = QFont()
+        font3.setFamilies([u"Google Sans"])
+        font3.setPointSize(14)
+        font3.setBold(False)
+        font3.setKerning(True)
+        font3.setStyleStrategy(QFont.PreferDefault)
+        self.PasswordList.setFont(font3)
         self.PasswordList.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.PasswordList.setStyleSheet(u"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u0441\u0430\u043c\u043e\u0433\u043e \u0441\u043f\u0438\u0441\u043a\u0430 (\u0444\u043e\u043d\u0430) */\n"
 "QListWidget {\n"
@@ -300,23 +265,36 @@ class Ui_MainWindow(object):
         self.PasswordList.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.lableVersion = QLabel(self.centralwidget)
         self.lableVersion.setObjectName(u"lableVersion")
-        self.lableVersion.setGeometry(QRect(2, 547, 377, 22))
-        self.lableVersion.setFont(font2)
+        self.lableVersion.setGeometry(QRect(25, 580, 452, 21))
+        font4 = QFont()
+        font4.setFamilies([u"Google Sans"])
+        font4.setPointSize(10)
+        font4.setBold(False)
+        font4.setStyleStrategy(QFont.PreferDefault)
+        self.lableVersion.setFont(font4)
         self.lableVersion.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "color: rgb(99, 99, 99);")
         self.lableVersion.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.label_6 = QLabel(self.centralwidget)
-        self.label_6.setObjectName(u"label_6")
-        self.label_6.setGeometry(QRect(373, 408, 454, 454))
-        self.label_6.setStyleSheet(u"image: url(:/newPrefix/Rectangle 75.png);\n"
-"background-color: rgba(255, 255, 255, 0);")
         self.label_2 = QLabel(self.centralwidget)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(140, 10, 211, 51))
+        self.label_2.setGeometry(QRect(140, 10, 324, 50))
         self.label_2.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
 "border-radius: 20px;\n"
 "border: 1px solid rgb(110, 110, 110);\n"
 "")
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(64, 100, 380, 31))
+        self.label.setFont(font4)
+        self.label.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"color: rgb(99, 99, 99);")
+        self.label.setScaledContents(False)
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.SearchButton = QPushButton(self.centralwidget)
+        self.SearchButton.setObjectName(u"SearchButton")
+        self.SearchButton.setGeometry(QRect(407, 78, 26, 26))
+        self.SearchButton.setStyleSheet(u"image: url(:/newPrefix/search_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);\n"
+"background-color: rgba(255, 255, 255, 0);")
         MainWindow.setCentralWidget(self.centralwidget)
         self.label_2.raise_()
         self.label_4.raise_()
@@ -329,10 +307,9 @@ class Ui_MainWindow(object):
         self.CopyPassButton.raise_()
         self.VisibilityPassButton.raise_()
         self.Search_Input.raise_()
-        self.label.raise_()
         self.PasswordList.raise_()
         self.lableVersion.raise_()
-        self.label_6.raise_()
+        self.label.raise_()
         self.SearchButton.raise_()
 
         self.retranslateUi(MainWindow)
@@ -365,15 +342,11 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.VisibilityPassButton.setText("")
         self.label_4.setText("")
-#if QT_CONFIG(tooltip)
-        self.SearchButton.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>change password visible</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.SearchButton.setText("")
         self.Search_Input.setText("")
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Search password name", None))
         self.lableListBackground.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:700; color:#a1c292;\">Welcome to Passwords safe</span></p><p align=\"center\"><span style=\" color:#b5b5b5;\">This is a cryptographic manager of passwords<br/><br/></span><span style=\" text-decoration: underline; color:#b5b5b5;\">Open</span><span style=\" color:#b5b5b5;\"> a file or </span><span style=\" text-decoration: underline; color:#b5b5b5;\">create new</span><span style=\" color:#b5b5b5;\"> passwords list</span></p></body></html>", None))
         self.lableVersion.setText(QCoreApplication.translate("MainWindow", u"OS / APP VERSION", None))
-        self.label_6.setText("")
         self.label_2.setText("")
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Search password name", None))
+        self.SearchButton.setText("")
     # retranslateUi
 
