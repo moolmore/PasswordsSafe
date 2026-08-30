@@ -23,7 +23,7 @@ def createCacheObject():
     AppCache = CachedData()
 
 def updateCache(list_visibility: str='None', user_path: str='None'):
-    private_dict=lists_obj.UserPasswordsList.passwords_list
+    passwords=lists_obj.UserPasswordsList.passwords_list
     private_key=key_obj.UserCryptoKey.key
     hide_list = [] 
     decrypted_list = []
@@ -35,16 +35,20 @@ def updateCache(list_visibility: str='None', user_path: str='None'):
         memory_cost=64 * 1024,
     )
     
-    for key, value in private_dict.items():
-        hide_list.append(key+"  "+"[##"+"#"*random.randint(2, 5)+"]")
-        decrypted_list.append(key+"  "+crypt_utils.decryptOnePassword(password=value, private_key=private_key)) 
+    for data in passwords:
+        print('CACHE OBJ / UPDATE CACHE password from for loop')
+        print(data)
+        decrypted_list.append(f"S: {data[0]} N: {data[1]} E: {data[2]} P: {data[3]} D: {data[4]}")
+
+        #hide_list.append(key+"  "+"[##"+"#"*random.randint(2, 5)+"]")
+        #decrypted_list.append(key+"  "+crypt_utils.decryptOnePassword(password=value, private_key=private_key)) 
 
     if user_path != 'None':
         AppCache.user_path = user_path
     if list_visibility != 'None':
         AppCache.visibility_list = list_visibility
 
-    AppCache.hide_list = hide_list
+    #AppCache.hide_list = hide_list
     AppCache.dec_list = decrypted_list
 
 def updateCacheSearchResults(search_word: str|NoneType=None):

@@ -19,3 +19,5 @@ def encryptOnePassword(password: bytes, private_key: bytes) -> bytes:
         raise ValueError('Encrypt Error')
     else:
         return password
+
+

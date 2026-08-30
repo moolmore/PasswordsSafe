@@ -3,7 +3,6 @@ from core import parse, lists_obj, key_obj, crypt_utils, cache_obj, helpers
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog, QGraphicsBlurEffect
 from PySide6.QtCore import QTimer
 import sys
-import random
 import pyperclip
 
 if platform.system() == 'Darwin':
@@ -21,8 +20,15 @@ elif platform.system() == 'Windows':
 else:
     raise ValueError('App "Passwords Safe" allows only macOS and Windows')
 
+## DEBUG COLORS 
+red = "\033[1;31m"  
+yel = "\033[1;33m"  
+gre = "\033[1;32m"  
+res = "\033[0m"
+## DEBUG COLORS
+
 #App version
-app_version = '2.1'
+app_version = '2.0 WIP'
 
 # All windows classes
 class MainWindow(QMainWindow):
@@ -60,19 +66,25 @@ class MainWindow(QMainWindow):
     def enableAllButtons(self):
         for element in self.ManagmentElementsList:
             element.setEnabled(True)
+
+    # def updateList(self):
+    #     self.ui.PasswordList.clear()
+    #     if cache_obj.AppCache.search_active:
+    #         if cache_obj.AppCache.visibility_list == 'hide':
+    #             self.ui.PasswordList.addItems(cache_obj.AppCache.search_hide_list)
+    #         else:
+    #             self.ui.PasswordList.addItems(cache_obj.AppCache.search_dec_list)
+    #     else:
+    #         if cache_obj.AppCache.visibility_list == 'hide':
+    #             self.ui.PasswordList.addItems(cache_obj.AppCache.hide_list)
+    #         else:
+    #             self.ui.PasswordList.addItems(cache_obj.AppCache.dec_list)
+    #     self.ui.PasswordList.sortItems()
     def updateList(self):
+        print(yel+"updating Qt list...")
         self.ui.PasswordList.clear()
-        if cache_obj.AppCache.search_active:
-            if cache_obj.AppCache.visibility_list == 'hide':
-                self.ui.PasswordList.addItems(cache_obj.AppCache.search_hide_list)
-            else:
-                self.ui.PasswordList.addItems(cache_obj.AppCache.search_dec_list)
-        else:
-            if cache_obj.AppCache.visibility_list == 'hide':
-                self.ui.PasswordList.addItems(cache_obj.AppCache.hide_list)
-            else:
-                self.ui.PasswordList.addItems(cache_obj.AppCache.dec_list)
-        self.ui.PasswordList.sortItems()
+        self.ui.PasswordList.addItems(cache_obj.AppCache.dec_list)
+        print("end of update"+res)
 
     # BLUR ON ELEMENTS OF MANAGMENT
 
@@ -93,7 +105,7 @@ class MainWindow(QMainWindow):
     # BLUR ON ELEMENTS OF MANAGMENT
 
     def getCurItem(self) -> str:
-        return self.ui.PasswordList.currentItem().text().split('  ')[0]
+        return self.ui.PasswordList.currentItem().text()
     def changeTitleSec(self):
         self.setWindowTitle('Passwords Safe' + ' - Password copied')
         QTimer.singleShot(1500, lambda: self.setWindowTitle('Passwords Safe'))
@@ -196,7 +208,7 @@ def executeAddPassword():
         global Add_Pass_Window
         Add_Pass_Window = AddPasswordWindow()
         Add_Pass_Window.connectFunctions()
-        Add_Pass_Window.ui.ErrorsLable_2.setVisible(False)
+        #Add_Pass_Window.ui.ErrorsLable_2.setVisible(False)
         Add_Pass_Window.show()
 
 # Exectuions for open windows
@@ -210,12 +222,12 @@ def executeAddPassword():
 
 def applyOpenFile():
     try:
-        _key, _dict = parse.openFile(user_path=Open_File_Window.ui.PathInput.text(),
+        _key, _passwords = parse.openFile(user_path=Open_File_Window.ui.PathInput.text(),
                                      user_key=Open_File_Window.ui.KeyInput.text().encode('utf-8'))
     except Exception as e:
         Open_File_Window.showException(exc=e)
     else:
-        lists_obj.createListObject(passwords=_dict)
+        lists_obj.createListObject(passwords=_passwords)
         key_obj.createKey(user_key=_key)
         cache_obj.createCacheObject()
         cache_obj.updateCache(list_visibility='hide', user_path=Open_File_Window.ui.PathInput.text())          
@@ -233,10 +245,10 @@ def applyNewFile():
     except Exception as e:
         New_File_Window.showException(exc=e)
     else:
-        lists_obj.createListObject(passwords={})
+        lists_obj.createListObject(passwords=[])
         key_obj.createKey(user_key=_key)
         cache_obj.createCacheObject()
-        cache_obj.updateCache(list_visibility='hide', user_path=_path)
+        cache_obj.updateCache(list_visibility='decrypted', user_path=_path)
         New_File_Window.close()
         Main_Window.ui.lableListBackground.setText('')
         #Show list in app
@@ -276,18 +288,26 @@ def applyEditPassword():
         Edit_Password_Window.close()
 
 def applyNewPassword():
+    enc = crypt_utils.encryptOnePassword
+    key = key_obj.UserCryptoKey.key
     try:
         _newName = Add_Pass_Window.ui.newNameEdit.text()
-        helpers.checkNewName(user_input=_newName, is_new_pass=True)
+        _newNickname = Add_Pass_Window.ui.newNicknameEdit.text()
+        _newMail = Add_Pass_Window.ui.newMailEdit.text()
+        _newPass = Add_Pass_Window.ui.newPassEdit.text()
+        _newDisc = Add_Pass_Window.ui.newDescEdit.text()
+        #helpers.checkNewName(user_input=_newName, is_new_pass=True)
     except Exception as e:
         Add_Pass_Window.ui.ErrorsLable_2.setVisible(True)
         Add_Pass_Window.ui.ErrorsLable_2.setText(str(e))
     else:
-        _newPass = Add_Pass_Window.ui.newPassEdit.text()
-        lists_obj.UserPasswordsList.passwords_list[_newName]=crypt_utils.encryptOnePassword(password=_newPass.encode('utf-8'), private_key=key_obj.UserCryptoKey.key).decode('utf-8')
+        passwords = lists_obj.UserPasswordsList.passwords_list
+        passwords.insert(int(len(passwords)+1 if len(passwords) != 0 else 0), 
+                         [_newName, _newNickname, _newMail, _newPass, _newDisc])
+    
         cache_obj.updateCache()
-        parse.saveFile(passwords_dict=lists_obj.UserPasswordsList.passwords_list,
-                    enc_key=key_obj.UserCryptoKey.key,
+        parse.saveFile(passwords=passwords,
+                    enc_key=key,
                     file_path=cache_obj.AppCache.user_path)
         cache_obj.updateCacheSearchResults()
         Main_Window.updateList()
