@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'change_passwordMyKMBA.ui'
+## Form generated from reading UI file 'WIP_password_editAdpWWY.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -17,164 +17,45 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QPushButton,
     QSizePolicy, QWidget)
-from .assets import images
 
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(395, 300)
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(Form.sizePolicy().hasHeightForWidth())
-        Form.setSizePolicy(sizePolicy)
-        Form.setMinimumSize(QSize(395, 300))
-        Form.setMaximumSize(QSize(395, 300))
-        Form.setStyleSheet(u"background-color: rgb(53, 53, 53);")
-        self.label_5 = QLabel(Form)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(-2, 27, 398, 21))
-        font = QFont()
-        font.setFamilies([u"Google Sans"])
-        font.setPointSize(14)
-        font.setBold(True)
-        self.label_5.setFont(font)
-        self.label_5.setStyleSheet(u"color: rgb(222, 222, 222);")
-        self.label_5.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.applyButton = QPushButton(Form)
-        self.applyButton.setObjectName(u"applyButton")
-        self.applyButton.setGeometry(QRect(148, 250, 99, 37))
-        font1 = QFont()
-        font1.setFamilies([u"Google Sans"])
-        font1.setPointSize(12)
-        font1.setWeight(QFont.Medium)
-        self.applyButton.setFont(font1)
-        self.applyButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.applyButton.setStyleSheet(u"QPushButton {\n"
-"border-radius: 16px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"border: 1px solid rgb(110, 110, 110);\n"
-"	color: rgb(225, 225, 225);\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	\n"
-"	background-color: rgb(78, 109, 88);\n"
-"}")
-        self.label_6 = QLabel(Form)
-        self.label_6.setObjectName(u"label_6")
-        self.label_6.setGeometry(QRect(-1, 121, 398, 21))
-        self.label_6.setFont(font)
-        self.label_6.setStyleSheet(u"color: rgb(222, 222, 222);\n"
-"background-color: rgba(255, 255, 255, 0);")
-        self.label_6.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.label_4 = QLabel(Form)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(285, 49, 32, 31))
-        self.label_4.setStyleSheet(u"image: url(:/newPrefix/password_2_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
-"")
-        self.label_7 = QLabel(Form)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setGeometry(QRect(77, 49, 32, 31))
-        self.label_7.setStyleSheet(u"image: url(:/newPrefix/label_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);")
-        self.currentName = QLabel(Form)
-        self.currentName.setObjectName(u"currentName")
-        self.currentName.setGeometry(QRect(21, 85, 143, 21))
-        font2 = QFont()
-        font2.setFamilies([u"Google Sans"])
-        font2.setPointSize(14)
-        self.currentName.setFont(font2)
-        self.currentName.setStyleSheet(u"color: rgb(222, 222, 222);")
-        self.currentName.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.currentPass = QLabel(Form)
-        self.currentPass.setObjectName(u"currentPass")
-        self.currentPass.setGeometry(QRect(229, 85, 143, 21))
-        self.currentPass.setFont(font2)
-        self.currentPass.setStyleSheet(u"color: rgb(222, 222, 222);")
-        self.currentPass.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.newNameEdit = QLineEdit(Form)
-        self.newNameEdit.setObjectName(u"newNameEdit")
-        self.newNameEdit.setGeometry(QRect(21, 174, 143, 31))
-        self.newNameEdit.setFont(font2)
-        self.newNameEdit.setStyleSheet(u"border-radius: 10px;\n"
-"color: rgba(157, 221, 176, 219);\n"
-"background-color: rgba(45, 45, 45, 128);\n"
-"border: 1px solid rgb(162, 162, 162);\n"
-"")
-        self.newNameEdit.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.newPassEdit = QLineEdit(Form)
-        self.newPassEdit.setObjectName(u"newPassEdit")
-        self.newPassEdit.setGeometry(QRect(229, 174, 143, 31))
-        self.newPassEdit.setFont(font2)
-        self.newPassEdit.setStyleSheet(u"border-radius: 10px;\n"
-"background-color: rgba(45, 45, 45, 128);\n"
-"color: rgba(157, 221, 176, 219);\n"
-"border: 1px solid rgb(162, 162, 162);\n"
-"")
-        self.newPassEdit.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.label_10 = QLabel(Form)
-        self.label_10.setObjectName(u"label_10")
-        self.label_10.setGeometry(QRect(77, 136, 32, 31))
-        self.label_10.setStyleSheet(u"image: url(:/newPrefix/label_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
-"background-color: rgba(255, 255, 255, 0);")
-        self.label_11 = QLabel(Form)
-        self.label_11.setObjectName(u"label_11")
-        self.label_11.setGeometry(QRect(285, 136, 32, 31))
-        self.label_11.setStyleSheet(u"image: url(:/newPrefix/password_2_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
-"background-color: rgba(255, 255, 255, 0);")
+        Form.resize(536, 181)
         self.label = QLabel(Form)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(6, 25, 378, 90))
-        self.label.setMaximumSize(QSize(378, 16777215))
-        self.label.setStyleSheet(u"background-color: rgba(52, 52, 52, 128);")
+        self.label.setGeometry(QRect(40, 20, 36, 16))
+        self.newNameEdit = QLineEdit(Form)
+        self.newNameEdit.setObjectName(u"newNameEdit")
+        self.newNameEdit.setGeometry(QRect(10, 40, 113, 22))
+        self.label_2 = QLabel(Form)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(160, 20, 52, 16))
+        self.newNicknameEdit = QLineEdit(Form)
+        self.newNicknameEdit.setObjectName(u"newNicknameEdit")
+        self.newNicknameEdit.setGeometry(QRect(140, 40, 113, 22))
         self.label_3 = QLabel(Form)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(-26, 120, 454, 454))
-        self.label_3.setStyleSheet(u"image: url(:/newPrefix/Rectangle 75.png);\n"
-"background-color: rgba(255, 255, 255, 0);")
-        self.label_8 = QLabel(Form)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setGeometry(QRect(333, 250, 454, 454))
-        self.label_8.setStyleSheet(u"image: url(:/newPrefix/Rectangle 75.png);\n"
-"background-color: rgba(255, 255, 255, 0);")
-        self.ErrorsLable_2 = QLabel(Form)
-        self.ErrorsLable_2.setObjectName(u"ErrorsLable_2")
-        self.ErrorsLable_2.setEnabled(True)
-        self.ErrorsLable_2.setGeometry(QRect(0, 209, 395, 41))
-        font3 = QFont()
-        font3.setFamilies([u"Google Sans"])
-        font3.setPointSize(11)
-        font3.setWeight(QFont.Medium)
-        font3.setItalic(False)
-        self.ErrorsLable_2.setFont(font3)
-        self.ErrorsLable_2.setCursor(QCursor(Qt.CursorShape.ArrowCursor))
-        self.ErrorsLable_2.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
-"color: rgb(227, 227, 227);")
-        self.ErrorsLable_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.label_9 = QLabel(Form)
-        self.label_9.setObjectName(u"label_9")
-        self.label_9.setGeometry(QRect(-180, 150, 515, 515))
-        self.label_9.setStyleSheet(u"image: url(:/newPrefix/Rectangle 75.png);\n"
-"background-color: rgba(255, 255, 255, 0);")
-        self.label_9.raise_()
-        self.label_5.raise_()
-        self.label_4.raise_()
-        self.label_7.raise_()
-        self.currentName.raise_()
-        self.currentPass.raise_()
-        self.label_10.raise_()
-        self.label_8.raise_()
-        self.label.raise_()
-        self.label_3.raise_()
-        self.newNameEdit.raise_()
-        self.newPassEdit.raise_()
-        self.applyButton.raise_()
-        self.label_11.raise_()
-        self.label_6.raise_()
-        self.ErrorsLable_2.raise_()
+        self.label_3.setGeometry(QRect(290, 20, 29, 16))
+        self.newMailEdit = QLineEdit(Form)
+        self.newMailEdit.setObjectName(u"newMailEdit")
+        self.newMailEdit.setGeometry(QRect(270, 40, 113, 22))
+        self.label_4 = QLabel(Form)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setGeometry(QRect(420, 20, 50, 16))
+        self.newPassEdit = QLineEdit(Form)
+        self.newPassEdit.setObjectName(u"newPassEdit")
+        self.newPassEdit.setGeometry(QRect(410, 40, 113, 22))
+        self.label_5 = QLabel(Form)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setGeometry(QRect(250, 70, 54, 16))
+        self.newDescEdit = QLineEdit(Form)
+        self.newDescEdit.setObjectName(u"newDescEdit")
+        self.newDescEdit.setGeometry(QRect(180, 90, 201, 22))
+        self.applyButton = QPushButton(Form)
+        self.applyButton.setObjectName(u"applyButton")
+        self.applyButton.setGeometry(QRect(230, 130, 75, 24))
 
         self.retranslateUi(Form)
 
@@ -182,25 +63,12 @@ class Ui_Form(object):
     # setupUi
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"Change password", None))
-        self.label_5.setText(QCoreApplication.translate("Form", u"Current", None))
+        Form.setWindowTitle(QCoreApplication.translate("Form", u"Editing a password", None))
+        self.label.setText(QCoreApplication.translate("Form", u"service", None))
+        self.label_2.setText(QCoreApplication.translate("Form", u"nickname", None))
+        self.label_3.setText(QCoreApplication.translate("Form", u"email", None))
+        self.label_4.setText(QCoreApplication.translate("Form", u"password", None))
+        self.label_5.setText(QCoreApplication.translate("Form", u"decription", None))
         self.applyButton.setText(QCoreApplication.translate("Form", u"Apply", None))
-        self.label_6.setText(QCoreApplication.translate("Form", u"New", None))
-        self.label_4.setText("")
-        self.label_7.setText("")
-        self.currentName.setText(QCoreApplication.translate("Form", u"CurrentName", None))
-        self.currentPass.setText(QCoreApplication.translate("Form", u"CurrentName", None))
-        self.newNameEdit.setText(QCoreApplication.translate("Form", u"CurrentName", None))
-        self.newPassEdit.setText(QCoreApplication.translate("Form", u"CurrentName", None))
-        self.label_10.setText("")
-        self.label_11.setText("")
-        self.label.setText("")
-        self.label_3.setText("")
-        self.label_8.setText("")
-#if QT_CONFIG(tooltip)
-        self.ErrorsLable_2.setToolTip(QCoreApplication.translate("Form", u"<html><head/><body><p>Error</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.ErrorsLable_2.setText(QCoreApplication.translate("Form", u"Error display", None))
-        self.label_9.setText("")
     # retranslateUi
 

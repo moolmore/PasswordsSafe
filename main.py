@@ -45,7 +45,7 @@ class MainWindow(QMainWindow):
         self.blurElements = self.ManagmentElementsList[2:9]
         self.blurElements.append(self.ui.label)
         self.blurElements.append(self.ui.label_2)
-
+        
 
     def connectFunctions(self):
         self.ui.OpenFile.clicked.connect(executeOpenFile)
@@ -89,6 +89,7 @@ class MainWindow(QMainWindow):
         for element in self.blurElements:
             element.setGraphicsEffect(None)
             del element.hash0
+
     # BLUR ON ELEMENTS OF MANAGMENT
 
     def getCurItem(self) -> str:
@@ -183,11 +184,11 @@ def executePasswordEdit():
         _name = Main_Window.ui.PasswordList.currentItem().text().split('  ')[0]
         _encPassword = lists_obj.UserPasswordsList.passwords_list.get(_name)
         _decPassword = crypt_utils.decryptOnePassword(password=str(_encPassword), private_key=key_obj.UserCryptoKey.key)
-        Edit_Password_Window.ui.currentName.setText(_name)
-        Edit_Password_Window.ui.currentPass.setText(_decPassword)
+        # Edit_Password_Window.ui.currentName.setText(_name)
+        # Edit_Password_Window.ui.currentPass.setText(_decPassword)
         Edit_Password_Window.ui.newNameEdit.setText(_name)
         Edit_Password_Window.ui.newPassEdit.setText(_decPassword)
-        Edit_Password_Window.ui.ErrorsLable_2.setVisible(False)
+        # Edit_Password_Window.ui.ErrorsLable_2.setVisible(False)
         Edit_Password_Window.show()
 
 def executeAddPassword():

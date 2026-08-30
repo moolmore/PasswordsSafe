@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_menu_update_2UducVy.ui'
+## Form generated from reading UI file 'main_menu_update_2BwqiLM.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -18,6 +18,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QListWidget,
     QListWidgetItem, QMainWindow, QPushButton, QSizePolicy,
     QTabWidget, QWidget)
+from .assets import images
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -351,6 +352,7 @@ class Ui_MainWindow(object):
 "border: 1px solid rgb(110, 110, 110);")
         self.CopyNameButton = QPushButton(self.centralwidget)
         self.CopyNameButton.setObjectName(u"CopyNameButton")
+        self.CopyNameButton.setEnabled(False)
         self.CopyNameButton.setGeometry(QRect(337, 22, 35, 35))
         self.CopyNameButton.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgba(255, 255, 255, 0);\n"
@@ -363,6 +365,7 @@ class Ui_MainWindow(object):
 "}")
         self.CopyEmailButton = QPushButton(self.centralwidget)
         self.CopyEmailButton.setObjectName(u"CopyEmailButton")
+        self.CopyEmailButton.setEnabled(False)
         self.CopyEmailButton.setGeometry(QRect(378, 22, 35, 35))
         self.CopyEmailButton.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgba(255, 255, 255, 0);\n"
@@ -375,6 +378,7 @@ class Ui_MainWindow(object):
 "}")
         self.CopyPassButton = QPushButton(self.centralwidget)
         self.CopyPassButton.setObjectName(u"CopyPassButton")
+        self.CopyPassButton.setEnabled(False)
         self.CopyPassButton.setGeometry(QRect(419, 22, 35, 35))
         self.CopyPassButton.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgba(255, 255, 255, 0);\n"

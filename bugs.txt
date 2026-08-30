@@ -1,1 +1,2 @@
 in new file window no lock window sizes
+new copy buttons not blurred + not useble 
