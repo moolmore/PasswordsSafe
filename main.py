@@ -105,7 +105,7 @@ class MainWindow(QMainWindow):
     # BLUR ON ELEMENTS OF MANAGMENT
 
     def getCurItem(self) -> str:
-        return self.ui.PasswordList.currentItem().text()
+        return self.ui.PasswordList.currentRow()
     def changeTitleSec(self):
         self.setWindowTitle('Passwords Safe' + ' - Password copied')
         QTimer.singleShot(1500, lambda: self.setWindowTitle('Passwords Safe'))
@@ -317,7 +317,7 @@ def deletePassword():
 
     lists_obj.UserPasswordsList.passwords_list.pop(Main_Window.getCurItem())
     cache_obj.updateCache()
-    parse.saveFile(passwords_dict=lists_obj.UserPasswordsList.passwords_list,
+    parse.saveFile(passwords=lists_obj.UserPasswordsList.passwords_list,
                        enc_key=key_obj.UserCryptoKey.key,
                        file_path=cache_obj.AppCache.user_path)
     cache_obj.updateCacheSearchResults()

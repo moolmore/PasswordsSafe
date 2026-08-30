@@ -38,7 +38,7 @@ def updateCache(list_visibility: str='None', user_path: str='None'):
     for data in passwords:
         print('CACHE OBJ / UPDATE CACHE password from for loop')
         print(data)
-        decrypted_list.append(f"S: {data[0]} N: {data[1]} E: {data[2]} P: {data[3]} D: {data[4]}")
+        decrypted_list.append(f"{data[0]} ⧽ {data[1]}")
 
         #hide_list.append(key+"  "+"[##"+"#"*random.randint(2, 5)+"]")
         #decrypted_list.append(key+"  "+crypt_utils.decryptOnePassword(password=value, private_key=private_key)) 
