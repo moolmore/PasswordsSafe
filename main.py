@@ -22,7 +22,7 @@ else:
     raise ValueError('App "Passwords Safe" allows only macOS and Windows')
 
 #App version
-app_version = '1.4'
+app_version = '2.1'
 
 # All windows classes
 class MainWindow(QMainWindow):
