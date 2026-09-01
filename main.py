@@ -1,7 +1,8 @@
 import platform
 from core import parse, lists_obj, key_obj, crypt_utils, cache_obj, helpers
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog, QGraphicsBlurEffect
-from PySide6.QtCore import QTimer
+from PySide6.QtCore import Qt, QTimer
+from PySide6.QtGui import QFont
 import sys
 import pyperclip
 
@@ -67,23 +68,41 @@ class MainWindow(QMainWindow):
         for element in self.ManagmentElementsList:
             element.setEnabled(True)
 
-    # def updateList(self):
-    #     self.ui.PasswordList.clear()
-    #     if cache_obj.AppCache.search_active:
-    #         if cache_obj.AppCache.visibility_list == 'hide':
-    #             self.ui.PasswordList.addItems(cache_obj.AppCache.search_hide_list)
-    #         else:
-    #             self.ui.PasswordList.addItems(cache_obj.AppCache.search_dec_list)
-    #     else:
-    #         if cache_obj.AppCache.visibility_list == 'hide':
-    #             self.ui.PasswordList.addItems(cache_obj.AppCache.hide_list)
-    #         else:
-    #             self.ui.PasswordList.addItems(cache_obj.AppCache.dec_list)
-    #     self.ui.PasswordList.sortItems()
+
+    # 1: SERVICE
+    # 2: SERVICE | NICKNAME | DESCRIPTION
+    # 3: SERVICE | EMAIL | PASSWORD
+    # 3: ALL DATA (! TEXT VERY SMALL !)
     def updateList(self):
-        print(yel+"updating Qt list...")
+        print("passwords in cache: "+str(len(cache_obj.AppCache.ui_lists["all"])))
+        print("passwords in app list: "+str(len(lists_obj.UserPasswordsList.passwords_list)))
         self.ui.PasswordList.clear()
-        self.ui.PasswordList.addItems(cache_obj.AppCache.dec_list)
+        ac = cache_obj.AppCache
+        print(yel+"updating Qt list...")
+        font = QFont()
+        font.setBold(False)
+        font.setFamilies([u"Google Sans"])
+
+        if ac.visibility_list == 1:
+            self.ui.PasswordList.addItems(ac.ui_lists["service"])
+            font.setPointSize(17)
+            font.setBold(True)
+            self.ui.PasswordList.setFont(font)
+        elif ac.visibility_list == 2:
+            self.ui.PasswordList.addItems(ac.ui_lists["se_ni_de"])
+            font.setPointSize(14)
+            self.ui.PasswordList.setFont(font)
+
+        elif ac.visibility_list == 3:
+            font.setPointSize(14)
+            self.ui.PasswordList.addItems(ac.ui_lists["se_em_pa"])
+            self.ui.PasswordList.setFont(font)
+
+        elif ac.visibility_list == 4:
+            font.setPointSize(9)
+            self.ui.PasswordList.addItems(ac.ui_lists["all"])
+            self.ui.PasswordList.setFont(font)
+
         print("end of update"+res)
 
     # BLUR ON ELEMENTS OF MANAGMENT
@@ -138,6 +157,7 @@ class NewFileWindow(QWidget):
         self.ui.ErrorsIcon.setVisible(True)
         self.ui.ErrorsBack.setVisible(True)
         self.ui.ErrorsLable.setText(str(exc))
+
 class EditPasswordWindow(QWidget):
     def __init__(self):
         super().__init__()
@@ -221,37 +241,39 @@ def executeAddPassword():
 # Buttons slots block start
 
 def applyOpenFile():
+    i_path = Open_File_Window.ui.PathInput
+    i_key = Open_File_Window.ui.KeyInput
     try:
-        _key, _passwords = parse.openFile(user_path=Open_File_Window.ui.PathInput.text(),
-                                     user_key=Open_File_Window.ui.KeyInput.text().encode('utf-8'))
+        _key, _passwords = parse.openFile(i_path.text(),i_key.text().encode('utf-8'))
     except Exception as e:
         Open_File_Window.showException(exc=e)
     else:
         lists_obj.createListObject(passwords=_passwords)
         key_obj.createKey(user_key=_key)
         cache_obj.createCacheObject()
-        cache_obj.updateCache(list_visibility='hide', user_path=Open_File_Window.ui.PathInput.text())          
+        cache_obj.updateCache(list_visibility=1, user_path=i_path.text())          
         Open_File_Window.close()
         Main_Window.ui.lableListBackground.setText('')
-        #Show list in app
         Main_Window.enableAllButtons()
         Main_Window.removeBlurFromElements()
         Main_Window.updateList()
 
 def applyNewFile():
+    i_key = New_File_Window.ui.KeyInput
+    _path = New_File_Window.ui.PathInput
     try:
-        helpers.checkNewKey(New_File_Window.ui.KeyInput.text())
-        _key, _path = helpers.processNewFile(user_key=New_File_Window.ui.KeyInput.text().encode('utf-8'), user_path=New_File_Window.ui.PathInput.text())
+        helpers.checkNewKey(i_key.text())
+        _key = crypt_utils.deriveKey(user_key=i_key.text().encode('utf-8'))
+
     except Exception as e:
         New_File_Window.showException(exc=e)
     else:
         lists_obj.createListObject(passwords=[])
         key_obj.createKey(user_key=_key)
         cache_obj.createCacheObject()
-        cache_obj.updateCache(list_visibility='decrypted', user_path=_path)
+        cache_obj.updateCache(list_visibility=1, user_path=_path.text())
         New_File_Window.close()
         Main_Window.ui.lableListBackground.setText('')
-        #Show list in app
         Main_Window.enableAllButtons()
         Main_Window.removeBlurFromElements()
         Main_Window.updateList()
@@ -260,11 +282,16 @@ def setDirDialog():
     dir, nonuse = QFileDialog.getOpenFileName(filter="JSON files (*.JSON)")
     Open_File_Window.ui.PathInput.setText(dir)
     New_File_Window.ui.PathInput.setText(dir)
+
 def changePasswordsVisibility():
-    if cache_obj.AppCache.visibility_list == 'hide':
-        cache_obj.AppCache.visibility_list = 'decrypted'
+    co = cache_obj.AppCache
+    print(gre+'Visibility was changes',co.visibility_list,"->",end=' ')
+
+    if 4 > co.visibility_list>= 0:
+        co.visibility_list += 1
     else:
-        cache_obj.AppCache.visibility_list = 'hide'
+        co.visibility_list = 1
+    print(co.visibility_list)
     Main_Window.updateList()
 
 def applyEditPassword():
@@ -351,7 +378,9 @@ def main():
     
     App = QApplication()
     executeMain()
+    
     sys.exit(App.exec())
+    
 
 if __name__ == '__main__':
     main()

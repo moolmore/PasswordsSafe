@@ -3,20 +3,14 @@ import os, base64
 from cryptography.hazmat.primitives.kdf.argon2 import Argon2id
 from . import lists_obj
 import platform
+import asyncio
+## DEBUG COLORS 
+red = "\033[1;31m"  
+yel = "\033[1;33m"  
+gre = "\033[1;32m"  
+res = "\033[0m"
+## DEBUG COLORS
 
-def processNewFile(user_key, user_path) -> tuple:
-    kdf = Argon2id(
-    salt=b'gknboier',
-    length=32,
-    iterations=1,
-    lanes=4,
-    memory_cost=64 * 1024,)
-    try:
-        enc_key = base64.urlsafe_b64encode(kdf.derive(user_key))
-    except Exception as e:
-        raise ValueError(e)
-    else:
-        return (enc_key, user_path)
 
 def preInputDir() -> str:
     if platform.system() == "Darwin":
@@ -57,5 +51,6 @@ def checkNewName(user_input: str, is_new_pass: bool) -> None:
             raise ValueError('Key with not ascii symbols')
     else:
         raise ValueError('Key min 3 symbols and 15 max')
+
 
 

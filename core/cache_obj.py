@@ -1,19 +1,25 @@
 import random
 from types import NoneType
 from cryptography.hazmat.primitives.kdf.argon2 import Argon2id
-
-
-
 from . import crypt_utils, lists_obj, key_obj
-
+## DEBUG COLORS 
+red = "\033[1;31m"  
+yel = "\033[1;33m"  
+gre = "\033[1;32m"  
+res = "\033[0m"
+## DEBUG COLORS
 class CachedData():
     def __init__(self):
-        self.hide_list = []
-        self.dec_list = []
+        self.ui_lists = {
+            "service":[],
+            "se_ni_de":[],
+            "se_em_pa":[],
+            "all":[]
+        }
         self.search_hide_list = []
         self.search_dec_list = []
         self.user_path = ''
-        self.visibility_list = ''
+        self.visibility_list = 1
         self.search_input = ''
         self.search_active = False
         
@@ -22,11 +28,15 @@ def createCacheObject():
     global AppCache
     AppCache = CachedData()
 
-def updateCache(list_visibility: str='None', user_path: str='None'):
+def updateCache(list_visibility: int=0, user_path: str='None'):
+    # 1: SERVICE
+    # 2: SERVICE | NICKNAME | DESCRIPTION
+    # 3: SERVICE | EMAIL | PASSWORD
+    # 3: ALL DATA (! TEXT VERY SMALL !)
     passwords=lists_obj.UserPasswordsList.passwords_list
+
     private_key=key_obj.UserCryptoKey.key
-    hide_list = [] 
-    decrypted_list = []
+    
     kdf = Argon2id(
         salt=b'gknboier',
         length=32,
@@ -34,22 +44,22 @@ def updateCache(list_visibility: str='None', user_path: str='None'):
         lanes=4,
         memory_cost=64 * 1024,
     )
+    for key in list(AppCache.ui_lists.keys()):
+        AppCache.ui_lists[key]=[]
     
+
     for data in passwords:
-        print('CACHE OBJ / UPDATE CACHE password from for loop')
-        print(data)
-        decrypted_list.append(f"{data[0]} ⧽ {data[1]}")
-
-        #hide_list.append(key+"  "+"[##"+"#"*random.randint(2, 5)+"]")
-        #decrypted_list.append(key+"  "+crypt_utils.decryptOnePassword(password=value, private_key=private_key)) 
-
+        print("data: "+str(data))
+        #passwords: service ; nickname ; email ; password ; description
+        AppCache.ui_lists["service"].append(data[0])
+        AppCache.ui_lists["se_ni_de"].append(f"{data[0]}      {data[1]}      {data[4]}")
+        AppCache.ui_lists["se_em_pa"].append(f"{data[0]}      {data[2]}      {data[3]}")
+        AppCache.ui_lists["all"].append(f"{data[0]} {data[1]} {data[2]} {data[3]} {data[4]}")
+    print(AppCache.ui_lists)
     if user_path != 'None':
         AppCache.user_path = user_path
-    if list_visibility != 'None':
+    if list_visibility != 0:
         AppCache.visibility_list = list_visibility
-
-    #AppCache.hide_list = hide_list
-    AppCache.dec_list = decrypted_list
 
 def updateCacheSearchResults(search_word: str|NoneType=None):
     AppCache.search_hide_list = []

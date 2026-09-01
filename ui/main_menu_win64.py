@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_menu_update_2BwqiLM.ui'
+## Form generated from reading UI file 'main_menu_update_2DcKCiB.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -175,8 +175,11 @@ class Ui_MainWindow(object):
         font1.setFamilies([u"Google Sans"])
         font1.setPointSize(18)
         font1.setBold(False)
+        font1.setKerning(True)
         font1.setStyleStrategy(QFont.PreferDefault)
         self.Search_Input.setFont(font1)
+        self.Search_Input.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
+        self.Search_Input.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
         self.Search_Input.setStyleSheet(u"QLineEdit {\n"
 "border-radius: 16px;\n"
 "background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
@@ -215,11 +218,12 @@ class Ui_MainWindow(object):
         self.PasswordList.setGeometry(QRect(28, 133, 452, 447))
         font3 = QFont()
         font3.setFamilies([u"Google Sans"])
-        font3.setPointSize(14)
-        font3.setBold(False)
+        font3.setPointSize(15)
+        font3.setBold(True)
         font3.setKerning(True)
         font3.setStyleStrategy(QFont.PreferDefault)
         self.PasswordList.setFont(font3)
+        self.PasswordList.viewport().setProperty(u"cursor", QCursor(Qt.CursorShape.CrossCursor))
         self.PasswordList.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.PasswordList.setStyleSheet(u"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u0441\u0430\u043c\u043e\u0433\u043e \u0441\u043f\u0438\u0441\u043a\u0430 (\u0444\u043e\u043d\u0430) */\n"
 "QListWidget {\n"

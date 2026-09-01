@@ -35,17 +35,21 @@ def openFile(user_path: str, user_key: bytes) -> tuple:
         except Exception as e:
             raise ValueError(e)
         else:
-            ####### DEBUGS LOG ####### 
-            print('OPEN FILE data')
-            for key, value in raw_dict.items():
-                print(f"{key}: {value}")
-            ####### DEBUGS LOG ####### 
+
             try:
                 _checkKeyValid(raw_dict=raw_dict, user_key=user_key)
             except Exception as e:
                 raise ValueError(e)
             else:
-                return _convertDataKeyList(raw_dict=raw_dict, user_key=user_key)
+                _key = crypt_utils.deriveKey(user_key)
+                enc_passwords = raw_dict.get("passwords")
+                dec_passwords = []
+                for password_block in enc_passwords:
+                    new_pass_block = []
+                    for element in password_block:
+                        new_pass_block.append(crypt_utils.decryptOnePassword(element.encode("utf-8"), _key))
+                    dec_passwords.append(new_pass_block)
+                return (_key, dec_passwords)
                 
 
     else: raise ValueError('File not found!')
@@ -53,12 +57,20 @@ def openFile(user_path: str, user_key: bytes) -> tuple:
 
 def saveFile(passwords: list, enc_key: bytes, file_path: str):
     # Save 4 check words & passwords dict
+    enc_passwords = []
+    for password_block in passwords:
+        new_pass_block = []
+        for element in password_block:
+            new_pass_block.append(crypt_utils.encryptOnePassword(element.encode("utf-8"), enc_key).decode("utf-8"))
+        enc_passwords.append(new_pass_block)
     dict_to_save = {}
     for index in range(4):
         dict_to_save[f"check_word_0{index}"]=crypt_utils.encryptOnePassword(check_words[index], enc_key).decode('utf-8')
-    dict_to_save["passwords"] = passwords
+    dict_to_save["passwords"] = enc_passwords
+
     with open(file=file_path, mode='w', encoding='utf-8') as f:
         json.dump(obj=dict_to_save, ensure_ascii=False, fp=f, indent=1)
+    print(gre+"JSON file is saved"+res)
 
 
 def _checkKeyValid(raw_dict: dict, user_key: bytes):
@@ -90,16 +102,7 @@ def _checkKeyValid(raw_dict: dict, user_key: bytes):
             except Exception as e:
                 raise ValueError(e)
 
-def _convertDataKeyList(raw_dict: dict, user_key: bytes) -> tuple:
-    # Return encrypted_word + passwords
-    kdf = Argon2id(
-    salt=b'gknboier',
-    length=32,
-    iterations=1,
-    lanes=4,
-    memory_cost=64 * 1024,)
-    print(gre,"user key input is correct", res)
-    return (base64.urlsafe_b64encode(kdf.derive(user_key)), raw_dict.get("passwords"))
+
 
 
 
