@@ -19,7 +19,7 @@ class CachedData():
             "all":[]
         }
         self.ui_lists_srch = self.ui_lists_dflt.copy()
-        
+        self.search_indexes_map = {}
         self.search_hide_list = []
         self.search_dec_list = []
         self.user_path = ''
@@ -61,37 +61,30 @@ def foundSearchResults(search_word: str) -> bool | None :
     founded_blocks = []
 
     
-    for data_block in passwords:
-        # Find in service names
-        for index in range(len(data_block[0])):
-            search_block = data_block[0][index:(index+ln_sw)].lower()
-            if search_block == search_word:
-                founded_blocks.append(data_block)
-                break
-        # Find in nicknames
-        for index in range(len(data_block[1])):
-            search_block = data_block[1][index:(index+ln_sw)].lower()
-            if search_block == search_word:
-                if not data_block in founded_blocks:
+    for data_block in passwords.copy():
+        # search in 3 data_type: 0 service | 1 name | 2 email
+        for data_type in range(3):
+            if data_type == 2:
+                data_block[data_type] = data_block[data_type].split('@')[0]
+            for index in range(len(data_block[data_type])):
+                data = data_block[data_type][index:(index+ln_sw)].lower()
+                if data == search_word:
                     founded_blocks.append(data_block)
                     break
-        # Find in emails
-        for index in range(len(data_block[2])):
-            search_block = data_block[2][index:(index+ln_sw)].lower()
-            if search_block == search_word:
-                if not data_block in founded_blocks:
-                    founded_blocks.append(data_block)
-                    break
+    for data_block in founded_blocks:
+        while founded_blocks.count(data_block) != 1:
+            founded_blocks.pop(founded_blocks.index(data_block))
+
     # SEARCH IN NICKNAMES
     # SEARCH IN EMAILS
 
 
 
-    if founded_blocks == []:
-        print('Algorithm not found words.')
+    if founded_blocks == ():
+        print('Algorithm has found nothing...')
         return False
     else:
-
+        srch_map = AppCache.search_indexes_map
         print(founded_blocks)
         # Write search results to indexes map
         # UI LIST INDEX : APP LIST
@@ -100,3 +93,5 @@ def foundSearchResults(search_word: str) -> bool | None :
             srch_map[ind]=int(passwords.index(word))
 
         helpers.showDict(srch_map)
+
+#def foundSearchResults(search_word: str) -> bool | None 
