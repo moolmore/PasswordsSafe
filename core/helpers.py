@@ -3,7 +3,6 @@ import os, base64
 from cryptography.hazmat.primitives.kdf.argon2 import Argon2id
 from . import lists_obj
 import platform
-import asyncio
 ## DEBUG COLORS 
 red = "\033[1;31m"  
 yel = "\033[1;33m"  

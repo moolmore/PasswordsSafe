@@ -1,8 +1,9 @@
 import platform
 from core import parse, lists_obj, key_obj, crypt_utils, cache_obj, helpers
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog, QGraphicsBlurEffect
-from PySide6.QtCore import Qt, QTimer
+from PySide6.QtCore import QTimer
 from PySide6.QtGui import QFont
+from pyqt_custom_titlebar_window import customTitlebarWindow
 import sys
 import pyperclip
 
@@ -52,6 +53,7 @@ class MainWindow(QMainWindow):
         self.blurElements = self.ManagmentElementsList[2:9]
         self.blurElements.append(self.ui.label)
         self.blurElements.append(self.ui.label_2)
+        self.ui.PasswordList.setWordWrap(True)
         
 
     def connectFunctions(self):
@@ -74,33 +76,40 @@ class MainWindow(QMainWindow):
     # 3: SERVICE | EMAIL | PASSWORD
     # 3: ALL DATA (! TEXT VERY SMALL !)
     def updateList(self):
-        print("passwords in cache: "+str(len(cache_obj.AppCache.ui_lists["all"])))
-        print("passwords in app list: "+str(len(lists_obj.UserPasswordsList.passwords_list)))
+
         self.ui.PasswordList.clear()
         ac = cache_obj.AppCache
         print(yel+"updating Qt list...")
         font = QFont()
-        font.setBold(False)
+        font.setBold(True)
         font.setFamilies([u"Google Sans"])
 
+        # if SEARCH ACTIVE:
+        #     ui_passwords list.copy(ui_lists_srch)
+        # else:
+        #     passwrods list.copy(ui_lists_dflt)
+
+        
+
         if ac.visibility_list == 1:
-            self.ui.PasswordList.addItems(ac.ui_lists["service"])
+            self.ui.PasswordList.addItems(ac.ui_lists_dflt["service"])
             font.setPointSize(17)
-            font.setBold(True)
+            
             self.ui.PasswordList.setFont(font)
         elif ac.visibility_list == 2:
-            self.ui.PasswordList.addItems(ac.ui_lists["se_ni_de"])
+            self.ui.PasswordList.addItems(ac.ui_lists_dflt["se_ni_de"])
             font.setPointSize(14)
             self.ui.PasswordList.setFont(font)
 
         elif ac.visibility_list == 3:
             font.setPointSize(14)
-            self.ui.PasswordList.addItems(ac.ui_lists["se_em_pa"])
+            self.ui.PasswordList.addItems(ac.ui_lists_dflt["se_em_pa"])
             self.ui.PasswordList.setFont(font)
 
         elif ac.visibility_list == 4:
-            font.setPointSize(9)
-            self.ui.PasswordList.addItems(ac.ui_lists["all"])
+            font.setPointSize(12)
+            font.setBold(False)
+            self.ui.PasswordList.addItems(ac.ui_lists_dflt["all"])
             self.ui.PasswordList.setFont(font)
 
         print("end of update"+res)
@@ -310,7 +319,6 @@ def applyEditPassword():
                     enc_key=key_obj.UserCryptoKey.key,
                     file_path=cache_obj.AppCache.user_path)
         
-        cache_obj.updateCacheSearchResults()
         Main_Window.updateList()
         Edit_Password_Window.close()
 
@@ -336,7 +344,6 @@ def applyNewPassword():
         parse.saveFile(passwords=passwords,
                     enc_key=key,
                     file_path=cache_obj.AppCache.user_path)
-        cache_obj.updateCacheSearchResults()
         Main_Window.updateList()
         Add_Pass_Window.close()
 
@@ -347,7 +354,6 @@ def deletePassword():
     parse.saveFile(passwords=lists_obj.UserPasswordsList.passwords_list,
                        enc_key=key_obj.UserCryptoKey.key,
                        file_path=cache_obj.AppCache.user_path)
-    cache_obj.updateCacheSearchResults()
     Main_Window.updateList()
     
 
@@ -358,12 +364,7 @@ def copyPassword():
     Main_Window.changeTitleSec()
 
 def searchPassword():
-    user_input = Main_Window.ui.Search_Input.text()
-    if user_input != ''.strip():
-        cache_obj.updateCacheSearchResults(search_word=user_input)
-        cache_obj.AppCache.search_active = True
-        Main_Window.updateList()
-
+    cache_obj.foundSearchResults(search_word=Main_Window.ui.Search_Input.text())
 def checkSearchNull():
     if Main_Window.ui.Search_Input.text() == ''.strip():
         cache_obj.AppCache.search_active = False
@@ -378,12 +379,12 @@ def main():
     
     App = QApplication()
     executeMain()
-    
     sys.exit(App.exec())
     
 
 if __name__ == '__main__':
     main()
+    
 
 
 
