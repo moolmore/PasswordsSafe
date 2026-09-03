@@ -1,8 +1,9 @@
 import random
 from types import NoneType
 from cryptography.hazmat.primitives.kdf.argon2 import Argon2id
-from . import crypt_utils, lists_obj, key_obj
+from . import crypt_utils, lists_obj, key_obj, helpers
 import hashlib
+
 ## DEBUG COLORS 
 red = "\033[1;31m"  
 yel = "\033[1;33m"  
@@ -57,31 +58,45 @@ def foundSearchResults(search_word: str) -> bool | None :
     search_word = search_word.lower()
     ln_sw = len(search_word)
     passwords = lists_obj.UserPasswordsList.passwords_list
-    founded_words = []
+    founded_blocks = []
 
-    # Find in service names
-    for password in passwords:
-        for index in range(len(password[0])):
-            search_block = password[0][index:(index+ln_sw)].lower()
+    
+    for data_block in passwords:
+        # Find in service names
+        for index in range(len(data_block[0])):
+            search_block = data_block[0][index:(index+ln_sw)].lower()
             if search_block == search_word:
-                founded_words.append(password)
+                founded_blocks.append(data_block)
                 break
+        # Find in nicknames
+        for index in range(len(data_block[1])):
+            search_block = data_block[1][index:(index+ln_sw)].lower()
+            if search_block == search_word:
+                if not data_block in founded_blocks:
+                    founded_blocks.append(data_block)
+                    break
+        # Find in emails
+        for index in range(len(data_block[2])):
+            search_block = data_block[2][index:(index+ln_sw)].lower()
+            if search_block == search_word:
+                if not data_block in founded_blocks:
+                    founded_blocks.append(data_block)
+                    break
     # SEARCH IN NICKNAMES
     # SEARCH IN EMAILS
 
 
 
-    if founded_words == []:
+    if founded_blocks == []:
         print('Algorithm not found words.')
         return False
     else:
 
-        print(founded_words)
-
+        print(founded_blocks)
         # Write search results to indexes map
         # UI LIST INDEX : APP LIST
         srch_map = {}
-        for ind, word in enumerate(founded_words):
+        for ind, word in enumerate(founded_blocks):
             srch_map[ind]=int(passwords.index(word))
 
-        print(srch_map)
+        helpers.showDict(srch_map)

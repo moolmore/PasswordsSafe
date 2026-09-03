@@ -52,4 +52,7 @@ def checkNewName(user_input: str, is_new_pass: bool) -> None:
         raise ValueError('Key min 3 symbols and 15 max')
 
 
-
+def showDict(data: dict) -> None:
+    print('SHOW DICT DATA')
+    for x,y in data.items():   
+        print(f"{x} : {y}")
