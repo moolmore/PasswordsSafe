@@ -1,7 +1,9 @@
 import random
 from types import NoneType
 from cryptography.hazmat.primitives.kdf.argon2 import Argon2id
-from . import crypt_utils, lists_obj, key_obj
+from . import crypt_utils, lists_obj, key_obj, helpers
+import hashlib
+
 ## DEBUG COLORS 
 red = "\033[1;31m"  
 yel = "\033[1;33m"  
@@ -10,12 +12,16 @@ res = "\033[0m"
 ## DEBUG COLORS
 class CachedData():
     def __init__(self):
-        self.ui_lists = {
+        self.ui_lists_dflt = {
             "service":[],
             "se_ni_de":[],
             "se_em_pa":[],
             "all":[]
         }
+        self.ui_lists_srch = self.ui_lists_dflt.copy()
+        self.dflt_ind_map = {}
+        self.srch_ind_map = {}
+
         self.search_hide_list = []
         self.search_dec_list = []
         self.user_path = ''
@@ -34,55 +40,73 @@ def updateCache(list_visibility: int=0, user_path: str='None'):
     # 3: SERVICE | EMAIL | PASSWORD
     # 3: ALL DATA (! TEXT VERY SMALL !)
     passwords=lists_obj.UserPasswordsList.passwords_list
-
-    private_key=key_obj.UserCryptoKey.key
-    
-    kdf = Argon2id(
-        salt=b'gknboier',
-        length=32,
-        iterations=1,
-        lanes=4,
-        memory_cost=64 * 1024,
-    )
-    for key in list(AppCache.ui_lists.keys()):
-        AppCache.ui_lists[key]=[]
-    
-
-    for data in passwords:
-        print("data: "+str(data))
-        #passwords: service ; nickname ; email ; password ; description
-        AppCache.ui_lists["service"].append(data[0])
-        AppCache.ui_lists["se_ni_de"].append(f"{data[0]}      {data[1]}      {data[4]}")
-        AppCache.ui_lists["se_em_pa"].append(f"{data[0]}      {data[2]}      {data[3]}")
-        AppCache.ui_lists["all"].append(f"{data[0]} {data[1]} {data[2]} {data[3]} {data[4]}")
-    print(AppCache.ui_lists)
+    passwords.sort()
+    #Clear the cache list values
+    for key in list(AppCache.ui_lists_dflt.keys()):
+        AppCache.ui_lists_dflt[key]=[]
+    _writeUILists(passwords, "dflt")
     if user_path != 'None':
         AppCache.user_path = user_path
-    if list_visibility != 0:
-        AppCache.visibility_list = list_visibility
+def foundSearchResults(search_word: str):
+    search_word = search_word.lower()
+    ln_sw = len(search_word)
+    passwords = lists_obj.UserPasswordsList.passwords_list
+    founded_blocks = []
 
-def updateCacheSearchResults(search_word: str|NoneType=None):
-    AppCache.search_hide_list = []
-    AppCache.search_dec_list = []
-    if search_word == None:
-        search_word = AppCache.search_input
-    else:
-        AppCache.search_input = search_word
     
-    if search_word.strip() != '':
-        results_list = _searchWordCache(search_word=search_word, names_list=list(lists_obj.UserPasswordsList.passwords_list.keys()))
-        if results_list != []:
-            for result in results_list:
-                AppCache.search_hide_list.append(result+"  "+"[##"+"#"*random.randint(2, 5)+"]")
-                AppCache.search_dec_list.append(result+"  "+crypt_utils.decryptOnePassword(password=lists_obj.UserPasswordsList.passwords_list[result], private_key=key_obj.UserCryptoKey.key) )
+    for data_block in passwords.copy():
+        # search in 3 data_type: 0 service | 1 name | 2 email
+        for data_type in range(3):
+            if data_type == 2:
+                data_block[data_type] = data_block[data_type].split('@')[0]
+            for index in range(len(data_block[data_type])):
+                data = data_block[data_type][index:(index+ln_sw)].lower()
+                if data == search_word:
+                    founded_blocks.append(data_block)
+                    break
+    for data_block in founded_blocks:
+        while founded_blocks.count(data_block) != 1:
+            founded_blocks.pop(founded_blocks.index(data_block))
+    founded_blocks.sort()
+    # SEARCH IN NICKNAMES
+    # SEARCH IN EMAILS
 
-def _searchWordCache(search_word: str, names_list: list[str]) -> list:
-    founded_words = []
-    search_word = search_word.strip().lower()
-    for object in names_list:
-        if search_word == object.lower():
-            founded_words.append(object)
-        else:
-            if object[0:len(search_word)].lower() == search_word:
-                founded_words.append(object)
-    return founded_words
+    if founded_blocks == []:
+        print('Algorithm has found nothing...')
+    else:
+        for key in list(AppCache.ui_lists_srch.keys()):
+            AppCache.ui_lists_srch[key]=[]
+        _writeUILists(founded_blocks, "srch")
+        # Write search results to indexes map
+        # UI LIST INDEX : APP LIST
+        _writeSearchIndMap(srch_passwords=founded_blocks)
+
+        helpers.showDict(AppCache.srch_ind_map)
+
+#def foundSearchResults(search_word: str) -> bool | None 
+
+def _writeUILists(passwords: list, type: str):
+    if type == 'dflt':
+        print('Writing default cache list')
+        for data in passwords:
+        #passwords: service ; nickname ; email ; password ; description
+            AppCache.ui_lists_dflt["service"].append(data[0])
+            AppCache.ui_lists_dflt["se_ni_de"].append(f"• Service: {data[0]}\n• Nickname: {data[1]}\n• Misc: {data[4]}")
+            AppCache.ui_lists_dflt["se_em_pa"].append(f"• Service: {data[0]}\n• Email: {data[2]}\n• Password: {data[3]}")
+            AppCache.ui_lists_dflt["all"].append(f"• Service: {data[0]}\n• Nickname: {data[1]}\n• Email: {data[2]}\n• Password: {data[3]}\n• Misc: {data[4]}")
+    elif type == 'srch':
+        print('Writing search cache list')
+        for data in passwords:
+            #passwords: service ; nickname ; email ; password ; description
+            AppCache.ui_lists_srch["service"].append(data[0])
+            AppCache.ui_lists_srch["se_ni_de"].append(f"• Service: {data[0]}\n• Nickname: {data[1]}\n• Misc: {data[4]}")
+            AppCache.ui_lists_srch["se_em_pa"].append(f"• Service: {data[0]}\n• Email: {data[2]}\n• Password: {data[3]}")
+            AppCache.ui_lists_srch["all"].append(f"• Service: {data[0]}\n• Nickname: {data[1]}\n• Email: {data[2]}\n• Password: {data[3]}\n• Misc: {data[4]}")
+def _writeSearchIndMap(srch_passwords: str):
+    srch_map = AppCache.srch_ind_map
+    passwords = lists_obj.UserPasswordsList.passwords_list
+    for x in range(len(srch_map)):
+        del srch_map[x]
+    for ind, word in enumerate(srch_passwords):
+        srch_map[ind]=int(passwords.index(word))
+    print('srch map is writed')

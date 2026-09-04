@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_menu_update_2DcKCiB.ui'
+## Form generated from reading UI file 'main_menu_update_2NcVSZc.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -393,6 +393,71 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
 "}")
+        self.test1 = QPushButton(self.centralwidget)
+        self.test1.setObjectName(u"test1")
+        self.test1.setEnabled(True)
+        self.test1.setGeometry(QRect(401, 174, 30, 18))
+        self.test1.setStyleSheet(u"QPushButton {\n"
+"border-radius: 5px;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
+"border: 1px solid rgb(110, 110, 110);\n"
+"	color: rgb(225, 225, 225);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	\n"
+"	background-color: rgb(78, 109, 88);\n"
+"}")
+        self.test2 = QPushButton(self.centralwidget)
+        self.test2.setObjectName(u"test2")
+        self.test2.setGeometry(QRect(401, 201, 30, 18))
+        self.test2.setStyleSheet(u"QPushButton {\n"
+"border-radius: 5px;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
+"border: 1px solid rgb(110, 110, 110);\n"
+"	color: rgb(225, 225, 225);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	\n"
+"	background-color: rgb(78, 109, 88);\n"
+"}")
+        self.test3 = QPushButton(self.centralwidget)
+        self.test3.setObjectName(u"test3")
+        self.test3.setGeometry(QRect(401, 228, 30, 18))
+        self.test3.setStyleSheet(u"QPushButton {\n"
+"border-radius: 5px;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
+"border: 1px solid rgb(110, 110, 110);\n"
+"	color: rgb(225, 225, 225);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	\n"
+"	background-color: rgb(78, 109, 88);\n"
+"}")
+        self.test4 = QPushButton(self.centralwidget)
+        self.test4.setObjectName(u"test4")
+        self.test4.setGeometry(QRect(401, 255, 30, 18))
+        self.test4.setStyleSheet(u"QPushButton {\n"
+"border-radius: 5px;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
+"border: 1px solid rgb(110, 110, 110);\n"
+"	color: rgb(225, 225, 225);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	\n"
+"	background-color: rgb(78, 109, 88);\n"
+"}")
         MainWindow.setCentralWidget(self.centralwidget)
         self.label_2.raise_()
         self.label_4.raise_()
@@ -417,6 +482,10 @@ class Ui_MainWindow(object):
         self.CopyNameButton.raise_()
         self.CopyEmailButton.raise_()
         self.CopyPassButton.raise_()
+        self.test1.raise_()
+        self.test2.raise_()
+        self.test3.raise_()
+        self.test4.raise_()
 
         self.retranslateUi(MainWindow)
 
@@ -468,5 +537,9 @@ class Ui_MainWindow(object):
         self.CopyNameButton.setText("")
         self.CopyEmailButton.setText("")
         self.CopyPassButton.setText("")
+        self.test1.setText(QCoreApplication.translate("MainWindow", u"test 1", None))
+        self.test2.setText(QCoreApplication.translate("MainWindow", u"test 2", None))
+        self.test3.setText(QCoreApplication.translate("MainWindow", u"test 3", None))
+        self.test4.setText(QCoreApplication.translate("MainWindow", u"test 4", None))
     # retranslateUi
 

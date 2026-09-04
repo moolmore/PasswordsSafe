@@ -3,7 +3,6 @@ import os, base64
 from cryptography.hazmat.primitives.kdf.argon2 import Argon2id
 from . import lists_obj
 import platform
-import asyncio
 ## DEBUG COLORS 
 red = "\033[1;31m"  
 yel = "\033[1;33m"  
@@ -53,4 +52,7 @@ def checkNewName(user_input: str, is_new_pass: bool) -> None:
         raise ValueError('Key min 3 symbols and 15 max')
 
 
-
+def showDict(data: dict) -> None:
+    print('SHOW DICT DATA')
+    for x,y in data.items():   
+        print(f"{x} : {y}")
