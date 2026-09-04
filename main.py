@@ -66,6 +66,31 @@ class MainWindow(QMainWindow):
         self.ui.CopyPassButton.clicked.connect(copyPassword)
         self.ui.SearchButton.clicked.connect(searchPassword)
         self.ui.Search_Input.textChanged.connect(checkSearchNull)
+    ### DEBUG
+    def connectDebSlots(self):
+        self.ui.test1.clicked.connect(self.returnSelDataBlock)
+        #self.ui.test2.clicked.connect()
+        #self.ui.test3.clicked.connect()
+        #self.ui.test4.clicked.connect()
+    def returnSelDataBlock(self):
+        userlist = lists_obj.UserPasswordsList.passwords_list
+        # srch_map = cache_obj.AppCache.srch_ind_map
+        ui_index = self.ui.PasswordList.currentRow()
+        
+        
+        if cache_obj.AppCache.search_active:
+            helpers.showDict(cache_obj.AppCache.srch_ind_map)
+            app_index = cache_obj.AppCache.srch_ind_map[ui_index]
+            data_block = userlist[app_index] 
+        else:
+            data_block = userlist[ui_index] 
+        
+        print("\n")
+        for data in data_block:
+
+            print(data if data != "" else "Пусто")
+        ### DEBUG
+    
     def enableAllButtons(self):
         for element in self.ManagmentElementsList:
             element.setEnabled(True)
@@ -80,36 +105,35 @@ class MainWindow(QMainWindow):
         self.ui.PasswordList.clear()
         ac = cache_obj.AppCache
         print(yel+"updating Qt list...")
+        print('Search active?', f"{gre}Yes" if cache_obj.AppCache.search_active else f"{red}No", res)
         font = QFont()
         font.setBold(True)
         font.setFamilies([u"Google Sans"])
 
-        # if SEARCH ACTIVE:
-        #     ui_passwords list.copy(ui_lists_srch)
-        # else:
-        #     passwrods list.copy(ui_lists_dflt)
-
+        if cache_obj.AppCache.search_active:
+            data_blocks = cache_obj.AppCache.ui_lists_srch
+        else:
+            data_blocks = cache_obj.AppCache.ui_lists_dflt
         
-
         if ac.visibility_list == 1:
-            self.ui.PasswordList.addItems(ac.ui_lists_dflt["service"])
+            self.ui.PasswordList.addItems(data_blocks["service"])
             font.setPointSize(17)
             
             self.ui.PasswordList.setFont(font)
         elif ac.visibility_list == 2:
-            self.ui.PasswordList.addItems(ac.ui_lists_dflt["se_ni_de"])
+            self.ui.PasswordList.addItems(data_blocks["se_ni_de"])
             font.setPointSize(14)
             self.ui.PasswordList.setFont(font)
 
         elif ac.visibility_list == 3:
             font.setPointSize(14)
-            self.ui.PasswordList.addItems(ac.ui_lists_dflt["se_em_pa"])
+            self.ui.PasswordList.addItems(data_blocks["se_em_pa"])
             self.ui.PasswordList.setFont(font)
 
         elif ac.visibility_list == 4:
             font.setPointSize(12)
             font.setBold(False)
-            self.ui.PasswordList.addItems(ac.ui_lists_dflt["all"])
+            self.ui.PasswordList.addItems(data_blocks["all"])
             self.ui.PasswordList.setFont(font)
 
         print("end of update"+res)
@@ -193,6 +217,7 @@ def executeMain():
     global Main_Window
     Main_Window = MainWindow()
     Main_Window.connectFunctions()
+    Main_Window.connectDebSlots()
     Main_Window.setBlurOnElements()
     Main_Window.ui.lableVersion.setText(f'Platform: {platform.system()}    Version: {app_version}')
     Main_Window.show()
@@ -365,6 +390,11 @@ def copyPassword():
 
 def searchPassword():
     cache_obj.foundSearchResults(search_word=Main_Window.ui.Search_Input.text())
+    cache_obj.AppCache.search_active = True
+    print('show dict after fsr')
+    print(cache_obj.AppCache.srch_ind_map)
+    Main_Window.updateList()
+
 def checkSearchNull():
     if Main_Window.ui.Search_Input.text() == ''.strip():
         cache_obj.AppCache.search_active = False
