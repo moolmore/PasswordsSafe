@@ -1,4 +1,6 @@
 import platform
+import csv
+import os
 from core import parse, lists_obj, key_obj, crypt_utils, cache_obj, helpers
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog, QGraphicsBlurEffect
 from PySide6.QtCore import QTimer
@@ -69,7 +71,7 @@ class MainWindow(QMainWindow):
     ### DEBUG
     def connectDebSlots(self):
         self.ui.test1.clicked.connect(self.returnSelDataBlock)
-        #self.ui.test2.clicked.connect()
+        self.ui.test2.clicked.connect(self.importCSV)
         #self.ui.test3.clicked.connect()
         #self.ui.test4.clicked.connect()
     def returnSelDataBlock(self):
@@ -89,7 +91,18 @@ class MainWindow(QMainWindow):
         for data in data_block:
 
             print(data if data != "" else "Пусто")
-        ### DEBUG
+    def importCSV(self):
+        path = os.path.expandvars(r"%USERPROFILE%//Documents//passwords.csv")
+        with open(path, mode='r', newline='') as csv_file:
+            csv_reader = csv.reader(csv_file)
+            # Пропускаем заголовок, если он не нужен
+            next(csv_reader) 
+            for row in csv_reader:
+                lists_obj.UserPasswordsList.passwords_list.append([row[0],row[2],"",row[3],row[4]])
+            cache_obj.updateCache()
+            Main_Window.updateList()
+        
+    ### DEBUG
     
     def enableAllButtons(self):
         for element in self.ManagmentElementsList:
@@ -220,6 +233,7 @@ def executeMain():
     Main_Window.connectDebSlots()
     Main_Window.setBlurOnElements()
     Main_Window.ui.lableVersion.setText(f'Platform: {platform.system()}    Version: {app_version}')
+    Main_Window.ui.PasswordList.setVisible(False)
     Main_Window.show()
 
 def executeOpenFile():
@@ -289,6 +303,7 @@ def applyOpenFile():
         Open_File_Window.close()
         Main_Window.ui.lableListBackground.setText('')
         Main_Window.enableAllButtons()
+        Main_Window.ui.PasswordList.setVisible(True)
         Main_Window.removeBlurFromElements()
         Main_Window.updateList()
 
@@ -348,15 +363,13 @@ def applyEditPassword():
         Edit_Password_Window.close()
 
 def applyNewPassword():
-    enc = crypt_utils.encryptOnePassword
-    key = key_obj.UserCryptoKey.key
     try:
         _newName = Add_Pass_Window.ui.newNameEdit.text()
         _newNickname = Add_Pass_Window.ui.newNicknameEdit.text()
         _newMail = Add_Pass_Window.ui.newMailEdit.text()
         _newPass = Add_Pass_Window.ui.newPassEdit.text()
         _newDisc = Add_Pass_Window.ui.newDescEdit.text()
-        #helpers.checkNewName(user_input=_newName, is_new_pass=True)
+        
     except Exception as e:
         Add_Pass_Window.ui.ErrorsLable_2.setVisible(True)
         Add_Pass_Window.ui.ErrorsLable_2.setText(str(e))
@@ -366,27 +379,15 @@ def applyNewPassword():
                          [_newName, _newNickname, _newMail, _newPass, _newDisc])
     
         cache_obj.updateCache()
-        parse.saveFile(passwords=passwords,
-                    enc_key=key,
-                    file_path=cache_obj.AppCache.user_path)
+        parse.saveFile()
         Main_Window.updateList()
         Add_Pass_Window.close()
 
 def deletePassword():
-
-    lists_obj.UserPasswordsList.passwords_list.pop(Main_Window.getCurItem())
-    cache_obj.updateCache()
-    parse.saveFile(passwords=lists_obj.UserPasswordsList.passwords_list,
-                       enc_key=key_obj.UserCryptoKey.key,
-                       file_path=cache_obj.AppCache.user_path)
-    Main_Window.updateList()
-    
+    pass
 
 def copyPassword():
-    _pass = lists_obj.UserPasswordsList.passwords_list.get(Main_Window.getCurItem(), '')
-    _pass = crypt_utils.decryptOnePassword(password=_pass, private_key=key_obj.UserCryptoKey.key)
-    pyperclip.copy(text=_pass)
-    Main_Window.changeTitleSec()
+    pass
 
 def searchPassword():
     cache_obj.foundSearchResults(search_word=Main_Window.ui.Search_Input.text())

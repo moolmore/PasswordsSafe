@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_menu_update_2NcVSZc.ui'
+## Form generated from reading UI file 'main_menu_update_2ExftUy.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -19,7 +19,6 @@ from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QListWidget,
     QListWidgetItem, QMainWindow, QPushButton, QSizePolicy,
     QTabWidget, QWidget)
 from .assets import images
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -243,11 +242,12 @@ class Ui_MainWindow(object):
 "	color: rgb(225, 225, 225);\n"
 "    padding: 8px 12px;         /* \u0412\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0435 \u043e\u0442\u0441\u0442\u0443\u043f\u044b (\u0432\u044b\u0441\u043e\u0442\u0430 \u0438 \u0448\u0438\u0440\u0438\u043d\u0430) */\n"
 "    margin-bottom: 4px;        /* \u0420\u0430\u0441\u0441\u0442\u043e\u044f\u043d\u0438\u0435 \u043c\u0435\u0436\u0434\u0443 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430\u043c\u0438 */\n"
+"	margin-right: 4px;\n"
 "    border-radius: 15px;        /* \u0421\u043a\u0440\u0443\u0433\u043b\u0435\u043d\u0438\u0435 \u0443\u0433\u043b\u043e\u0432 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432 */\n"
 "}\n"
 "\n"
-"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u044d\u043b\u0435\u043c"
-                        "\u0435\u043d\u0442\u043e\u0432 \u043f\u0440\u0438 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u0438 \u043a\u0443\u0440\u0441\u043e\u0440\u0430 (\u0445\u043e\u0432\u0435\u0440) */\n"
+"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 "
+                        "\u044d\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432 \u043f\u0440\u0438 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u0438 \u043a\u0443\u0440\u0441\u043e\u0440\u0430 (\u0445\u043e\u0432\u0435\u0440) */\n"
 "QListWidget::item:hover {\n"
 "	background-color: rgb(98, 98, 98);\n"
 "	border: 1px solid rgb(110, 110, 110);\n"
@@ -265,8 +265,48 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "\n"
+"/* ################################## SCROLL BAR ################\n"
+"\n"
+"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a"
+                        "\u0438 \u0441\u0430\u043c\u043e\u0439 \u043f\u043e\u043b\u043e\u0441\u044b \u043f\u0440\u043e\u043a\u0440\u0443\u0442\u043a\u0438: \u0443\u0431\u0438\u0440\u0430\u0435\u043c \u0444\u043e\u043d \u0438 \u0437\u0430\u0434\u0430\u0435\u043c \u0448\u0438\u0440\u0438\u043d\u0443 */\n"
+"QListView QScrollBar:vertical {\n"
+"	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 85, 194), stop:0.137931 rgba(69, 69, 69, 197));\n"
+"    width: 7px;\n"
+"    margin: 0px;\n"
+"	\n"
+"}\n"
+"\n"
+"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0431\u0435\u0433\u0443\u043d\u043a\u0430: \u0437\u0430\u0434\u0430\u0435\u043c \u0446\u0432\u0435\u0442, \u0441\u043a\u0440\u0443\u0433\u043b\u0435\u043d\u0438\u0435 \u0438 \u0443\u0431\u0438\u0440\u0430\u0435\u043c \u0440\u0430\u043c\u043a\u0438 */\n"
+"QListView QScrollBar::handle:vertical {\n"
+"    \n"
+"	background: rgb(109, 109, 109); \n"
+"    min-height: 20px;\n"
+"    border-radius: 3px;   /* \u0421\u043a\u0440\u0443\u0433\u043b\u0435\u043d\u0438"
+                        "\u0435 (\u043f\u043e\u043b\u043e\u0432\u0438\u043d\u0430 \u043e\u0442 \u0448\u0438\u0440\u0438\u043d\u044b \u0434\u0435\u043b\u0430\u0435\u0442 \u0435\u0433\u043e \u043e\u0432\u0430\u043b\u044c\u043d\u044b\u043c) */\n"
+"    border: none;\n"
+"}\n"
+"\n"
+"/* \u0426\u0432\u0435\u0442 \u0431\u0435\u0433\u0443\u043d\u043a\u0430 \u043f\u0440\u0438 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u0438 \u043c\u044b\u0448\u0438 */\n"
+"QListView QScrollBar::handle:vertical:hover {\n"
+"    background: rgb(114, 136, 100); /* \u0426\u0432\u0435\u0442 \u0431\u0435\u0433\u0443\u043d\u043a\u0430 (\u043c\u043e\u0436\u043d\u043e \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u044c) */\n"
+"}\n"
+"\n"
+"/* \u041f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e \u0441\u043a\u0440\u044b\u0432\u0430\u0435\u043c \u0441\u0442\u0440\u0435\u043b\u043e\u0447\u043a\u0438 \u0441\u0432\u0435\u0440\u0445\u0443 \u0438 \u0441\u043d\u0438\u0437\u0443 */\n"
+"QListView QScrollBar::add-line:vertical, \n"
+"QListView QScrollBar::sub-line:vertical {\n"
+"  "
+                        "  background: none;\n"
+"    height: 0px;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"/* \u0423\u0431\u0438\u0440\u0430\u0435\u043c \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u044b\u0435 \u043e\u0441\u0442\u0430\u0442\u043e\u0447\u043d\u044b\u0435 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u044b \u0444\u043e\u043d\u0430 */\n"
+"QListView QScrollBar::add-page:vertical, \n"
+"QListView QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"}\n"
 "")
-        self.PasswordList.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.PasswordList.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
         self.PasswordList.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.lableVersion = QLabel(self.centralwidget)
         self.lableVersion.setObjectName(u"lableVersion")

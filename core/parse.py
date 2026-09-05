@@ -2,7 +2,7 @@ import os, json, base64
 from cryptography.hazmat.primitives.kdf.argon2 import Argon2id
 from cryptography.fernet import Fernet
 from cryptography.fernet import Fernet, InvalidToken
-from . import crypt_utils
+from . import crypt_utils, cache_obj, lists_obj, key_obj
 # Button for open passwords file
 # Use method with exceptions
 # Click -> Open window -> Try open file -> Verifing word for check -> Password list parsing into object
@@ -55,8 +55,10 @@ def openFile(user_path: str, user_key: bytes) -> tuple:
     else: raise ValueError('File not found!')
 
 
-def saveFile(passwords: list, enc_key: bytes, file_path: str):
+def saveFile():
     # Save 4 check words & passwords dict
+    passwords = lists_obj.UserPasswordsList.passwords_list
+    enc_key = key_obj.UserCryptoKey.key
     enc_passwords = []
     for password_block in passwords:
         new_pass_block = []
@@ -68,7 +70,7 @@ def saveFile(passwords: list, enc_key: bytes, file_path: str):
         dict_to_save[f"check_word_0{index}"]=crypt_utils.encryptOnePassword(check_words[index], enc_key).decode('utf-8')
     dict_to_save["passwords"] = enc_passwords
 
-    with open(file=file_path, mode='w', encoding='utf-8') as f:
+    with open(file=cache_obj.AppCache.user_path, mode='w', encoding='utf-8') as f:
         json.dump(obj=dict_to_save, ensure_ascii=False, fp=f, indent=1)
     print(gre+"JSON file is saved"+res)
 
