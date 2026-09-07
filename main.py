@@ -169,7 +169,7 @@ class MainWindow(QMainWindow):
 
     # BLUR ON ELEMENTS OF MANAGMENT
 
-    def getCurItem(self) -> str:
+    def getCurItem(self) -> int:
         return self.ui.PasswordList.currentRow()
     def changeTitleSec(self):
         self.setWindowTitle('Passwords Safe' + ' - Password copied')
@@ -210,7 +210,7 @@ class EditPasswordWindow(QWidget):
         self.ui = edit_password_window.Ui_Form()
         self.ui.setupUi(self)
     def connectFunctions(self):
-        self.ui.applyButton.clicked.connect(applyEditPassword)
+        self.ui.ApplyButton.clicked.connect(applyEditPassword)
 
 class AddPasswordWindow(QWidget):
     def __init__(self):
@@ -261,15 +261,18 @@ def executePasswordEdit():
         global Edit_Password_Window
         Edit_Password_Window = EditPasswordWindow()
         Edit_Password_Window.connectFunctions()
-        _name = Main_Window.ui.PasswordList.currentItem().text().split('  ')[0]
-        _encPassword = lists_obj.UserPasswordsList.passwords_list.get(_name)
-        _decPassword = crypt_utils.decryptOnePassword(password=str(_encPassword), private_key=key_obj.UserCryptoKey.key)
-        # Edit_Password_Window.ui.currentName.setText(_name)
-        # Edit_Password_Window.ui.currentPass.setText(_decPassword)
-        Edit_Password_Window.ui.newNameEdit.setText(_name)
-        Edit_Password_Window.ui.newPassEdit.setText(_decPassword)
-        # Edit_Password_Window.ui.ErrorsLable_2.setVisible(False)
+        
+        cur_data_block = lists_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()]
+        title = f"Edit «{cur_data_block[0]}» data"
+        Edit_Password_Window.setWindowTitle(title)
+        Edit_Password_Window.ui.newNameEdit.setText(cur_data_block[0])
+        Edit_Password_Window.ui.newNicknameEdit.setText(cur_data_block[1])
+        Edit_Password_Window.ui.newMailEdit.setText(cur_data_block[2])
+        Edit_Password_Window.ui.newPassEdit.setText(cur_data_block[3])
+        Edit_Password_Window.ui.newDescEdit.setText(cur_data_block[4])
         Edit_Password_Window.show()
+
+
 
 def executeAddPassword():
     if Main_Window.ui.AddPassButton.isEnabled():
@@ -313,7 +316,6 @@ def applyNewFile():
     try:
         helpers.checkNewKey(i_key.text())
         _key = crypt_utils.deriveKey(user_key=i_key.text().encode('utf-8'))
-
     except Exception as e:
         New_File_Window.showException(exc=e)
     else:
@@ -324,6 +326,7 @@ def applyNewFile():
         New_File_Window.close()
         Main_Window.ui.lableListBackground.setText('')
         Main_Window.enableAllButtons()
+        Main_Window.ui.PasswordList.setVisible(True)
         Main_Window.removeBlurFromElements()
         Main_Window.updateList()
 
