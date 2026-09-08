@@ -10,6 +10,24 @@ gre = "\033[1;32m"
 res = "\033[0m"
 ## DEBUG COLORS
 
+data_block_names = [
+    "service name",
+    "username",
+    "email",
+    "password",
+    "misc"
+]
+
+blocked_words = {
+    r"\n",
+    r"\n",
+    r"\r",
+    r"\r\n",
+    r"\t",
+    r"\x00",      
+    r"\u0000",      
+    r"\x08",
+}
 
 def preInputDir() -> str:
     if platform.system() == "Darwin":
@@ -22,9 +40,6 @@ def preInputDir() -> str:
         return ''
 
 def checkNewKey(user_input: str) -> None:
-    """
-    func only raise exceptions
-    """
     if 6 >= len(user_input) >= 3: 
         if user_input.isascii():
             for symbol in list(user_input):
@@ -35,22 +50,55 @@ def checkNewKey(user_input: str) -> None:
     else:
         raise ValueError('Key min 3 symbols and 6 max')
 
-def checkNewName(user_input: str, is_new_pass: bool) -> None:
-    if 15 >= len(user_input) >= 3: 
-        if user_input.isascii():
-                    for symbol in list(user_input):
-                        if symbol == ' ':
-                            raise ValueError('Key with whitespaces')
-                    if is_new_pass:
-                        if user_input in list(lists_obj.UserPasswordsList.passwords_list.keys()):
-                            raise ValueError('Name alredy uses')
-                    if user_input == '__keyVerif':
-                        raise ValueError('This name is blocked')             
-        else:
-            raise ValueError('Key with not ascii symbols')
-    else:
-        raise ValueError('Key min 3 symbols and 15 max')
+def CheckEditPassword(data_block: list):
 
+    #if data_block in lists_obj.UserPasswordsList.passwords_list:
+        #raise ValueError('This password block already exists.')
+        
+    for ind in range(5):
+        data = data_block[ind]
+        data_name = data_block_names[ind]
+        data_len = len(data.replace(" ", ""))
+
+        if data_len <= 1:
+            raise ValueError(f'Lenght of {data_name} <= 1.')
+
+        for sym_ind in range(data_len):
+            if data[sym_ind:sym_ind+data_len] in blocked_words:
+                    raise ValueError(f'In {data_name} uses blocked words.')           
+
+        if not data.isascii():
+            raise ValueError(f"{data_name} not in ASCII symbols.")
+
+    if not "@" in list(data_block[2]):
+        raise ValueError('Email has not "@" symbol.')
+
+    print('Edited data block is corrected')
+
+def CheckNewPassword(data_block: list):
+
+    if data_block in lists_obj.UserPasswordsList.passwords_list:
+        raise ValueError('This password block already exists.')
+        
+    for ind in range(5):
+        data = data_block[ind]
+        data_name = data_block_names[ind]
+        data_len = len(data.replace(" ", ""))
+
+        if data_len <= 1:
+            raise ValueError(f'Lenght of {data_name} <= 1.')
+
+        for sym_ind in range(data_len):
+            if data[sym_ind:sym_ind+data_len] in blocked_words:
+                    raise ValueError(f'In {data_name} uses blocked words.')           
+
+        if not data.isascii():
+            raise ValueError(f"{data_name} not in ASCII symbols.")
+
+    if not "@" in list(data_block[2]):
+        raise ValueError('Email has not "@" symbol.')
+
+    print('Adding data block is corrected')
 
 def showDict(data: dict) -> None:
     print('SHOW DICT DATA')

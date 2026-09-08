@@ -19,9 +19,9 @@ class CachedData():
             "all":[]
         }
         self.ui_lists_srch = self.ui_lists_dflt.copy()
-
         self.dflt_ind_map = {}
         self.srch_ind_map = {}
+        self.srch_word = ''
         self.user_path = ''
         self.visibility_list = 1
         self.search_input = ''
@@ -43,8 +43,11 @@ def updateCache(list_visibility: int=0, user_path: str='None'):
     for key in list(AppCache.ui_lists_dflt.keys()):
         AppCache.ui_lists_dflt[key]=[]
     _writeUILists(passwords, "dflt")
+    if AppCache.search_active:
+        foundSearchResults(search_word=AppCache.srch_word)
     if user_path != 'None':
         AppCache.user_path = user_path
+    
 
 def foundSearchResults(search_word: str):
     search_word = search_word.lower()
@@ -56,8 +59,8 @@ def foundSearchResults(search_word: str):
     for data_block in passwords.copy():
         # search in 3 data_type: 0 service | 1 name | 2 email
         for data_type in range(3):
-            if data_type == 2:
-                data_block[data_type] = data_block[data_type].split('@')[0]
+            # if data_type == 2:
+            #     data_block[data_type] = data_block.copy()[data_type].split('@')[0]
             for index in range(len(data_block[data_type])):
                 data = data_block[data_type][index:(index+ln_sw)].lower()
                 if data == search_word:
@@ -67,14 +70,12 @@ def foundSearchResults(search_word: str):
         while founded_blocks.count(data_block) != 1:
             founded_blocks.pop(founded_blocks.index(data_block))
     founded_blocks.sort()
-    # SEARCH IN NICKNAMES
-    # SEARCH IN EMAILS
-
     for key in list(AppCache.ui_lists_srch.keys()):
         AppCache.ui_lists_srch[key]=[]
     _writeUILists(founded_blocks, "srch")
     # Write search results to indexes map
     # UI LIST INDEX : APP LIST
+    AppCache.srch_word = search_word
     _writeSearchIndMap(srch_passwords=founded_blocks)
 
     helpers.showDict(AppCache.srch_ind_map)

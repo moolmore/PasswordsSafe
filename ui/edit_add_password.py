@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'edit_password_v2cqMrwN.ui'
+## Form generated from reading UI file 'edit_password_v2oOLpYB.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -116,7 +116,7 @@ class Ui_Form(object):
         self.label_6.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.ApplyButton = QPushButton(Form)
         self.ApplyButton.setObjectName(u"ApplyButton")
-        self.ApplyButton.setGeometry(QRect(120, 470, 100, 35))
+        self.ApplyButton.setGeometry(QRect(60, 470, 100, 35))
         font2 = QFont()
         font2.setFamilies([u"Google Sans"])
         font2.setPointSize(10)
@@ -149,6 +149,24 @@ class Ui_Form(object):
         self.ErrorsLable.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "color: rgb(227, 227, 227);")
         self.ErrorsLable.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.CancelButton = QPushButton(Form)
+        self.CancelButton.setObjectName(u"CancelButton")
+        self.CancelButton.setGeometry(QRect(180, 470, 100, 35))
+        self.CancelButton.setFont(font2)
+        self.CancelButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.CancelButton.setStyleSheet(u"QPushButton {\n"
+"border-radius: 16px;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
+"border: 1px solid rgb(110, 110, 110);\n"
+"	color: rgb(225, 225, 225);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	\n"
+"	background-color: rgb(78, 109, 88);\n"
+"}")
 
         self.retranslateUi(Form)
 
@@ -157,20 +175,21 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"WINDOW NAME HAS NOT EDITED", None))
-        self.newNameEdit.setText(QCoreApplication.translate("Form", u"Google", None))
+        self.newNameEdit.setText("")
         self.label.setText(QCoreApplication.translate("Form", u"Service name", None))
-        self.newNicknameEdit.setText(QCoreApplication.translate("Form", u"PotniyNosochek", None))
+        self.newNicknameEdit.setText("")
         self.label_2.setText(QCoreApplication.translate("Form", u"Username", None))
-        self.newMailEdit.setText(QCoreApplication.translate("Form", u"ExampleMail@gmail.com", None))
+        self.newMailEdit.setText("")
         self.label_3.setText(QCoreApplication.translate("Form", u"Email", None))
-        self.newPassEdit.setText(QCoreApplication.translate("Form", u"3xampleP@asswrod", None))
+        self.newPassEdit.setText("")
         self.label_4.setText(QCoreApplication.translate("Form", u"Password", None))
-        self.newDescEdit.setText(QCoreApplication.translate("Form", u"Account \u21161", None))
+        self.newDescEdit.setText("")
         self.label_6.setText(QCoreApplication.translate("Form", u"Misc", None))
         self.ApplyButton.setText(QCoreApplication.translate("Form", u"Apply", None))
 #if QT_CONFIG(tooltip)
         self.ErrorsLable.setToolTip(QCoreApplication.translate("Form", u"<html><head/><body><p>Error</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
-        self.ErrorsLable.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\">Error display</p></body></html>", None))
+        self.ErrorsLable.setText(QCoreApplication.translate("Form", u"TEXT LABLE NOT EDITED", None))
+        self.CancelButton.setText(QCoreApplication.translate("Form", u"Cancel", None))
     # retranslateUi
 
