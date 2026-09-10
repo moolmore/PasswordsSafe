@@ -1,7 +1,7 @@
 
 import os, base64
 from cryptography.hazmat.primitives.kdf.argon2 import Argon2id
-from . import lists_obj
+from . import list_obj
 import platform
 ## DEBUG COLORS 
 red = "\033[1;31m"  
@@ -73,11 +73,10 @@ def CheckEditPassword(data_block: list):
     if not "@" in list(data_block[2]):
         raise ValueError('Email has not "@" symbol.')
 
-    print('Edited data block is corrected')
 
 def CheckNewPassword(data_block: list):
 
-    if data_block in lists_obj.UserPasswordsList.passwords_list:
+    if data_block in list_obj.UserPasswordsList.passwords_list:
         raise ValueError('This password block already exists.')
         
     for ind in range(5):
@@ -85,8 +84,9 @@ def CheckNewPassword(data_block: list):
         data_name = data_block_names[ind]
         data_len = len(data.replace(" ", ""))
 
-        if data_len <= 1:
-            raise ValueError(f'Lenght of {data_name} <= 1.')
+        if ind != 4:
+            if data_len <= 1:
+                raise ValueError(f'Lenght of {data_name} <= 1.')
 
         for sym_ind in range(data_len):
             if data[sym_ind:sym_ind+data_len] in blocked_words:
@@ -98,9 +98,5 @@ def CheckNewPassword(data_block: list):
     if not "@" in list(data_block[2]):
         raise ValueError('Email has not "@" symbol.')
 
-    print('Adding data block is corrected')
 
-def showDict(data: dict) -> None:
-    print('SHOW DICT DATA')
-    for x,y in data.items():   
-        print(f"{x} : {y}")
+

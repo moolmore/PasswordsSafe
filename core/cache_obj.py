@@ -1,7 +1,7 @@
 import random
 from types import NoneType
 from cryptography.hazmat.primitives.kdf.argon2 import Argon2id
-from . import crypt_utils, lists_obj, key_obj, helpers
+from . import crypt_utils, list_obj, key_obj, helpers
 import hashlib
 
 ## DEBUG COLORS 
@@ -37,7 +37,7 @@ def updateCache(list_visibility: int=0, user_path: str='None'):
     # 2: SERVICE | NICKNAME | DESCRIPTION
     # 3: SERVICE | EMAIL | PASSWORD
     # 3: ALL DATA (! TEXT VERY SMALL !)
-    passwords=lists_obj.UserPasswordsList.passwords_list
+    passwords=list_obj.UserPasswordsList.passwords_list
     passwords.sort()
     #Clear the cache list values
     for key in list(AppCache.ui_lists_dflt.keys()):
@@ -52,7 +52,7 @@ def updateCache(list_visibility: int=0, user_path: str='None'):
 def foundSearchResults(search_word: str):
     search_word = search_word.lower()
     ln_sw = len(search_word)
-    passwords = lists_obj.UserPasswordsList.passwords_list
+    passwords = list_obj.UserPasswordsList.passwords_list
     founded_blocks = []
 
     
@@ -84,10 +84,8 @@ def foundSearchResults(search_word: str):
 
 def _writeUILists(passwords: list, type: str):
     if type == 'dflt':
-        print('Writing default cache list')
         ui_list = AppCache.ui_lists_dflt
     elif type == 'srch':
-        print('Writing search cache list')
         ui_list = AppCache.ui_lists_srch
     
     for data in ui_list.keys():
@@ -108,9 +106,8 @@ def _writeUILists(passwords: list, type: str):
 
 def _writeSearchIndMap(srch_passwords: str):
     srch_map = AppCache.srch_ind_map
-    passwords = lists_obj.UserPasswordsList.passwords_list
+    passwords = list_obj.UserPasswordsList.passwords_list
     for x in range(len(srch_map)):
         del srch_map[x]
     for ind, word in enumerate(srch_passwords):
         srch_map[ind]=int(passwords.index(word))
-    print('srch map is writed')

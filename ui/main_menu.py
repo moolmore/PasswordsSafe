@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_menu_update_2ExftUy.ui'
+## Form generated from reading UI file 'main_menu_update_2XAlQME.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -15,10 +15,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QListWidget,
-    QListWidgetItem, QMainWindow, QPushButton, QSizePolicy,
-    QTabWidget, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
+    QListWidget, QListWidgetItem, QMainWindow, QPushButton,
+    QSizePolicy, QTabWidget, QWidget)
 from .assets import images
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -47,161 +48,17 @@ class Ui_MainWindow(object):
         self.centralwidget.setSizePolicy(sizePolicy)
         self.centralwidget.setMaximumSize(QSize(508, 608))
         self.centralwidget.setStyleSheet(u"")
-        self.CreateFile = QPushButton(self.centralwidget)
-        self.CreateFile.setObjectName(u"CreateFile")
-        self.CreateFile.setGeometry(QRect(85, 22, 32, 32))
-        self.CreateFile.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.CreateFile.setStyleSheet(u"QPushButton {\n"
-"	image: url(:/newPrefix/note_add_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
-"border-radius: 16px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
-"}")
-        self.OpenFile = QPushButton(self.centralwidget)
-        self.OpenFile.setObjectName(u"OpenFile")
-        self.OpenFile.setGeometry(QRect(45, 22, 32, 32))
-        self.OpenFile.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.OpenFile.setStyleSheet(u"QPushButton {\n"
-"	image: url(:/newPrefix/file_open_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
-"border-radius: 16px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
-"}")
-        self.OpenFile.setAutoRepeat(False)
-        self.AddPassButton = QPushButton(self.centralwidget)
-        self.AddPassButton.setObjectName(u"AddPassButton")
-        self.AddPassButton.setEnabled(False)
-        self.AddPassButton.setGeometry(QRect(214, 22, 32, 32))
-        self.AddPassButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.AddPassButton.setStyleSheet(u"QPushButton {\n"
-"	image: url(:/newPrefix/add_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);\n"
-"border-radius: 16px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
-"}")
-        self.DeletePassButton = QPushButton(self.centralwidget)
-        self.DeletePassButton.setObjectName(u"DeletePassButton")
-        self.DeletePassButton.setEnabled(False)
-        self.DeletePassButton.setGeometry(QRect(255, 22, 32, 32))
-        self.DeletePassButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.DeletePassButton.setStyleSheet(u"QPushButton {\n"
-"	image: url(:/newPrefix/delete_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
-"border-radius: 16px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
-"}")
-        self.EditPassButton = QPushButton(self.centralwidget)
-        self.EditPassButton.setObjectName(u"EditPassButton")
-        self.EditPassButton.setEnabled(False)
-        self.EditPassButton.setGeometry(QRect(296, 22, 32, 32))
-        self.EditPassButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.EditPassButton.setStyleSheet(u"QPushButton {\n"
-"	image: url(:/newPrefix/edit_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
-"border-radius: 16px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
-"}")
-        self.copy_name_a = QPushButton(self.centralwidget)
-        self.copy_name_a.setObjectName(u"copy_name_a")
-        self.copy_name_a.setEnabled(False)
-        self.copy_name_a.setGeometry(QRect(337, 22, 32, 32))
-        self.copy_name_a.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.copy_name_a.setStyleSheet(u"QPushButton {\n"
-"image: url(:/newPrefix/content_copy_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
-"border-radius: 16px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
-"}")
-        self.VisibilityPassButton = QPushButton(self.centralwidget)
-        self.VisibilityPassButton.setObjectName(u"VisibilityPassButton")
-        self.VisibilityPassButton.setEnabled(False)
-        self.VisibilityPassButton.setGeometry(QRect(173, 22, 32, 32))
-        self.VisibilityPassButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.VisibilityPassButton.setStyleSheet(u"QPushButton {\n"
-"	image: url(:/newPrefix/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);\n"
-"border-radius: 16px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
-"}")
-        self.VisibilityPassButton.setIconSize(QSize(16, 16))
-        self.label_4 = QPushButton(self.centralwidget)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(34, 13, 94, 50))
-        self.label_4.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"border-radius: 20px;\n"
-"border: 1px solid rgb(110, 110, 110);\n"
-"")
-        self.Search_Input = QLineEdit(self.centralwidget)
-        self.Search_Input.setObjectName(u"Search_Input")
-        self.Search_Input.setEnabled(False)
-        self.Search_Input.setGeometry(QRect(64, 75, 380, 32))
-        font1 = QFont()
-        font1.setFamilies([u"Google Sans"])
-        font1.setPointSize(18)
-        font1.setBold(False)
-        font1.setKerning(True)
-        font1.setStyleStrategy(QFont.PreferDefault)
-        self.Search_Input.setFont(font1)
-        self.Search_Input.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
-        self.Search_Input.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
-        self.Search_Input.setStyleSheet(u"QLineEdit {\n"
-"border-radius: 16px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"color: rgba(157, 221, 176, 219);\n"
-"border: 1px solid rgb(110, 110, 110);\n"
-"}\n"
-"\n"
-"")
-        self.Search_Input.setFrame(True)
-        self.Search_Input.setEchoMode(QLineEdit.EchoMode.Normal)
-        self.Search_Input.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.Search_Input.setDragEnabled(False)
         self.lableListBackground = QLabel(self.centralwidget)
         self.lableListBackground.setObjectName(u"lableListBackground")
         self.lableListBackground.setGeometry(QRect(28, 133, 452, 447))
-        font2 = QFont()
-        font2.setFamilies([u"Google Sans"])
-        font2.setPointSize(17)
-        font2.setWeight(QFont.Medium)
-        font2.setKerning(True)
-        font2.setStyleStrategy(QFont.PreferAntialias)
-        font2.setHintingPreference(QFont.PreferNoHinting)
-        self.lableListBackground.setFont(font2)
+        font1 = QFont()
+        font1.setFamilies([u"Google Sans"])
+        font1.setPointSize(17)
+        font1.setWeight(QFont.Medium)
+        font1.setKerning(True)
+        font1.setStyleStrategy(QFont.PreferAntialias)
+        font1.setHintingPreference(QFont.PreferNoHinting)
+        self.lableListBackground.setFont(font1)
         self.lableListBackground.setAutoFillBackground(False)
         self.lableListBackground.setStyleSheet(u"border-radius: 15px;\n"
 "color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.56, y2:1, stop:0 rgba(98, 98, 98, 255), stop:1 rgba(125, 177, 136, 255));\n"
@@ -215,13 +72,13 @@ class Ui_MainWindow(object):
         self.PasswordList = QListWidget(self.centralwidget)
         self.PasswordList.setObjectName(u"PasswordList")
         self.PasswordList.setGeometry(QRect(28, 133, 452, 447))
-        font3 = QFont()
-        font3.setFamilies([u"Google Sans"])
-        font3.setPointSize(15)
-        font3.setBold(True)
-        font3.setKerning(True)
-        font3.setStyleStrategy(QFont.PreferDefault)
-        self.PasswordList.setFont(font3)
+        font2 = QFont()
+        font2.setFamilies([u"Google Sans"])
+        font2.setPointSize(15)
+        font2.setBold(True)
+        font2.setKerning(True)
+        font2.setStyleStrategy(QFont.PreferDefault)
+        self.PasswordList.setFont(font2)
         self.PasswordList.viewport().setProperty(u"cursor", QCursor(Qt.CursorShape.CrossCursor))
         self.PasswordList.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.PasswordList.setStyleSheet(u"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u0441\u0430\u043c\u043e\u0433\u043e \u0441\u043f\u0438\u0441\u043a\u0430 (\u0444\u043e\u043d\u0430) */\n"
@@ -311,93 +168,190 @@ class Ui_MainWindow(object):
         self.lableVersion = QLabel(self.centralwidget)
         self.lableVersion.setObjectName(u"lableVersion")
         self.lableVersion.setGeometry(QRect(25, 580, 452, 21))
-        font4 = QFont()
-        font4.setFamilies([u"Google Sans"])
-        font4.setPointSize(10)
-        font4.setBold(False)
-        font4.setStyleStrategy(QFont.PreferDefault)
-        self.lableVersion.setFont(font4)
+        font3 = QFont()
+        font3.setFamilies([u"Google Sans"])
+        font3.setPointSize(10)
+        font3.setBold(False)
+        font3.setStyleStrategy(QFont.PreferDefault)
+        self.lableVersion.setFont(font3)
         self.lableVersion.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "color: rgb(99, 99, 99);")
         self.lableVersion.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.label_2 = QLabel(self.centralwidget)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(150, 13, 324, 50))
-        self.label_2.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
+        self.settings_frame = QFrame(self.centralwidget)
+        self.settings_frame.setObjectName(u"settings_frame")
+        self.settings_frame.setGeometry(QRect(131, 269, 246, 161))
+        self.settings_frame.setMouseTracking(False)
+        self.settings_frame.setAcceptDrops(False)
+        self.settings_frame.setStyleSheet(u"border-radius: 15px;\n"
+"")
+        self.settings_frame.setFrameShape(QFrame.Shape.StyledPanel)
+        self.settings_frame.setFrameShadow(QFrame.Shadow.Raised)
+        self.close_setngs = QPushButton(self.settings_frame)
+        self.close_setngs.setObjectName(u"close_setngs")
+        self.close_setngs.setGeometry(QRect(210, 0, 24, 21))
+        self.close_setngs.setStyleSheet(u"\n"
+"\n"
+"\n"
+"QPushButton {\n"
+"image: url(:/newPrefix/remove_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(118, 141, 103, 255), stop:1 rgba(255, 255, 255, 0));\n"
+"}")
+        self.import_csv = QPushButton(self.settings_frame)
+        self.import_csv.setObjectName(u"import_csv")
+        self.import_csv.setGeometry(QRect(20, 23, 211, 51))
+        font4 = QFont()
+        font4.setFamilies([u"Google Sans"])
+        font4.setPointSize(13)
+        font4.setBold(True)
+        self.import_csv.setFont(font4)
+        self.import_csv.setStyleSheet(u"\n"
+"QPushButton {\n"
+"border-radius: 6px;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
+"color: rgba(157, 221, 176, 219);\n"
+"border: 1px solid rgb(110, 110, 110);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgb(128, 157, 123);\n"
+"}")
+        self.export_passes = QPushButton(self.settings_frame)
+        self.export_passes.setObjectName(u"export_passes")
+        self.export_passes.setGeometry(QRect(20, 80, 211, 51))
+        font5 = QFont()
+        font5.setFamilies([u"Google Sans"])
+        font5.setPointSize(8)
+        font5.setBold(True)
+        self.export_passes.setFont(font5)
+        self.export_passes.setStyleSheet(u"\n"
+"QPushButton {\n"
+"border-radius: 6px;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
+"color: rgba(157, 221, 176, 219);\n"
+"border: 1px solid rgb(110, 110, 110);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgb(128, 157, 123);\n"
+"}")
+        self.manage = QFrame(self.centralwidget)
+        self.manage.setObjectName(u"manage")
+        self.manage.setEnabled(True)
+        self.manage.setGeometry(QRect(150, 13, 324, 50))
+        self.manage.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);")
+        self.manage.setFrameShape(QFrame.Shape.StyledPanel)
+        self.manage.setFrameShadow(QFrame.Shadow.Raised)
+        self.mng_back = QLabel(self.manage)
+        self.mng_back.setObjectName(u"mng_back")
+        self.mng_back.setGeometry(QRect(0, 0, 324, 50))
+        self.mng_back.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
 "border-radius: 20px;\n"
 "border: 1px solid rgb(110, 110, 110);\n"
 "")
-        self.label = QLabel(self.centralwidget)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(64, 100, 380, 41))
-        self.label.setFont(font4)
-        self.label.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
-"color: rgb(99, 99, 99);")
-        self.label.setScaledContents(False)
-        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.SearchButton = QPushButton(self.centralwidget)
-        self.SearchButton.setObjectName(u"SearchButton")
-        self.SearchButton.setEnabled(True)
-        self.SearchButton.setGeometry(QRect(407, 78, 26, 26))
-        self.SearchButton.setStyleSheet(u"image: url(:/newPrefix/search_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);\n"
+        self.VisibilityPassButton = QPushButton(self.manage)
+        self.VisibilityPassButton.setObjectName(u"VisibilityPassButton")
+        self.VisibilityPassButton.setEnabled(True)
+        self.VisibilityPassButton.setGeometry(QRect(23, 9, 32, 32))
+        self.VisibilityPassButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.VisibilityPassButton.setStyleSheet(u"QPushButton {\n"
+"	image: url(:/newPrefix/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);\n"
+"border-radius: 16px;\n"
+"background-color: rgba(255, 255, 255, 0);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
+"}")
+        self.VisibilityPassButton.setIconSize(QSize(16, 16))
+        self.AddPassButton = QPushButton(self.manage)
+        self.AddPassButton.setObjectName(u"AddPassButton")
+        self.AddPassButton.setEnabled(True)
+        self.AddPassButton.setGeometry(QRect(64, 9, 32, 32))
+        self.AddPassButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.AddPassButton.setStyleSheet(u"QPushButton {\n"
+"	image: url(:/newPrefix/add_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);\n"
+"border-radius: 16px;\n"
+"background-color: rgba(255, 255, 255, 0);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
+"}")
+        self.DeletePassButton = QPushButton(self.manage)
+        self.DeletePassButton.setObjectName(u"DeletePassButton")
+        self.DeletePassButton.setEnabled(True)
+        self.DeletePassButton.setGeometry(QRect(105, 9, 32, 32))
+        self.DeletePassButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.DeletePassButton.setStyleSheet(u"QPushButton {\n"
+"	image: url(:/newPrefix/delete_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
+"border-radius: 16px;\n"
+"background-color: rgba(255, 255, 255, 0);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
+"}")
+        self.EditPassButton = QPushButton(self.manage)
+        self.EditPassButton.setObjectName(u"EditPassButton")
+        self.EditPassButton.setEnabled(True)
+        self.EditPassButton.setGeometry(QRect(146, 9, 32, 32))
+        self.EditPassButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.EditPassButton.setStyleSheet(u"QPushButton {\n"
+"image: url(:/newPrefix/edit_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
+"border-radius: 16px;\n"
+"background-color: rgba(255, 255, 255, 0);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
+"}")
+        self.mng_1 = QLabel(self.manage)
+        self.mng_1.setObjectName(u"mng_1")
+        self.mng_1.setGeometry(QRect(269, 9, 32, 32))
+        self.mng_1.setStyleSheet(u"image: url(:/newPrefix/content_copy_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
+"border-radius: 16px;\n"
 "background-color: rgba(255, 255, 255, 0);")
-        self.copy_email_a = QPushButton(self.centralwidget)
-        self.copy_email_a.setObjectName(u"copy_email_a")
-        self.copy_email_a.setEnabled(False)
-        self.copy_email_a.setGeometry(QRect(378, 22, 32, 32))
-        self.copy_email_a.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.copy_email_a.setStyleSheet(u"QPushButton {\n"
-"image: url(:/newPrefix/content_copy_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
+        self.mng_2 = QLabel(self.manage)
+        self.mng_2.setObjectName(u"mng_2")
+        self.mng_2.setGeometry(QRect(187, 9, 32, 32))
+        self.mng_2.setStyleSheet(u"image: url(:/newPrefix/content_copy_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
 "border-radius: 16px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
-"}")
-        self.copy_pass_a = QPushButton(self.centralwidget)
-        self.copy_pass_a.setObjectName(u"copy_pass_a")
-        self.copy_pass_a.setEnabled(False)
-        self.copy_pass_a.setGeometry(QRect(419, 22, 32, 32))
-        self.copy_pass_a.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.copy_pass_a.setStyleSheet(u"QPushButton {\n"
-"image: url(:/newPrefix/content_copy_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
-"border-radius: 16px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
-"}")
-        self.copy_name_b = QPushButton(self.centralwidget)
-        self.copy_name_b.setObjectName(u"copy_name_b")
-        self.copy_name_b.setGeometry(QRect(356, 41, 18, 18))
-        self.copy_name_b.setStyleSheet(u"image: url(:/newPrefix/label_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
-"border-radius: 2px;\n"
-"border: 1px solid rgb(110, 110, 110);\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(67, 80, 59, 255), stop:1 rgba(95, 113, 83, 255));")
-        self.copy_email_b = QPushButton(self.centralwidget)
-        self.copy_email_b.setObjectName(u"copy_email_b")
-        self.copy_email_b.setGeometry(QRect(397, 41, 18, 18))
-        self.copy_email_b.setStyleSheet(u"image: url(:/newPrefix/mail.png);\n"
+"background-color: rgba(255, 255, 255, 0);")
+        self.mng_20 = QLabel(self.manage)
+        self.mng_20.setObjectName(u"mng_20")
+        self.mng_20.setGeometry(QRect(247, 28, 18, 18))
+        self.mng_20.setStyleSheet(u"image: url(:/newPrefix/mail.png);\n"
 "border-radius: 2px;\n"
 "background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(67, 80, 59, 255), stop:1 rgba(95, 113, 83, 255));\n"
 "border: 1px solid rgb(110, 110, 110);")
-        self.copy_pass_b = QPushButton(self.centralwidget)
-        self.copy_pass_b.setObjectName(u"copy_pass_b")
-        self.copy_pass_b.setGeometry(QRect(438, 41, 18, 18))
-        self.copy_pass_b.setStyleSheet(u"image: url(:/newPrefix/password_2_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
+        self.mng_10 = QLabel(self.manage)
+        self.mng_10.setObjectName(u"mng_10")
+        self.mng_10.setGeometry(QRect(288, 28, 18, 18))
+        self.mng_10.setStyleSheet(u"image: url(:/newPrefix/password_2_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
 "border-radius: 2px;\n"
 "background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(67, 80, 59, 255), stop:1 rgba(95, 113, 83, 255));\n"
 "border: 1px solid rgb(110, 110, 110);")
-        self.CopyNameButton = QPushButton(self.centralwidget)
+        self.CopyNameButton = QPushButton(self.manage)
         self.CopyNameButton.setObjectName(u"CopyNameButton")
-        self.CopyNameButton.setEnabled(False)
-        self.CopyNameButton.setGeometry(QRect(337, 22, 35, 35))
+        self.CopyNameButton.setEnabled(True)
+        self.CopyNameButton.setGeometry(QRect(187, 9, 35, 35))
         self.CopyNameButton.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgba(255, 255, 255, 0);\n"
 "}\n"
@@ -407,10 +361,23 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
 "}")
-        self.CopyEmailButton = QPushButton(self.centralwidget)
+        self.mng_30 = QLabel(self.manage)
+        self.mng_30.setObjectName(u"mng_30")
+        self.mng_30.setGeometry(QRect(206, 28, 18, 18))
+        self.mng_30.setStyleSheet(u"image: url(:/newPrefix/label_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
+"border-radius: 2px;\n"
+"border: 1px solid rgb(110, 110, 110);\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(67, 80, 59, 255), stop:1 rgba(95, 113, 83, 255));")
+        self.mng_3 = QLabel(self.manage)
+        self.mng_3.setObjectName(u"mng_3")
+        self.mng_3.setGeometry(QRect(228, 9, 32, 32))
+        self.mng_3.setStyleSheet(u"image: url(:/newPrefix/content_copy_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
+"border-radius: 16px;\n"
+"background-color: rgba(255, 255, 255, 0);")
+        self.CopyEmailButton = QPushButton(self.manage)
         self.CopyEmailButton.setObjectName(u"CopyEmailButton")
-        self.CopyEmailButton.setEnabled(False)
-        self.CopyEmailButton.setGeometry(QRect(378, 22, 35, 35))
+        self.CopyEmailButton.setEnabled(True)
+        self.CopyEmailButton.setGeometry(QRect(228, 9, 35, 35))
         self.CopyEmailButton.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgba(255, 255, 255, 0);\n"
 "}\n"
@@ -420,10 +387,10 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
 "}")
-        self.CopyPassButton = QPushButton(self.centralwidget)
+        self.CopyPassButton = QPushButton(self.manage)
         self.CopyPassButton.setObjectName(u"CopyPassButton")
-        self.CopyPassButton.setEnabled(False)
-        self.CopyPassButton.setGeometry(QRect(419, 22, 35, 35))
+        self.CopyPassButton.setEnabled(True)
+        self.CopyPassButton.setGeometry(QRect(269, 9, 35, 35))
         self.CopyPassButton.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgba(255, 255, 255, 0);\n"
 "}\n"
@@ -433,99 +400,129 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
 "}")
-        self.test1 = QPushButton(self.centralwidget)
-        self.test1.setObjectName(u"test1")
-        self.test1.setEnabled(True)
-        self.test1.setGeometry(QRect(401, 174, 30, 18))
-        self.test1.setStyleSheet(u"QPushButton {\n"
-"border-radius: 5px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"border: 1px solid rgb(110, 110, 110);\n"
-"	color: rgb(225, 225, 225);\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	\n"
-"	background-color: rgb(78, 109, 88);\n"
-"}")
-        self.test2 = QPushButton(self.centralwidget)
-        self.test2.setObjectName(u"test2")
-        self.test2.setGeometry(QRect(401, 201, 30, 18))
-        self.test2.setStyleSheet(u"QPushButton {\n"
-"border-radius: 5px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"border: 1px solid rgb(110, 110, 110);\n"
-"	color: rgb(225, 225, 225);\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	\n"
-"	background-color: rgb(78, 109, 88);\n"
-"}")
-        self.test3 = QPushButton(self.centralwidget)
-        self.test3.setObjectName(u"test3")
-        self.test3.setGeometry(QRect(401, 228, 30, 18))
-        self.test3.setStyleSheet(u"QPushButton {\n"
-"border-radius: 5px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"border: 1px solid rgb(110, 110, 110);\n"
-"	color: rgb(225, 225, 225);\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	\n"
-"	background-color: rgb(78, 109, 88);\n"
-"}")
-        self.test4 = QPushButton(self.centralwidget)
-        self.test4.setObjectName(u"test4")
-        self.test4.setGeometry(QRect(401, 255, 30, 18))
-        self.test4.setStyleSheet(u"QPushButton {\n"
-"border-radius: 5px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
-"border: 1px solid rgb(110, 110, 110);\n"
-"	color: rgb(225, 225, 225);\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"	\n"
-"	background-color: rgb(78, 109, 88);\n"
-"}")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.label_2.raise_()
-        self.label_4.raise_()
-        self.lableListBackground.raise_()
-        self.CreateFile.raise_()
-        self.OpenFile.raise_()
+        self.mng_back.raise_()
+        self.VisibilityPassButton.raise_()
         self.AddPassButton.raise_()
         self.DeletePassButton.raise_()
         self.EditPassButton.raise_()
-        self.copy_name_a.raise_()
-        self.VisibilityPassButton.raise_()
-        self.Search_Input.raise_()
-        self.PasswordList.raise_()
-        self.lableVersion.raise_()
-        self.label.raise_()
-        self.SearchButton.raise_()
-        self.copy_email_a.raise_()
-        self.copy_pass_a.raise_()
-        self.copy_name_b.raise_()
-        self.copy_email_b.raise_()
-        self.copy_pass_b.raise_()
+        self.mng_1.raise_()
+        self.mng_2.raise_()
+        self.mng_10.raise_()
         self.CopyNameButton.raise_()
+        self.mng_30.raise_()
+        self.mng_3.raise_()
         self.CopyEmailButton.raise_()
         self.CopyPassButton.raise_()
-        self.test1.raise_()
-        self.test2.raise_()
-        self.test3.raise_()
-        self.test4.raise_()
+        self.mng_20.raise_()
+        self.parse = QFrame(self.centralwidget)
+        self.parse.setObjectName(u"parse")
+        self.parse.setGeometry(QRect(34, 13, 94, 50))
+        self.parse.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);")
+        self.parse.setFrameShape(QFrame.Shape.StyledPanel)
+        self.parse.setFrameShadow(QFrame.Shadow.Raised)
+        self.label_4 = QPushButton(self.parse)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setGeometry(QRect(0, 0, 94, 50))
+        self.label_4.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
+"border-radius: 20px;\n"
+"border: 1px solid rgb(110, 110, 110);\n"
+"")
+        self.OpenFile = QPushButton(self.parse)
+        self.OpenFile.setObjectName(u"OpenFile")
+        self.OpenFile.setGeometry(QRect(11, 9, 32, 32))
+        self.OpenFile.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.OpenFile.setStyleSheet(u"QPushButton {\n"
+"	image: url(:/newPrefix/file_open_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
+"border-radius: 16px;\n"
+"background-color: rgba(255, 255, 255, 0);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
+"}")
+        self.OpenFile.setAutoRepeat(False)
+        self.CreateFile = QPushButton(self.parse)
+        self.CreateFile.setObjectName(u"CreateFile")
+        self.CreateFile.setGeometry(QRect(51, 9, 32, 32))
+        self.CreateFile.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.CreateFile.setStyleSheet(u"QPushButton {\n"
+"	image: url(:/newPrefix/note_add_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
+"border-radius: 16px;\n"
+"background-color: rgba(255, 255, 255, 0);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(125, 177, 136, 255), stop:1 rgba(98, 98, 98, 0));\n"
+"}")
+        self.search = QFrame(self.centralwidget)
+        self.search.setObjectName(u"search")
+        self.search.setEnabled(True)
+        self.search.setGeometry(QRect(64, 75, 410, 66))
+        self.search.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);")
+        self.search.setFrameShape(QFrame.Shape.StyledPanel)
+        self.search.setFrameShadow(QFrame.Shadow.Raised)
+        self.settings = QPushButton(self.search)
+        self.settings.setObjectName(u"settings")
+        self.settings.setEnabled(True)
+        self.settings.setGeometry(QRect(384, 3, 26, 25))
+        self.settings.setStyleSheet(u"\n"
+"\n"
+"QPushButton {\n"
+"image: url(:/newPrefix/menu_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
+"border-radius: 5px;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
+"color: rgba(157, 221, 176, 219);\n"
+"border: 1px solid rgb(110, 110, 110);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgb(152, 181, 133);\n"
+"}")
+        self.Search_Input = QLineEdit(self.search)
+        self.Search_Input.setObjectName(u"Search_Input")
+        self.Search_Input.setEnabled(True)
+        self.Search_Input.setGeometry(QRect(0, 0, 380, 32))
+        font6 = QFont()
+        font6.setFamilies([u"Google Sans"])
+        font6.setPointSize(18)
+        font6.setBold(False)
+        font6.setKerning(True)
+        font6.setStyleStrategy(QFont.PreferDefault)
+        self.Search_Input.setFont(font6)
+        self.Search_Input.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
+        self.Search_Input.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
+        self.Search_Input.setStyleSheet(u"QLineEdit {\n"
+"border-radius: 16px;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
+"color: rgba(157, 221, 176, 219);\n"
+"border: 1px solid rgb(110, 110, 110);\n"
+"}\n"
+"\n"
+"")
+        self.Search_Input.setFrame(True)
+        self.Search_Input.setEchoMode(QLineEdit.EchoMode.Normal)
+        self.Search_Input.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.Search_Input.setDragEnabled(False)
+        self.label = QLabel(self.search)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(0, 25, 380, 41))
+        self.label.setFont(font3)
+        self.label.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"color: rgb(99, 99, 99);")
+        self.label.setScaledContents(False)
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_2 = QLabel(self.search)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(343, 3, 26, 26))
+        self.label_2.setStyleSheet(u"image: url(:/newPrefix/search_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);\n"
+"background-color: rgba(255, 255, 255, 0);")
+        MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
 
@@ -534,8 +531,16 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Passwords Safe", None))
-        self.CreateFile.setText("")
-        self.OpenFile.setText("")
+        self.lableListBackground.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:700; color:#a1c292;\">Welcome to Passwords safe</span></p><p align=\"center\"><span style=\" color:#b5b5b5;\">This is a cryptographic manager of passwords<br/><br/></span><span style=\" text-decoration: underline; color:#b5b5b5;\">Open</span><span style=\" color:#b5b5b5;\"> a file or </span><span style=\" text-decoration: underline; color:#b5b5b5;\">create new</span><span style=\" color:#b5b5b5;\"> passwords list</span></p></body></html>", None))
+        self.lableVersion.setText(QCoreApplication.translate("MainWindow", u"OS / APP VERSION", None))
+        self.close_setngs.setText("")
+        self.import_csv.setText(QCoreApplication.translate("MainWindow", u"Import passwords .csv", None))
+        self.export_passes.setText(QCoreApplication.translate("MainWindow", u"Export passwords (without crypto)", None))
+        self.mng_back.setText("")
+#if QT_CONFIG(tooltip)
+        self.VisibilityPassButton.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>change password visible</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.VisibilityPassButton.setText("")
 #if QT_CONFIG(tooltip)
         self.AddPassButton.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>add</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
@@ -548,38 +553,21 @@ class Ui_MainWindow(object):
         self.EditPassButton.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>edit password</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
         self.EditPassButton.setText("")
-#if QT_CONFIG(tooltip)
-        self.copy_name_a.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>copy password</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.copy_name_a.setText("")
-#if QT_CONFIG(tooltip)
-        self.VisibilityPassButton.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>change password visible</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.VisibilityPassButton.setText("")
-        self.label_4.setText("")
-        self.Search_Input.setText("")
-        self.lableListBackground.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:700; color:#a1c292;\">Welcome to Passwords safe</span></p><p align=\"center\"><span style=\" color:#b5b5b5;\">This is a cryptographic manager of passwords<br/><br/></span><span style=\" text-decoration: underline; color:#b5b5b5;\">Open</span><span style=\" color:#b5b5b5;\"> a file or </span><span style=\" text-decoration: underline; color:#b5b5b5;\">create new</span><span style=\" color:#b5b5b5;\"> passwords list</span></p></body></html>", None))
-        self.lableVersion.setText(QCoreApplication.translate("MainWindow", u"OS / APP VERSION", None))
-        self.label_2.setText("")
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Search name / email", None))
-        self.SearchButton.setText("")
-#if QT_CONFIG(tooltip)
-        self.copy_email_a.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>copy password</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.copy_email_a.setText("")
-#if QT_CONFIG(tooltip)
-        self.copy_pass_a.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>copy password</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.copy_pass_a.setText("")
-        self.copy_name_b.setText("")
-        self.copy_email_b.setText("")
-        self.copy_pass_b.setText("")
+        self.mng_1.setText("")
+        self.mng_2.setText("")
+        self.mng_20.setText("")
+        self.mng_10.setText("")
         self.CopyNameButton.setText("")
+        self.mng_30.setText("")
+        self.mng_3.setText("")
         self.CopyEmailButton.setText("")
         self.CopyPassButton.setText("")
-        self.test1.setText(QCoreApplication.translate("MainWindow", u"test 1", None))
-        self.test2.setText(QCoreApplication.translate("MainWindow", u"test 2", None))
-        self.test3.setText(QCoreApplication.translate("MainWindow", u"test 3", None))
-        self.test4.setText(QCoreApplication.translate("MainWindow", u"test 4", None))
+        self.label_4.setText("")
+        self.OpenFile.setText("")
+        self.CreateFile.setText("")
+        self.settings.setText("")
+        self.Search_Input.setText("")
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Search name / email", None))
+        self.label_2.setText("")
     # retranslateUi
 

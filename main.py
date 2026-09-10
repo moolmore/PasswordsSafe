@@ -1,5 +1,6 @@
+# (｡•́︿•̀｡)
 import platform, csv, os
-from core import parse, lists_obj, key_obj, crypt_utils, cache_obj, helpers
+from core import parse, key_obj, crypt_utils, cache_obj, helpers, list_obj
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog, QGraphicsBlurEffect
 from PySide6.QtCore import QTimer, Qt
 from PySide6.QtGui import QFont
@@ -29,25 +30,14 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.ui = main_menu.Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ManagmentElementsList = [
-            # Только объекты, хозяин! (｡•́︿•̀｡)
-            self.ui.OpenFile,
-            self.ui.CreateFile,
-            self.ui.VisibilityPassButton,
-            self.ui.AddPassButton,
-            self.ui.DeletePassButton,
-            self.ui.EditPassButton,
-            self.ui.CopyPassButton,
-            self.ui.CopyEmailButton,
-            self.ui.CopyNameButton,
-            self.ui.SearchButton,
-            self.ui.Search_Input
-            
-        ]
-        self.blurElements = self.ManagmentElementsList[2:9]
-        self.blurElements.append(self.ui.label)
-        self.blurElements.append(self.ui.label_2)
         self.ui.PasswordList.setWordWrap(True)
+        self.connectFunctions()
+        self.setBlurOnElements(True)
+        self.ui.manage.setEnabled(False)
+        self.ui.search.setEnabled(False)
+        self.ui.lableVersion.setText(f'Platform: {platform.system()}    Version: {app_version}')
+        self.ui.PasswordList.setVisible(False)
+        self.ui.settings_frame.setVisible(False)
         
 
     def connectFunctions(self):
@@ -57,37 +47,13 @@ class MainWindow(QMainWindow):
         self.ui.AddPassButton.clicked.connect(executeAddPassword)
         self.ui.DeletePassButton.clicked.connect(deletePassword)
         self.ui.EditPassButton.clicked.connect(executePasswordEdit)
-
         self.ui.CopyNameButton.clicked.connect(copyUsername)
         self.ui.CopyEmailButton.clicked.connect(copyEmail)
         self.ui.CopyPassButton.clicked.connect(copyPassword)
-        
-
-        self.ui.SearchButton.clicked.connect(searchPassword)
         self.ui.Search_Input.textChanged.connect(checkSearchNull)
+        self.ui.settings.clicked.connect(executeSettings)
     ### DEBUG
-    def connectDebSlots(self):
-        self.ui.test1.clicked.connect(self.returnSelDataBlock)
-        self.ui.test2.clicked.connect(self.importCSV)
-        #self.ui.test3.clicked.connect()
-        #self.ui.test4.clicked.connect()
-    def returnSelDataBlock(self):
-        userlist = lists_obj.UserPasswordsList.passwords_list
-        # srch_map = cache_obj.AppCache.srch_ind_map
-        ui_index = self.ui.PasswordList.currentRow()
-        
-        
-        if cache_obj.AppCache.search_active:
-            helpers.showDict(cache_obj.AppCache.srch_ind_map)
-            app_index = cache_obj.AppCache.srch_ind_map[ui_index]
-            data_block = userlist[app_index] 
-        else:
-            data_block = userlist[ui_index] 
-        
-        print("\n")
-        for data in data_block:
 
-            print(data if data != "" else "Пусто")
     def importCSV(self):
         path = os.path.expandvars(r"%USERPROFILE%//Documents//passwords.csv")
         with open(path, mode='r', newline='') as csv_file:
@@ -95,21 +61,16 @@ class MainWindow(QMainWindow):
             # Пропускаем заголовок, если он не нужен
             next(csv_reader) 
             for row in csv_reader:
-                lists_obj.UserPasswordsList.passwords_list.append([row[0],row[2],"",row[3],row[4]])
+                list_obj.UserPasswordsList.passwords_list.append([row[0],row[2],"",row[3],row[4]])
             cache_obj.updateCache()
             Main_Window.updateList()
-        
+
     ### DEBUG
     
-    def enableAllButtons(self):
-        for element in self.ManagmentElementsList:
-            element.setEnabled(True)
+    def enableManageAndSearch(self):
+        Main_Window.ui.manage.setEnabled(True)
+        Main_Window.ui.search.setEnabled(True)
 
-
-    # 1: SERVICE
-    # 2: SERVICE | NICKNAME | DESCRIPTION
-    # 3: SERVICE | EMAIL | PASSWORD
-    # 3: ALL DATA (! TEXT VERY SMALL !)
     def updateList(self):
 
         self.ui.PasswordList.clear()
@@ -122,62 +83,45 @@ class MainWindow(QMainWindow):
             data_blocks = ac.ui_lists_srch
         else:
             data_blocks = ac.ui_lists_dflt
-        
+
+        font.setPointSize(14)
+        self.ui.PasswordList.addItems(data_blocks[list(data_blocks.keys())[ac.visibility_list-1]]) 
         if ac.visibility_list == 1:
-            self.ui.PasswordList.addItems(data_blocks["service"])
             font.setPointSize(17)
-            
-            self.ui.PasswordList.setFont(font)
-        elif ac.visibility_list == 2:
-            self.ui.PasswordList.addItems(data_blocks["se_ni_de"])
-            font.setPointSize(14)
-            self.ui.PasswordList.setFont(font)
-
-        elif ac.visibility_list == 3:
-            font.setPointSize(14)
-            self.ui.PasswordList.addItems(data_blocks["se_em_pa"])
-            self.ui.PasswordList.setFont(font)
-
         elif ac.visibility_list == 4:
             font.setPointSize(12)
             font.setBold(False)
-            self.ui.PasswordList.addItems(data_blocks["all"])
-            self.ui.PasswordList.setFont(font)
+        self.ui.PasswordList.setFont(font)
 
-
-    # BLUR ON ELEMENTS OF MANAGMENT
-
-    def setBlurOnElements(self):
-        for element in self.blurElements:   
-            blur = QGraphicsBlurEffect()
-            blur.setBlurRadius(3.5)  
-            blur.setBlurHints(QGraphicsBlurEffect.QualityHint)
-            element.setGraphicsEffect(blur)
-            element.hash0 = blur
-
-
-    def removeBlurFromElements(self):
-        for element in self.blurElements:
-            element.setGraphicsEffect(None)
-            del element.hash0
-
-
-    def switchListVisible(self, turn_on):
+    def setBlurOnElements(self, turn_on):
         if turn_on:
-            self.list_blur = QGraphicsBlurEffect()
-            self.list_blur.setBlurHints(QGraphicsBlurEffect.QualityHint)
-            self.ui.PasswordList.setGraphicsEffect(self.list_blur)
-            self.ui.PasswordList.setEnabled(False)
+            self.blur=QGraphicsBlurEffect()
+            self.blur.setBlurRadius(4)  
+            self.blur.setBlurHints(QGraphicsBlurEffect.QualityHint)
+
+            self.blur2=QGraphicsBlurEffect()
+            self.blur2.setBlurRadius(4)  
+            self.blur2.setBlurHints(QGraphicsBlurEffect.QualityHint)
         else:
-            self.ui.PasswordList.setGraphicsEffect(None)
-            self.ui.PasswordList.setEnabled(True)
-    # BLUR ON ELEMENTS OF MANAGMENT
+            del self.blur
+            del self.blur2
+        self.ui.manage.setGraphicsEffect(self.blur if turn_on else None)
+        self.ui.search.setGraphicsEffect(self.blur2 if turn_on else None)
+
+    def setOffAndBlurredList(self, turn_on):
+        self.list_blur = QGraphicsBlurEffect()
+        self.list_blur.setBlurHints(QGraphicsBlurEffect.QualityHint)
+        self.ui.PasswordList.setGraphicsEffect(self.list_blur if turn_on else None)
+        self.ui.PasswordList.setEnabled(False if turn_on else True)
+        if not turn_on:
+            del self.list_blur
 
     def getCurItem(self) -> int:
         if not cache_obj.AppCache.search_active:
             return self.ui.PasswordList.currentRow()
         else:
             return cache_obj.AppCache.srch_ind_map[self.ui.PasswordList.currentRow()]
+
     def changeTitleSec(self):
         self.setWindowTitle('Passwords Safe' + ' - Password copied')
         QTimer.singleShot(1500, lambda: self.setWindowTitle('Passwords Safe'))
@@ -187,6 +131,7 @@ class OpenFileWindow(QWidget):
         super().__init__()
         self.ui = open_file.Ui_Form()
         self.ui.setupUi(self)
+        self.connectFunctions()
     def connectFunctions(self):
         self.ui.ApplyButton.clicked.connect(applyOpenFile)
         self.ui.QuickDirButton.clicked.connect(setDirDialog)
@@ -202,6 +147,7 @@ class NewFileWindow(QWidget):
         super().__init__()
         self.ui = new_file.Ui_Form()
         self.ui.setupUi(self)
+        self.connectFunctions()
     def connectFunctions(self):
         self.ui.ApplyButton.clicked.connect(applyNewFile)
         self.ui.QuickDirButton.clicked.connect(setDirDialog)
@@ -227,6 +173,7 @@ class EditPasswordWindow(QWidget):
         self.ui = edit_add_password.Ui_Form()
         self.ui.setupUi(self)
         self.setWindowFlags(self.windowFlags() & ~Qt.WindowCloseButtonHint)
+        self.connectFunctions()
     def connectFunctions(self):
         self.ui.ApplyButton.clicked.connect(applyEditPassword)
         self.ui.CancelButton.clicked.connect(cancelEditPassword)
@@ -239,9 +186,6 @@ class EditPasswordWindow(QWidget):
 def executeMain():
     global Main_Window
     Main_Window = MainWindow()
-    Main_Window.connectFunctions()
-    Main_Window.connectDebSlots()
-    Main_Window.setBlurOnElements()
     Main_Window.ui.lableVersion.setText(f'Platform: {platform.system()}    Version: {app_version}')
     Main_Window.ui.PasswordList.setVisible(False)
     Main_Window.show()
@@ -252,7 +196,6 @@ def executeOpenFile():
     Open_File_Window.ui.ErrorsLable.setVisible(False)
     Open_File_Window.ui.ErrorsIcon.setVisible(False)
     Open_File_Window.ui.ErrorsBack.setVisible(False)
-    Open_File_Window.connectFunctions()
     Open_File_Window.ui.PathInput.setText(helpers.preInputDir())
     Open_File_Window.show()
 
@@ -262,39 +205,37 @@ def executeNewFile():
     New_File_Window.ui.ErrorsLable.setVisible(False)
     New_File_Window.ui.ErrorsIcon.setVisible(False)
     New_File_Window.ui.ErrorsBack.setVisible(False)
-    New_File_Window.connectFunctions()
     New_File_Window.ui.PathInput.setText(helpers.preInputDir())
     New_File_Window.show()
 
 def executePasswordEdit():
-    if Main_Window.ui.EditPassButton.isEnabled():
-        global Edit_Password_Window
-        Edit_Password_Window = EditPasswordWindow()
-        Edit_Password_Window.connectFunctions()
-        
-        cur_data_block = lists_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()]
-        title = f"Edit «{cur_data_block[0]}» data"
-        Edit_Password_Window.setWindowTitle(title)
-        Edit_Password_Window.ui.ErrorsLable.setVisible(False)
-        Edit_Password_Window.ui.newNameEdit.setText(cur_data_block[0])
-        Edit_Password_Window.ui.newNicknameEdit.setText(cur_data_block[1])
-        Edit_Password_Window.ui.newMailEdit.setText(cur_data_block[2])
-        Edit_Password_Window.ui.newPassEdit.setText(cur_data_block[3])
-        Edit_Password_Window.ui.newDescEdit.setText(cur_data_block[4])
-        
-        Edit_Password_Window.show()
-        Main_Window.switchListVisible(True)
-
+    global Edit_Password_Window
+    Edit_Password_Window = EditPasswordWindow()
+    cur_data_block = list_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()]
+    title = f"Edit «{cur_data_block[0]}» data"
+    Edit_Password_Window.setWindowTitle(title)
+    Edit_Password_Window.ui.ErrorsLable.setVisible(False)
+    Edit_Password_Window.ui.newNameEdit.setText(cur_data_block[0])
+    Edit_Password_Window.ui.newNicknameEdit.setText(cur_data_block[1])
+    Edit_Password_Window.ui.newMailEdit.setText(cur_data_block[2])
+    Edit_Password_Window.ui.newPassEdit.setText(cur_data_block[3])
+    Edit_Password_Window.ui.newDescEdit.setText(cur_data_block[4])
+    
+    Edit_Password_Window.show()
+    Main_Window.setOffAndBlurredList(True)
 
 def executeAddPassword():
-    if Main_Window.ui.AddPassButton.isEnabled():
-        global Add_Pass_Window
-        Add_Pass_Window = AddPasswordWindow()
-        Add_Pass_Window.connectFunctions()
-        Add_Pass_Window.setWindowTitle("New password data")
-        Add_Pass_Window.ui.ErrorsLable.setVisible(False)
-        Add_Pass_Window.show()
-        Main_Window.switchListVisible(True)
+    global Add_Pass_Window
+    Add_Pass_Window = AddPasswordWindow()
+    Add_Pass_Window.connectFunctions()
+    Add_Pass_Window.setWindowTitle("New password data")
+    Add_Pass_Window.ui.ErrorsLable.setVisible(False)
+    Add_Pass_Window.show()
+    Main_Window.setOffAndBlurredList(True)
+
+def executeSettings():
+    Main_Window.ui.settings_frame.setVisible(True)
+    Main_Window.ui.close_setngs.clicked.connect(lambda: Main_Window.ui.settings_frame.setVisible(False))
 
 # Exectuions for open windows
 # Exectuions for open windows
@@ -306,42 +247,47 @@ def executeAddPassword():
 # Buttons slots block start
 
 def applyOpenFile():
-    i_path = Open_File_Window.ui.PathInput
-    i_key = Open_File_Window.ui.KeyInput
+    inpt_path = str(Open_File_Window.ui.PathInput.text())
+    inpt_key = str(Open_File_Window.ui.KeyInput.text())
     try:
-        _key, _passwords = parse.openFile(i_path.text(),i_key.text().encode('utf-8'))
+        passwords = parse.openFile(inpt_path,inpt_key.encode('utf-8'))
+        derv_key = crypt_utils.deriveKey(user_key=inpt_key.encode('utf-8'))
     except Exception as e:
         Open_File_Window.showException(exc=e)
     else:
-        lists_obj.createListObject(passwords=_passwords)
-        key_obj.createKey(user_key=_key)
+        list_obj.createListObject(passwords=passwords)
+        key_obj.createKey(user_key=derv_key)
         cache_obj.createCacheObject()
-        cache_obj.updateCache(list_visibility=1, user_path=i_path.text())          
+        cache_obj.updateCache(list_visibility=1, user_path=inpt_path)      
+
+            
         Open_File_Window.close()
         Main_Window.ui.lableListBackground.setText('')
-        Main_Window.enableAllButtons()
+        Main_Window.enableManageAndSearch()
         Main_Window.ui.PasswordList.setVisible(True)
-        Main_Window.removeBlurFromElements()
+        Main_Window.setBlurOnElements(False)
         Main_Window.updateList()
 
 def applyNewFile():
-    i_key = New_File_Window.ui.KeyInput
-    _path = New_File_Window.ui.PathInput
+    inpt_key = str(New_File_Window.ui.KeyInput.text())
+    inpt_path = str(New_File_Window.ui.PathInput.text())
     try:
-        helpers.checkNewKey(i_key.text())
-        _key = crypt_utils.deriveKey(user_key=i_key.text().encode('utf-8'))
+        helpers.checkNewKey(inpt_key)
+        derv_key = crypt_utils.deriveKey(user_key=inpt_key.encode('utf-8'))
     except Exception as e:
         New_File_Window.showException(exc=e)
     else:
-        lists_obj.createListObject(passwords=[])
-        key_obj.createKey(user_key=_key)
+        list_obj.createListObject(passwords=[])
+        key_obj.createKey(user_key=derv_key)
         cache_obj.createCacheObject()
-        cache_obj.updateCache(list_visibility=1, user_path=_path.text())
+        cache_obj.updateCache(list_visibility=1, user_path=inpt_path)
+
+
         New_File_Window.close()
         Main_Window.ui.lableListBackground.setText('')
-        Main_Window.enableAllButtons()
+        Main_Window.enableManageAndSearch()
         Main_Window.ui.PasswordList.setVisible(True)
-        Main_Window.removeBlurFromElements()
+        Main_Window.setBlurOnElements(False)
         Main_Window.updateList()
 
 def setDirDialog():
@@ -350,14 +296,11 @@ def setDirDialog():
     New_File_Window.ui.PathInput.setText(dir)
 
 def changePasswordsVisibility():
-    co = cache_obj.AppCache
-    print(gre+'Visibility was changes',co.visibility_list,"->",end=' ')
-
-    if 4 > co.visibility_list>= 0:
-        co.visibility_list += 1
+    visibility = cache_obj.AppCache.visibility_list
+    if 4 > visibility >= 0:
+        visibility += 1
     else:
-        co.visibility_list = 1
-    print(co.visibility_list)
+        visibility = 1
     Main_Window.updateList()
 
 def applyEditPassword():
@@ -374,16 +317,17 @@ def applyEditPassword():
         Edit_Password_Window.ui.ErrorsLable.setVisible(True)
         Edit_Password_Window.ui.ErrorsLable.setText(str(e))
     else:
-        lists_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()]=data_block
+        list_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()]=data_block
         cache_obj.updateCache()
         parse.saveFile()
         Edit_Password_Window.close()
         Main_Window.updateList()
         Main_Window.switchListVisible(False)
         Main_Window.setEnabled(True)
+
 def cancelEditPassword():
     Edit_Password_Window.close()
-    Main_Window.switchListVisible(False)
+    Main_Window.setOffAndBlurredList(False)
     Main_Window.setEnabled(True)
 
 def applyAddPassword():
@@ -401,21 +345,21 @@ def applyAddPassword():
         Add_Pass_Window.ui.ErrorsLable.setVisible(True)
         Add_Pass_Window.ui.ErrorsLable.setText(str(e))
     else:
-        lists_obj.UserPasswordsList.passwords_list.append(data_block)
+        list_obj.UserPasswordsList.passwords_list.append(data_block)
         cache_obj.updateCache()
         parse.saveFile()
         Add_Pass_Window.close()
         Main_Window.updateList()
-        Main_Window.switchListVisible(False)
+        Main_Window.setOffAndBlurredList(False)
         Main_Window.setEnabled(True)
 
 def cancelAddPassword():
     Add_Pass_Window.close()
-    Main_Window.switchListVisible(False)
+    Main_Window.setOffAndBlurredList(False)
     Main_Window.setEnabled(True)
 
 def deletePassword():
-    del lists_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()]
+    del list_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()]
 
     cache_obj.updateCache()
     Main_Window.updateList()
@@ -424,22 +368,14 @@ def deletePassword():
 
 
 def copyUsername():
-    pyperclip.copy(str(lists_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()][1]))
+    pyperclip.copy(str(list_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()][1]))
 
 def copyEmail():
-    pyperclip.copy(str(lists_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()][2]))
+    pyperclip.copy(str(list_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()][2]))
 
 def copyPassword():
-    pyperclip.copy(str(lists_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()][3]))
+    pyperclip.copy(str(list_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()][3]))
 
-
-
-def searchPassword():
-    cache_obj.foundSearchResults(search_word=Main_Window.ui.Search_Input.text())
-    cache_obj.AppCache.search_active = True
-    print('show dict after fsr')
-    print(cache_obj.AppCache.srch_ind_map)
-    Main_Window.updateList()
 
 def checkSearchNull():
     if Main_Window.ui.Search_Input.text().replace(" ", "") == '':
@@ -456,7 +392,6 @@ def checkSearchNull():
 # Buttons slots block end
 
 def main():
-    print('App was runned')
     App = QApplication()
     executeMain()
     sys.exit(App.exec())
