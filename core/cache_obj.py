@@ -26,13 +26,14 @@ class CachedData():
         self.visibility_list = 1
         self.search_input = ''
         self.search_active = False
-        
 
-def createCacheObject():
+    
+
+def createCacheObject() -> None:
     global AppCache
     AppCache = CachedData()
 
-def updateCache(list_visibility: int=0, user_path: str='None'):
+def updateCache(list_visibility: int=0, user_path: str='None') -> None:
     # 1: SERVICE
     # 2: SERVICE | NICKNAME | DESCRIPTION
     # 3: SERVICE | EMAIL | PASSWORD
@@ -47,9 +48,9 @@ def updateCache(list_visibility: int=0, user_path: str='None'):
         foundSearchResults(search_word=AppCache.srch_word)
     if user_path != 'None':
         AppCache.user_path = user_path
-    
 
-def foundSearchResults(search_word: str):
+
+def foundSearchResults(search_word: str) -> None:
     search_word = search_word.lower()
     ln_sw = len(search_word)
     passwords = list_obj.UserPasswordsList.passwords_list
@@ -78,11 +79,9 @@ def foundSearchResults(search_word: str):
     AppCache.srch_word = search_word
     _writeSearchIndMap(srch_passwords=founded_blocks)
 
-    helpers.showDict(AppCache.srch_ind_map)
-
 #def foundSearchResults(search_word: str) -> bool | None 
 
-def _writeUILists(passwords: list, type: str):
+def _writeUILists(passwords: list, type: str) -> None:
     if type == 'dflt':
         ui_list = AppCache.ui_lists_dflt
     elif type == 'srch':
@@ -104,7 +103,7 @@ def _writeUILists(passwords: list, type: str):
         ui_list["se_em_pa"].append(ui[0]+"\n"+ui[2]+"\n"+ui[3])
         ui_list["all"].append(ui[0]+"\n"+ui[1]+"\n"+ui[2]+"\n"+ui[3]+"\n"+ui[4])
 
-def _writeSearchIndMap(srch_passwords: str):
+def _writeSearchIndMap(srch_passwords: str) -> None:
     srch_map = AppCache.srch_ind_map
     passwords = list_obj.UserPasswordsList.passwords_list
     for x in range(len(srch_map)):

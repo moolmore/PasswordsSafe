@@ -53,7 +53,7 @@ def openFile(user_path: str, user_key: bytes) -> list:
     else: raise ValueError('File not found!')
 
 
-def saveFile():
+def saveFile() -> None:
     # Save 4 check words & passwords dict
     passwords = list_obj.UserPasswordsList.passwords_list
     enc_key = key_obj.UserCryptoKey.key
@@ -72,7 +72,7 @@ def saveFile():
         json.dump(obj=dict_to_save, ensure_ascii=False, fp=f, indent=1)
 
 
-def _checkKeyValid(raw_dict: dict, user_key: bytes):
+def _checkKeyValid(raw_dict: dict, user_key: bytes) -> None:
     # Check 4 decrypted check words via user input key 
     for index in range(4):
         try:
