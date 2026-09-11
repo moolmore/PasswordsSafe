@@ -60,8 +60,9 @@ def CheckEditPassword(data_block: list):
         data_name = data_block_names[ind]
         data_len = len(data.replace(" ", ""))
 
-        if data_len <= 1:
-            raise ValueError(f'Lenght of {data_name} <= 1.')
+        if ind != 4:
+            if data_len <= 1:
+                raise ValueError(f'Lenght of {data_name} <= 1.')
 
         for sym_ind in range(data_len):
             if data[sym_ind:sym_ind+data_len] in blocked_words:

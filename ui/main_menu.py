@@ -1,23 +1,17 @@
-# -*- coding: utf-8 -*-
 
-################################################################################
-## Form generated from reading UI file 'main_menu_update_2FGoAta.ui'
-##
-## Created by: Qt User Interface Compiler version 6.11.1
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
-    QListWidget, QListWidgetItem, QMainWindow, QPushButton,
+
+
+from PySide6.QtCore import (QCoreApplication,
+    QMetaObject, QRect,
+    QSize, Qt)
+from PySide6.QtGui import (QCursor,
+    QFont, QIcon,
+    )
+from PySide6.QtWidgets import ( QFrame, QLabel, QLineEdit,
+    QListWidget, QPushButton,
     QSizePolicy, QTabWidget, QWidget)
+
 from .assets import images
 
 class Ui_MainWindow(object):
@@ -32,12 +26,9 @@ class Ui_MainWindow(object):
         MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setMinimumSize(QSize(508, 608))
         MainWindow.setMaximumSize(QSize(508, 608))
-        font = QFont()
-        font.setFamilies([u"Cascadia Code"])
-        font.setBold(False)
-        font.setStyleStrategy(QFont.PreferDefault)
-        MainWindow.setFont(font)
         MainWindow.setAcceptDrops(True)
+        icon = QIcon(QIcon.fromTheme(QIcon.ThemeIcon.FormatJustifyCenter))
+        MainWindow.setWindowIcon(icon)
         MainWindow.setWindowOpacity(1.000000000000000)
         MainWindow.setStyleSheet(u"border: none;\n"
 "background-color: rgb(53, 53, 53);")
@@ -51,14 +42,14 @@ class Ui_MainWindow(object):
         self.lableListBackground = QLabel(self.centralwidget)
         self.lableListBackground.setObjectName(u"lableListBackground")
         self.lableListBackground.setGeometry(QRect(28, 133, 452, 447))
-        font1 = QFont()
-        font1.setFamilies([u"Google Sans"])
-        font1.setPointSize(17)
-        font1.setWeight(QFont.Medium)
-        font1.setKerning(True)
-        font1.setStyleStrategy(QFont.PreferAntialias)
-        font1.setHintingPreference(QFont.PreferNoHinting)
-        self.lableListBackground.setFont(font1)
+        font = QFont()
+        font.setFamilies([u"Google Sans"])
+        font.setPointSize(17)
+        font.setWeight(QFont.Medium)
+        font.setKerning(True)
+        font.setStyleStrategy(QFont.PreferAntialias)
+        font.setHintingPreference(QFont.PreferNoHinting)
+        self.lableListBackground.setFont(font)
         self.lableListBackground.setAutoFillBackground(False)
         self.lableListBackground.setStyleSheet(u"border-radius: 15px;\n"
 "color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.56, y2:1, stop:0 rgba(98, 98, 98, 255), stop:1 rgba(125, 177, 136, 255));\n"
@@ -72,13 +63,13 @@ class Ui_MainWindow(object):
         self.PasswordList = QListWidget(self.centralwidget)
         self.PasswordList.setObjectName(u"PasswordList")
         self.PasswordList.setGeometry(QRect(28, 133, 452, 447))
-        font2 = QFont()
-        font2.setFamilies([u"Google Sans"])
-        font2.setPointSize(15)
-        font2.setBold(True)
-        font2.setKerning(True)
-        font2.setStyleStrategy(QFont.PreferDefault)
-        self.PasswordList.setFont(font2)
+        font1 = QFont()
+        font1.setFamilies([u"Google Sans"])
+        font1.setPointSize(15)
+        font1.setBold(True)
+        font1.setKerning(True)
+        font1.setStyleStrategy(QFont.PreferDefault)
+        self.PasswordList.setFont(font1)
         self.PasswordList.viewport().setProperty(u"cursor", QCursor(Qt.CursorShape.CrossCursor))
         self.PasswordList.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.PasswordList.setStyleSheet(u"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u0441\u0430\u043c\u043e\u0433\u043e \u0441\u043f\u0438\u0441\u043a\u0430 (\u0444\u043e\u043d\u0430) */\n"
@@ -168,12 +159,12 @@ class Ui_MainWindow(object):
         self.lableVersion = QLabel(self.centralwidget)
         self.lableVersion.setObjectName(u"lableVersion")
         self.lableVersion.setGeometry(QRect(25, 580, 452, 21))
-        font3 = QFont()
-        font3.setFamilies([u"Google Sans"])
-        font3.setPointSize(10)
-        font3.setBold(False)
-        font3.setStyleStrategy(QFont.PreferDefault)
-        self.lableVersion.setFont(font3)
+        font2 = QFont()
+        font2.setFamilies([u"Google Sans"])
+        font2.setPointSize(10)
+        font2.setBold(False)
+        font2.setStyleStrategy(QFont.PreferDefault)
+        self.lableVersion.setFont(font2)
         self.lableVersion.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "color: rgb(99, 99, 99);")
         self.lableVersion.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -204,11 +195,11 @@ class Ui_MainWindow(object):
         self.import_csv = QPushButton(self.settings_frame)
         self.import_csv.setObjectName(u"import_csv")
         self.import_csv.setGeometry(QRect(20, 23, 206, 51))
-        font4 = QFont()
-        font4.setFamilies([u"Google Sans"])
-        font4.setPointSize(13)
-        font4.setBold(True)
-        self.import_csv.setFont(font4)
+        font3 = QFont()
+        font3.setFamilies([u"Google Sans"])
+        font3.setPointSize(13)
+        font3.setBold(True)
+        self.import_csv.setFont(font3)
         self.import_csv.setStyleSheet(u"\n"
 "QPushButton {\n"
 "border-radius: 6px;\n"
@@ -225,11 +216,11 @@ class Ui_MainWindow(object):
         self.export_passes_1 = QPushButton(self.settings_frame)
         self.export_passes_1.setObjectName(u"export_passes_1")
         self.export_passes_1.setGeometry(QRect(20, 130, 206, 51))
-        font5 = QFont()
-        font5.setFamilies([u"Google Sans"])
-        font5.setPointSize(12)
-        font5.setWeight(QFont.ExtraBold)
-        self.export_passes_1.setFont(font5)
+        font4 = QFont()
+        font4.setFamilies([u"Google Sans"])
+        font4.setPointSize(12)
+        font4.setWeight(QFont.ExtraBold)
+        self.export_passes_1.setFont(font4)
         self.export_passes_1.setStyleSheet(u"\n"
 "QPushButton {\n"
 "border-radius: 6px;\n"
@@ -246,35 +237,35 @@ class Ui_MainWindow(object):
         self.label_7 = QLabel(self.settings_frame)
         self.label_7.setObjectName(u"label_7")
         self.label_7.setGeometry(QRect(2, 80, 241, 21))
-        font6 = QFont()
-        font6.setFamilies([u"Google Sans"])
-        font6.setPointSize(10)
-        font6.setBold(True)
-        self.label_7.setFont(font6)
+        font5 = QFont()
+        font5.setFamilies([u"Google Sans"])
+        font5.setPointSize(10)
+        font5.setBold(True)
+        self.label_7.setFont(font5)
         self.label_7.setStyleSheet(u"color: rgb(236, 236, 236);")
         self.label_7.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.label_8 = QLabel(self.settings_frame)
         self.label_8.setObjectName(u"label_8")
         self.label_8.setGeometry(QRect(0, 100, 246, 31))
-        font7 = QFont()
-        font7.setFamilies([u"Google Sans"])
-        font7.setPointSize(12)
-        font7.setBold(True)
-        self.label_8.setFont(font7)
+        font6 = QFont()
+        font6.setFamilies([u"Google Sans"])
+        font6.setPointSize(12)
+        font6.setBold(True)
+        self.label_8.setFont(font6)
         self.label_8.setStyleSheet(u"color: rgb(236, 236, 236);\n"
 "background-color: rgba(255, 255, 255, 0);")
         self.label_8.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.label_9 = QLabel(self.settings_frame)
         self.label_9.setObjectName(u"label_9")
         self.label_9.setGeometry(QRect(0, 180, 246, 31))
-        self.label_9.setFont(font7)
+        self.label_9.setFont(font6)
         self.label_9.setStyleSheet(u"color: rgb(236, 236, 236);\n"
 "background-color: rgba(255, 255, 255, 0);")
         self.label_9.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.export_passes_2 = QPushButton(self.settings_frame)
         self.export_passes_2.setObjectName(u"export_passes_2")
         self.export_passes_2.setGeometry(QRect(20, 210, 206, 51))
-        self.export_passes_2.setFont(font5)
+        self.export_passes_2.setFont(font4)
         self.export_passes_2.setStyleSheet(u"\n"
 "QPushButton {\n"
 "border-radius: 6px;\n"
@@ -533,13 +524,13 @@ class Ui_MainWindow(object):
         self.Search_Input.setObjectName(u"Search_Input")
         self.Search_Input.setEnabled(True)
         self.Search_Input.setGeometry(QRect(0, 0, 380, 32))
-        font8 = QFont()
-        font8.setFamilies([u"Google Sans"])
-        font8.setPointSize(18)
-        font8.setBold(False)
-        font8.setKerning(True)
-        font8.setStyleStrategy(QFont.PreferDefault)
-        self.Search_Input.setFont(font8)
+        font7 = QFont()
+        font7.setFamilies([u"Google Sans"])
+        font7.setPointSize(18)
+        font7.setBold(False)
+        font7.setKerning(True)
+        font7.setStyleStrategy(QFont.PreferDefault)
+        self.Search_Input.setFont(font7)
         self.Search_Input.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
         self.Search_Input.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
         self.Search_Input.setStyleSheet(u"QLineEdit {\n"
@@ -557,7 +548,7 @@ class Ui_MainWindow(object):
         self.label = QLabel(self.search)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(0, 25, 380, 41))
-        self.label.setFont(font3)
+        self.label.setFont(font2)
         self.label.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "color: rgb(99, 99, 99);")
         self.label.setScaledContents(False)
@@ -580,7 +571,7 @@ class Ui_MainWindow(object):
         self.label_5 = QLabel(self.saved)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setGeometry(QRect(40, 10, 61, 24))
-        self.label_5.setFont(font7)
+        self.label_5.setFont(font6)
         self.label_5.setStyleSheet(u"color: rgb(148, 201, 160);")
         self.label_6 = QLabel(self.saved)
         self.label_6.setObjectName(u"label_6")

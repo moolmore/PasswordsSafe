@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'edit_password_v2oOLpYB.ui'
+## Form generated from reading UI file 'edit_password_v2rTHOiJ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -17,6 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QPushButton,
     QSizePolicy, QWidget)
+from .assets import images
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -25,6 +26,8 @@ class Ui_Form(object):
         Form.resize(340, 528)
         Form.setMinimumSize(QSize(340, 528))
         Form.setMaximumSize(QSize(340, 528))
+        icon = QIcon(QIcon.fromTheme(QIcon.ThemeIcon.MailMessageNew))
+        Form.setWindowIcon(icon)
         Form.setStyleSheet(u"background-color: rgb(53, 53, 53);")
         self.newNameEdit = QLineEdit(Form)
         self.newNameEdit.setObjectName(u"newNameEdit")
