@@ -6,7 +6,7 @@ import platform, csv
 from core import parse, key_obj, crypt_utils, cache_obj, helpers, list_obj
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog, QGraphicsBlurEffect
 from PySide6.QtCore import QTimer, Qt
-from PySide6.QtGui import QFont
+from PySide6.QtGui import QFont, QCursor
 import pyperclip
 
 
@@ -31,7 +31,8 @@ class MainWindow(QMainWindow):
         self.ui.PasswordList.setVisible(False)
         self.ui.settings_frame.setVisible(False)
         self.ui.saved.setVisible(False)
-    
+        
+
     def connectFunctions(self) -> None:
         self.ui.OpenFile.clicked.connect(executeOpenFile)
         self.ui.CreateFile.clicked.connect(executeNewFile)
@@ -186,6 +187,7 @@ def executeMain() -> None:
     Main_Window = MainWindow()
     Main_Window.ui.lableVersion.setText(f'{platform.system()} {platform.release()} - {app_version}')
     Main_Window.ui.PasswordList.setVisible(False)
+
     Main_Window.show()
 
 def executeOpenFile() -> None:
@@ -243,6 +245,7 @@ def executeAddPassword() -> None:
 def executeSettings() -> None:
     Main_Window.ui.settings_frame.setVisible(True)
     Main_Window.ui.close_setngs.clicked.connect(lambda: Main_Window.ui.settings_frame.setVisible(False))
+
 
 # Exectuions for open Qt windows end 
 # Exectuions for open Qt windows end

@@ -58,8 +58,10 @@ def foundSearchResults(search_word: str) -> None:
 
     
     for data_block in passwords.copy():
-        # search in 3 data_type: 0 service | 1 name | 2 email
-        for data_type in range(3):
+        # search in 3 data_type: 0 service | 1 name | 2 email | 3 password | 4 misc
+        for data_type in range(5):
+            if data_type == 3:
+                continue
             for index in range(len(data_block[data_type])):
                 data = data_block[data_type][index:(index+ln_sw)].lower()
                 if data == search_word:

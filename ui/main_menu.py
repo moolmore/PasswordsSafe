@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_menu_update_2hLhGjx.ui'
+## Form generated from reading UI file 'main_menu_update_2PNGRSy.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -177,21 +177,26 @@ class Ui_MainWindow(object):
         self.lableVersion.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.settings_frame = QFrame(self.centralwidget)
         self.settings_frame.setObjectName(u"settings_frame")
-        self.settings_frame.setGeometry(QRect(131, 269, 246, 291))
+        self.settings_frame.setGeometry(QRect(131, 269, 246, 255))
         self.settings_frame.setMouseTracking(False)
         self.settings_frame.setAcceptDrops(False)
         self.settings_frame.setStyleSheet(u"border-radius: 15px;\n"
-"")
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(53, 53, 53, 255), stop:1 rgba(72, 89, 64, 255));")
         self.settings_frame.setFrameShape(QFrame.Shape.StyledPanel)
         self.settings_frame.setFrameShadow(QFrame.Shadow.Raised)
         self.close_setngs = QPushButton(self.settings_frame)
         self.close_setngs.setObjectName(u"close_setngs")
-        self.close_setngs.setGeometry(QRect(210, 0, 24, 21))
+        self.close_setngs.setGeometry(QRect(201, 8, 20, 20))
+        font3 = QFont()
+        font3.setStyleStrategy(QFont.PreferAntialias)
+        self.close_setngs.setFont(font3)
+        self.close_setngs.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.close_setngs.setStyleSheet(u"\n"
 "\n"
 "\n"
 "QPushButton {\n"
 "	image: url(:/newPrefix/cancel_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);\n"
+"	background-color: rgba(255, 255, 255, 0);\n"
 "}\n"
 "\n"
 "\n"
@@ -201,12 +206,14 @@ class Ui_MainWindow(object):
 "}")
         self.import_csv = QPushButton(self.settings_frame)
         self.import_csv.setObjectName(u"import_csv")
-        self.import_csv.setGeometry(QRect(20, 23, 206, 51))
-        font3 = QFont()
-        font3.setFamilies([u"Google Sans"])
-        font3.setPointSize(13)
-        font3.setBold(True)
-        self.import_csv.setFont(font3)
+        self.import_csv.setGeometry(QRect(31, 39, 184, 51))
+        font4 = QFont()
+        font4.setFamilies([u"Google Sans"])
+        font4.setPointSize(12)
+        font4.setBold(True)
+        font4.setStyleStrategy(QFont.PreferDefault)
+        self.import_csv.setFont(font4)
+        self.import_csv.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.import_csv.setStyleSheet(u"\n"
 "QPushButton {\n"
 "border-radius: 6px;\n"
@@ -222,12 +229,13 @@ class Ui_MainWindow(object):
 "}")
         self.export_passes_1 = QPushButton(self.settings_frame)
         self.export_passes_1.setObjectName(u"export_passes_1")
-        self.export_passes_1.setGeometry(QRect(20, 130, 206, 51))
-        font4 = QFont()
-        font4.setFamilies([u"Google Sans"])
-        font4.setPointSize(12)
-        font4.setWeight(QFont.ExtraBold)
-        self.export_passes_1.setFont(font4)
+        self.export_passes_1.setGeometry(QRect(31, 102, 184, 51))
+        font5 = QFont()
+        font5.setFamilies([u"Google Sans"])
+        font5.setPointSize(12)
+        font5.setWeight(QFont.ExtraBold)
+        self.export_passes_1.setFont(font5)
+        self.export_passes_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.export_passes_1.setStyleSheet(u"\n"
 "QPushButton {\n"
 "border-radius: 6px;\n"
@@ -241,38 +249,11 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background-color: rgb(128, 157, 123);\n"
 "}")
-        self.label_7 = QLabel(self.settings_frame)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setGeometry(QRect(2, 80, 241, 21))
-        font5 = QFont()
-        font5.setFamilies([u"Google Sans"])
-        font5.setPointSize(10)
-        font5.setBold(True)
-        self.label_7.setFont(font5)
-        self.label_7.setStyleSheet(u"color: rgb(236, 236, 236);")
-        self.label_7.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.label_8 = QLabel(self.settings_frame)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setGeometry(QRect(0, 100, 246, 31))
-        font6 = QFont()
-        font6.setFamilies([u"Google Sans"])
-        font6.setPointSize(12)
-        font6.setBold(True)
-        self.label_8.setFont(font6)
-        self.label_8.setStyleSheet(u"color: rgb(236, 236, 236);\n"
-"background-color: rgba(255, 255, 255, 0);")
-        self.label_8.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.label_9 = QLabel(self.settings_frame)
-        self.label_9.setObjectName(u"label_9")
-        self.label_9.setGeometry(QRect(0, 180, 246, 31))
-        self.label_9.setFont(font6)
-        self.label_9.setStyleSheet(u"color: rgb(236, 236, 236);\n"
-"background-color: rgba(255, 255, 255, 0);")
-        self.label_9.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.export_passes_2 = QPushButton(self.settings_frame)
         self.export_passes_2.setObjectName(u"export_passes_2")
-        self.export_passes_2.setGeometry(QRect(20, 210, 206, 51))
-        self.export_passes_2.setFont(font4)
+        self.export_passes_2.setGeometry(QRect(31, 165, 184, 51))
+        self.export_passes_2.setFont(font5)
+        self.export_passes_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.export_passes_2.setStyleSheet(u"\n"
 "QPushButton {\n"
 "border-radius: 6px;\n"
@@ -512,10 +493,11 @@ class Ui_MainWindow(object):
         self.settings.setObjectName(u"settings")
         self.settings.setEnabled(True)
         self.settings.setGeometry(QRect(384, 3, 26, 25))
+        self.settings.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.settings.setStyleSheet(u"\n"
 "\n"
 "QPushButton {\n"
-"image: url(:/newPrefix/menu_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
+"	image: url(:/newPrefix/settings_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);\n"
 "border-radius: 5px;\n"
 "background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
 "color: rgba(157, 221, 176, 219);\n"
@@ -531,13 +513,13 @@ class Ui_MainWindow(object):
         self.Search_Input.setObjectName(u"Search_Input")
         self.Search_Input.setEnabled(True)
         self.Search_Input.setGeometry(QRect(0, 0, 380, 32))
-        font7 = QFont()
-        font7.setFamilies([u"Google Sans"])
-        font7.setPointSize(18)
-        font7.setBold(False)
-        font7.setKerning(True)
-        font7.setStyleStrategy(QFont.PreferDefault)
-        self.Search_Input.setFont(font7)
+        font6 = QFont()
+        font6.setFamilies([u"Google Sans"])
+        font6.setPointSize(18)
+        font6.setBold(False)
+        font6.setKerning(True)
+        font6.setStyleStrategy(QFont.PreferDefault)
+        self.Search_Input.setFont(font6)
         self.Search_Input.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
         self.Search_Input.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
         self.Search_Input.setStyleSheet(u"QLineEdit {\n"
@@ -578,14 +560,18 @@ class Ui_MainWindow(object):
         self.label_5 = QLabel(self.saved)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setGeometry(QRect(40, 10, 61, 24))
-        self.label_5.setFont(font6)
+        font7 = QFont()
+        font7.setFamilies([u"Google Sans"])
+        font7.setPointSize(12)
+        font7.setBold(True)
+        self.label_5.setFont(font7)
         self.label_5.setStyleSheet(u"color: rgb(148, 201, 160);")
         self.label_6 = QLabel(self.saved)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setGeometry(QRect(0, 0, 101, 41))
         self.label_6.setStyleSheet(u"border-radius: 15px;\n"
 "border: 1px solid rgb(110, 110, 110);\n"
-"background-color: rgb(71, 71, 71);\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(53, 53, 53, 255), stop:1 rgba(72, 89, 64, 255));\n"
 "")
         self.label_6.raise_()
         self.label_5.raise_()
@@ -624,14 +610,12 @@ class Ui_MainWindow(object):
         self.lableListBackground.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:700; color:#a1c292;\">Welcome to Passwords safe</span></p><p align=\"center\"><span style=\" color:#b5b5b5;\">This is a cryptographic manager of passwords<br/><br/></span><span style=\" text-decoration: underline; color:#b5b5b5;\">Open</span><span style=\" color:#b5b5b5;\"> a file or </span><span style=\" text-decoration: underline; color:#b5b5b5;\">create new</span><span style=\" color:#b5b5b5;\"> passwords list</span></p></body></html>", None))
         self.lableVersion.setText(QCoreApplication.translate("MainWindow", u"OS / APP VERSION", None))
         self.close_setngs.setText("")
-        self.import_csv.setText(QCoreApplication.translate("MainWindow", u"Import passwords .csv", None))
-        self.export_passes_1.setText(QCoreApplication.translate("MainWindow", u"service / url / username / \n"
-"password / misc", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Export passswords in .csv:", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"Google, Edge:", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"moolmore Passwords Safe: ", None))
-        self.export_passes_2.setText(QCoreApplication.translate("MainWindow", u"service / username /\n"
-" email / password / misc", None))
+        self.import_csv.setText(QCoreApplication.translate("MainWindow", u"Import \n"
+" Google or Edge .csv", None))
+        self.export_passes_1.setText(QCoreApplication.translate("MainWindow", u"Export passwords to \n"
+" Google or Edge .csv", None))
+        self.export_passes_2.setText(QCoreApplication.translate("MainWindow", u"Export passwords \n"
+" in our .csv (more data)", None))
         self.mng_back.setText("")
 #if QT_CONFIG(tooltip)
         self.VisibilityPassButton.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:700; color:#82c17e;\">Change visibility:</span></p><p align=\"center\"><span style=\" font-size:10pt; font-weight:700; color:#abc1af;\">Only service</span></p><p align=\"center\"><span style=\" font-size:10pt; font-weight:700; color:#abc1af;\">Service / Name /Misc</span></p><p align=\"center\"><span style=\" font-size:10pt; font-weight:700; color:#abc1af;\">Service / Email / Password</span></p><p align=\"center\"><span style=\" font-size:10pt; font-weight:700; color:#abc1af;\">All data</span></p></body></html>", None))
@@ -681,7 +665,7 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.settings.setText("")
         self.Search_Input.setText("")
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Search name / email", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Search service / username / misc", None))
         self.label_2.setText("")
         self.label_3.setText("")
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Saved", None))
