@@ -13,7 +13,7 @@ import pyperclip
 from ui import edit_add_password, main_menu, new_file, open_file
 
 #App version
-app_version = '2.1.0'
+app_version = '2.1.1'
 
 # All windows classes start
 class MainWindow(QMainWindow):
