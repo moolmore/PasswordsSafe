@@ -56,35 +56,44 @@ def foundSearchResults(search_word: str) -> None:
     passwords = list_obj.UserPasswordsList.passwords_list
     founded_blocks = []
 
-    
+    # Searching algorithm
     for data_block in passwords.copy():
-        # search in 3 data_type: 0 service | 1 name | 2 email | 3 password | 4 misc
+        # search in 4 data_type: 0 service | 1 name | 2 email | 3 password(skipped) | 4 misc
         for data_type in range(5):
             if data_type == 3:
+                #Skipping the password
                 continue
             for index in range(len(data_block[data_type])):
+                # gets data block -> get data(username for example) -> 
+                # data[sequential index of len data : sequential index of len data + len of search word].
+                # for example: data is "Apple", search word is "ple", for loop algorithm:
+                # 0 sequential: Apple -> plele, 1 seq.: Apple -> Aplee, 2 seq.: Apple -> Apple and searchable data is founded
                 data = data_block[data_type][index:(index+ln_sw)].lower()
                 if data == search_word:
                     founded_blocks.append(data_block)
                     break
 
-
+    #Algorithm may be founded same data from username and misc data
+    #Thats why he deletes the same data blocks
     for data_block in founded_blocks:
         while founded_blocks.count(data_block) != 1:
             founded_blocks.pop(founded_blocks.index(data_block))
 
+
+    #Sorting in alphabet
     founded_blocks.sort()
 
+    # Clearing and rewrite Qt UI search results lists
     for key in list(AppCache.ui_lists_srch.keys()):
         AppCache.ui_lists_srch[key]=[]
     _writeUILists(founded_blocks, "srch")
+    
+    
 
-    # Write search results to indexes map
+    # Write search results to indexes map because apps get item from list via Qt UI index
     # UI LIST INDEX : APP LIST
     AppCache.srch_word = search_word
     _writeSearchIndMap(srch_passwords=founded_blocks)
-
-#def foundSearchResults(search_word: str) -> bool | None 
 
 def _writeUILists(passwords: list, type: str) -> None:
     if type == 'dflt':
