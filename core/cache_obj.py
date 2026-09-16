@@ -60,20 +60,23 @@ def foundSearchResults(search_word: str) -> None:
     for data_block in passwords.copy():
         # search in 3 data_type: 0 service | 1 name | 2 email
         for data_type in range(3):
-            # if data_type == 2:
-            #     data_block[data_type] = data_block.copy()[data_type].split('@')[0]
             for index in range(len(data_block[data_type])):
                 data = data_block[data_type][index:(index+ln_sw)].lower()
                 if data == search_word:
                     founded_blocks.append(data_block)
                     break
+
+
     for data_block in founded_blocks:
         while founded_blocks.count(data_block) != 1:
             founded_blocks.pop(founded_blocks.index(data_block))
+
     founded_blocks.sort()
+
     for key in list(AppCache.ui_lists_srch.keys()):
         AppCache.ui_lists_srch[key]=[]
     _writeUILists(founded_blocks, "srch")
+
     # Write search results to indexes map
     # UI LIST INDEX : APP LIST
     AppCache.srch_word = search_word

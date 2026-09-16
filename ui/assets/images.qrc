@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="newPrefix">
+    <file>app_icon.png</file>
+    <file>cancel_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png</file>
+    <file>view_list_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png</file>
     <file>mail.png</file>
     <file>add_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png</file>
     <file>content_copy_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png</file>

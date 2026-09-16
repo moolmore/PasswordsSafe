@@ -1,10 +1,12 @@
 # (｡•́︿•̀｡)
+import sys, os
+#For create cache in windows temp (in builded pyinstaller app cache not generates (PyInstaller problem))
+sys.pycache_prefix = os.path.expandvars(r"%temp%\passwords_safe\cache")
 import platform, csv
 from core import parse, key_obj, crypt_utils, cache_obj, helpers, list_obj
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog, QGraphicsBlurEffect
 from PySide6.QtCore import QTimer, Qt
 from PySide6.QtGui import QFont
-import sys
 import pyperclip
 
 
@@ -182,7 +184,7 @@ class EditPasswordWindow(QWidget):
 def executeMain() -> None:
     global Main_Window
     Main_Window = MainWindow()
-    Main_Window.ui.lableVersion.setText(f'Platform: {platform.system()}    Version: {app_version}')
+    Main_Window.ui.lableVersion.setText(f'{platform.system()} {platform.release()} - {app_version}')
     Main_Window.ui.PasswordList.setVisible(False)
     Main_Window.show()
 

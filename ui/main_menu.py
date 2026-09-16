@@ -1,17 +1,23 @@
+# -*- coding: utf-8 -*-
 
+################################################################################
+## Form generated from reading UI file 'main_menu_update_2hLhGjx.ui'
+##
+## Created by: Qt User Interface Compiler version 6.11.1
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-
-
-from PySide6.QtCore import (QCoreApplication,
-    QMetaObject, QRect,
-    QSize, Qt)
-from PySide6.QtGui import (QCursor,
-    QFont, QIcon,
-    )
-from PySide6.QtWidgets import ( QFrame, QLabel, QLineEdit,
-    QListWidget, QPushButton,
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
+    QListWidget, QListWidgetItem, QMainWindow, QPushButton,
     QSizePolicy, QTabWidget, QWidget)
-
 from .assets import images
 
 class Ui_MainWindow(object):
@@ -27,7 +33,8 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QSize(508, 608))
         MainWindow.setMaximumSize(QSize(508, 608))
         MainWindow.setAcceptDrops(True)
-        icon = QIcon(QIcon.fromTheme(QIcon.ThemeIcon.FormatJustifyCenter))
+        icon = QIcon()
+        icon.addFile(u":/newPrefix/app_icon.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setWindowOpacity(1.000000000000000)
         MainWindow.setStyleSheet(u"border: none;\n"
@@ -158,7 +165,7 @@ class Ui_MainWindow(object):
         self.PasswordList.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.lableVersion = QLabel(self.centralwidget)
         self.lableVersion.setObjectName(u"lableVersion")
-        self.lableVersion.setGeometry(QRect(25, 580, 452, 21))
+        self.lableVersion.setGeometry(QRect(160, 580, 188, 28))
         font2 = QFont()
         font2.setFamilies([u"Google Sans"])
         font2.setPointSize(10)
@@ -184,7 +191,7 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "QPushButton {\n"
-"image: url(:/newPrefix/remove_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
+"	image: url(:/newPrefix/cancel_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);\n"
 "}\n"
 "\n"
 "\n"
@@ -299,7 +306,7 @@ class Ui_MainWindow(object):
         self.VisibilityPassButton.setGeometry(QRect(23, 9, 32, 32))
         self.VisibilityPassButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.VisibilityPassButton.setStyleSheet(u"QPushButton {\n"
-"	image: url(:/newPrefix/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);\n"
+"	image: url(:/newPrefix/view_list_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png);\n"
 "border-radius: 16px;\n"
 "background-color: rgba(255, 255, 255, 0);\n"
 "}\n"
@@ -583,6 +590,28 @@ class Ui_MainWindow(object):
         self.label_6.raise_()
         self.label_5.raise_()
         self.label_3.raise_()
+        self.label_10 = QLabel(self.centralwidget)
+        self.label_10.setObjectName(u"label_10")
+        self.label_10.setGeometry(QRect(28, 580, 132, 28))
+        font8 = QFont()
+        font8.setFamilies([u"Google Sans"])
+        font8.setUnderline(True)
+        self.label_10.setFont(font8)
+        self.label_10.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.label_10.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"color: rgb(99, 99, 99);")
+        self.label_10.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.label_10.setMargin(0)
+        self.label_10.setIndent(20)
+        self.label_11 = QLabel(self.centralwidget)
+        self.label_11.setObjectName(u"label_11")
+        self.label_11.setGeometry(QRect(348, 580, 132, 28))
+        self.label_11.setFont(font8)
+        self.label_11.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.label_11.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"color: rgb(99, 99, 99);")
+        self.label_11.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+        self.label_11.setIndent(20)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -657,5 +686,7 @@ class Ui_MainWindow(object):
         self.label_3.setText("")
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Saved", None))
         self.label_6.setText("")
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Author</p></body></html>", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Repository</p></body></html>", None))
     # retranslateUi
 

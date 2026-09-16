@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'open_filebaffFe.ui'
+## Form generated from reading UI file 'open_filedNfbbM.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -29,6 +29,9 @@ class Ui_Form(object):
         font = QFont()
         font.setFamilies([u".AppleSystemUIFont"])
         Form.setFont(font)
+        icon = QIcon()
+        icon.addFile(u":/newPrefix/document_search_128dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        Form.setWindowIcon(icon)
         Form.setStyleSheet(u"background-color: rgb(53, 53, 53);")
         self.PathInput = QLineEdit(Form)
         self.PathInput.setObjectName(u"PathInput")
