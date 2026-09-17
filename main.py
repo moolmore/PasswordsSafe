@@ -10,7 +10,8 @@ from PySide6.QtGui import QFont, QCursor
 import pyperclip
 
 
-from ui import edit_add_password, main_menu, new_file, open_file
+from ui import edit_add_password, new_file, open_file
+from ui import main_menu_summer_dream as main_menu
 
 #App version
 app_version = '2.1.1'

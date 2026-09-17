@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>383</width>
+    <height>147</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(85, 85, 85);</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>20</y>
+     <width>171</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 500 25pt &quot;Google Sans&quot;;
+color: rgb(228, 228, 228);
+background-color: rgb(102, 102, 102);
+border-radius: 4px;</string>
+   </property>
+   <property name="text">
+    <string>  Visual theme</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="DeletePassButton">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>80</y>
+     <width>61</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+background-color: rgb(161, 161, 161);
+border-radius: 10px;
+
+font: 500 19pt &quot;Google Sans&quot;;
+color: rgb(228, 228, 228);
+</string>
+   </property>
+   <property name="text">
+    <string>Dark</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="DeletePassButton_2">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>80</y>
+     <width>61</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+background-color: rgb(161, 161, 161);
+border-radius: 10px;
+
+font: 500 19pt &quot;Google Sans&quot;;
+color: rgb(228, 228, 228);
+</string>
+   </property>
+   <property name="text">
+    <string>Light</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
