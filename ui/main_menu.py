@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_menu_update_2PNGRSy.ui'
+## Form generated from reading UI file 'main_menu_update_2fTdzwY.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -15,9 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
-    QListWidget, QListWidgetItem, QMainWindow, QPushButton,
-    QSizePolicy, QTabWidget, QWidget)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QFrame, QLabel,
+    QLineEdit, QListView, QListWidget, QListWidgetItem,
+    QMainWindow, QPushButton, QSizePolicy, QTabWidget,
+    QVBoxLayout, QWidget)
 from .assets import images
 
 class Ui_MainWindow(object):
@@ -68,6 +69,16 @@ class Ui_MainWindow(object):
         self.lableListBackground.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.lableListBackground.setWordWrap(True)
         self.PasswordList = QListWidget(self.centralwidget)
+        QListWidgetItem(self.PasswordList)
+        QListWidgetItem(self.PasswordList)
+        QListWidgetItem(self.PasswordList)
+        QListWidgetItem(self.PasswordList)
+        QListWidgetItem(self.PasswordList)
+        QListWidgetItem(self.PasswordList)
+        QListWidgetItem(self.PasswordList)
+        QListWidgetItem(self.PasswordList)
+        QListWidgetItem(self.PasswordList)
+        QListWidgetItem(self.PasswordList)
         self.PasswordList.setObjectName(u"PasswordList")
         self.PasswordList.setGeometry(QRect(28, 133, 452, 447))
         font1 = QFont()
@@ -78,19 +89,23 @@ class Ui_MainWindow(object):
         font1.setStyleStrategy(QFont.PreferDefault)
         self.PasswordList.setFont(font1)
         self.PasswordList.viewport().setProperty(u"cursor", QCursor(Qt.CursorShape.CrossCursor))
+        self.PasswordList.setMouseTracking(False)
         self.PasswordList.setFocusPolicy(Qt.FocusPolicy.NoFocus)
+        self.PasswordList.setAcceptDrops(False)
         self.PasswordList.setStyleSheet(u"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u0441\u0430\u043c\u043e\u0433\u043e \u0441\u043f\u0438\u0441\u043a\u0430 (\u0444\u043e\u043d\u0430) */\n"
 "QListWidget {\n"
 "     /* \u0422\u0435\u043c\u043d\u044b\u0439 \u0444\u043e\u043d \u0441\u043f\u0438\u0441\u043a\u0430 */\n"
-"	background-color: rgba(255, 255, 255, 0);\n"
-"    padding: 5px;              /* \u041e\u0442\u0441\u0442\u0443\u043f \u043e\u0442 \u043a\u0440\u0430\u0435\u0432 \u0434\u043e \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432 */\n"
+"	\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(77, 77, 77, 255), stop:0.244318 rgba(71, 71, 69, 255));\n"
+"    padding: 7px;              /* \u041e\u0442\u0441\u0442\u0443\u043f \u043e\u0442 \u043a\u0440\u0430\u0435\u0432 \u0434\u043e \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432 */\n"
 "    color: #ffffff;            /* \u0426\u0432\u0435\u0442 \u0442\u0435\u043a\u0441\u0442\u0430 \u043f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e */\n"
+"	border-radius: 15px;\n"
 "}\n"
 "\n"
-"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u0432\u0441\u0435\u0445 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432 \u0441\u043f\u0438\u0441\u043a\u0430 \u0432 \u043e\u0431\u044b\u0447\u043d\u043e\u043c \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0438 */\n"
+"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u0432\u0441\u0435\u0445 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432 \u0441\u043f\u0438\u0441\u043a\u0430 \u0432 \u043e"
+                        "\u0431\u044b\u0447\u043d\u043e\u043c \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0438 */\n"
 "QListWidget::item {\n"
-"   "
-                        " \n"
+"    \n"
 "	\n"
 "	background-color: qlineargradient(spread:pad, x1:0.002, y1:0, x2:0, y2:1, stop:0 rgba(98, 98, 98, 255), stop:1 rgba(85, 85, 85, 255));\n"
 "                /* \u0426\u0432\u0435\u0442 \u0442\u0435\u043a\u0441\u0442\u0430 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430 */\n"
@@ -98,11 +113,11 @@ class Ui_MainWindow(object):
 "    padding: 8px 12px;         /* \u0412\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0435 \u043e\u0442\u0441\u0442\u0443\u043f\u044b (\u0432\u044b\u0441\u043e\u0442\u0430 \u0438 \u0448\u0438\u0440\u0438\u043d\u0430) */\n"
 "    margin-bottom: 4px;        /* \u0420\u0430\u0441\u0441\u0442\u043e\u044f\u043d\u0438\u0435 \u043c\u0435\u0436\u0434\u0443 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430\u043c\u0438 */\n"
 "	margin-right: 4px;\n"
-"    border-radius: 15px;        /* \u0421\u043a\u0440\u0443\u0433\u043b\u0435\u043d\u0438\u0435 \u0443\u0433\u043b\u043e\u0432 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432 */\n"
+"    border-radius: 15px;        /* \u0421\u043a\u0440\u0443\u0433\u043b\u0435\u043d\u0438\u0435 \u0443\u0433\u043b\u043e\u0432 \u044d"
+                        "\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432 */\n"
 "}\n"
 "\n"
-"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 "
-                        "\u044d\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432 \u043f\u0440\u0438 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u0438 \u043a\u0443\u0440\u0441\u043e\u0440\u0430 (\u0445\u043e\u0432\u0435\u0440) */\n"
+"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432 \u043f\u0440\u0438 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u0438 \u043a\u0443\u0440\u0441\u043e\u0440\u0430 (\u0445\u043e\u0432\u0435\u0440) */\n"
 "QListWidget::item:hover {\n"
 "	background-color: rgb(98, 98, 98);\n"
 "	border: 1px solid rgb(110, 110, 110);\n"
@@ -120,12 +135,12 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "\n"
-"/* ################################## SCROLL BAR ################\n"
+""
+                        "/* ################################## SCROLL BAR ################\n"
 "\n"
-"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a"
-                        "\u0438 \u0441\u0430\u043c\u043e\u0439 \u043f\u043e\u043b\u043e\u0441\u044b \u043f\u0440\u043e\u043a\u0440\u0443\u0442\u043a\u0438: \u0443\u0431\u0438\u0440\u0430\u0435\u043c \u0444\u043e\u043d \u0438 \u0437\u0430\u0434\u0430\u0435\u043c \u0448\u0438\u0440\u0438\u043d\u0443 */\n"
+"/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0441\u0430\u043c\u043e\u0439 \u043f\u043e\u043b\u043e\u0441\u044b \u043f\u0440\u043e\u043a\u0440\u0443\u0442\u043a\u0438: \u0443\u0431\u0438\u0440\u0430\u0435\u043c \u0444\u043e\u043d \u0438 \u0437\u0430\u0434\u0430\u0435\u043c \u0448\u0438\u0440\u0438\u043d\u0443 */\n"
 "QListView QScrollBar:vertical {\n"
-"	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 85, 194), stop:0.137931 rgba(69, 69, 69, 197));\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(77, 77, 77, 255), stop:0.244318 rgba(71, 71, 69, 255));\n"
 "    width: 7px;\n"
 "    margin: 0px;\n"
 "	\n"
@@ -134,10 +149,10 @@ class Ui_MainWindow(object):
 "/* \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0431\u0435\u0433\u0443\u043d\u043a\u0430: \u0437\u0430\u0434\u0430\u0435\u043c \u0446\u0432\u0435\u0442, \u0441\u043a\u0440\u0443\u0433\u043b\u0435\u043d\u0438\u0435 \u0438 \u0443\u0431\u0438\u0440\u0430\u0435\u043c \u0440\u0430\u043c\u043a\u0438 */\n"
 "QListView QScrollBar::handle:vertical {\n"
 "    \n"
-"	background: rgb(109, 109, 109); \n"
+"	background: r"
+                        "gb(109, 109, 109); \n"
 "    min-height: 20px;\n"
-"    border-radius: 3px;   /* \u0421\u043a\u0440\u0443\u0433\u043b\u0435\u043d\u0438"
-                        "\u0435 (\u043f\u043e\u043b\u043e\u0432\u0438\u043d\u0430 \u043e\u0442 \u0448\u0438\u0440\u0438\u043d\u044b \u0434\u0435\u043b\u0430\u0435\u0442 \u0435\u0433\u043e \u043e\u0432\u0430\u043b\u044c\u043d\u044b\u043c) */\n"
+"    border-radius: 3px;   /* \u0421\u043a\u0440\u0443\u0433\u043b\u0435\u043d\u0438\u0435 (\u043f\u043e\u043b\u043e\u0432\u0438\u043d\u0430 \u043e\u0442 \u0448\u0438\u0440\u0438\u043d\u044b \u0434\u0435\u043b\u0430\u0435\u0442 \u0435\u0433\u043e \u043e\u0432\u0430\u043b\u044c\u043d\u044b\u043c) */\n"
 "    border: none;\n"
 "}\n"
 "\n"
@@ -146,11 +161,11 @@ class Ui_MainWindow(object):
 "    background: rgb(114, 136, 100); /* \u0426\u0432\u0435\u0442 \u0431\u0435\u0433\u0443\u043d\u043a\u0430 (\u043c\u043e\u0436\u043d\u043e \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u044c) */\n"
 "}\n"
 "\n"
-"/* \u041f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e \u0441\u043a\u0440\u044b\u0432\u0430\u0435\u043c \u0441\u0442\u0440\u0435\u043b\u043e\u0447\u043a\u0438 \u0441\u0432\u0435\u0440\u0445\u0443 \u0438 \u0441\u043d\u0438\u0437\u0443 */\n"
+"/* \u041f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e \u0441\u043a\u0440\u044b\u0432\u0430\u0435\u043c \u0441\u0442\u0440\u0435\u043b\u043e\u0447\u043a\u0438 \u0441\u0432\u0435\u0440\u0445\u0443 \u0438"
+                        " \u0441\u043d\u0438\u0437\u0443 */\n"
 "QListView QScrollBar::add-line:vertical, \n"
 "QListView QScrollBar::sub-line:vertical {\n"
-"  "
-                        "  background: none;\n"
+"    background: none;\n"
 "    height: 0px;\n"
 "    subcontrol-origin: margin;\n"
 "}\n"
@@ -163,6 +178,14 @@ class Ui_MainWindow(object):
 "")
         self.PasswordList.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
         self.PasswordList.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.PasswordList.setDragEnabled(False)
+        self.PasswordList.setAlternatingRowColors(False)
+        self.PasswordList.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
+        self.PasswordList.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectItems)
+        self.PasswordList.setFlow(QListView.Flow.TopToBottom)
+        self.PasswordList.setSpacing(1)
+        self.PasswordList.setViewMode(QListView.ViewMode.ListMode)
+        self.PasswordList.setItemAlignment(Qt.AlignmentFlag.AlignCenter)
         self.lableVersion = QLabel(self.centralwidget)
         self.lableVersion.setObjectName(u"lableVersion")
         self.lableVersion.setGeometry(QRect(160, 580, 188, 28))
@@ -177,36 +200,41 @@ class Ui_MainWindow(object):
         self.lableVersion.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.settings_frame = QFrame(self.centralwidget)
         self.settings_frame.setObjectName(u"settings_frame")
-        self.settings_frame.setGeometry(QRect(131, 269, 246, 255))
+        self.settings_frame.setGeometry(QRect(131, 269, 246, 241))
         self.settings_frame.setMouseTracking(False)
         self.settings_frame.setAcceptDrops(False)
         self.settings_frame.setStyleSheet(u"border-radius: 15px;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(53, 53, 53, 255), stop:1 rgba(72, 89, 64, 255));")
+"")
         self.settings_frame.setFrameShape(QFrame.Shape.StyledPanel)
         self.settings_frame.setFrameShadow(QFrame.Shadow.Raised)
         self.close_setngs = QPushButton(self.settings_frame)
         self.close_setngs.setObjectName(u"close_setngs")
-        self.close_setngs.setGeometry(QRect(201, 8, 20, 20))
+        self.close_setngs.setGeometry(QRect(91, 200, 64, 26))
         font3 = QFont()
-        font3.setStyleStrategy(QFont.PreferAntialias)
+        font3.setFamilies([u"Google Sans"])
+        font3.setBold(True)
         self.close_setngs.setFont(font3)
-        self.close_setngs.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.close_setngs.setStyleSheet(u"\n"
-"\n"
-"\n"
 "QPushButton {\n"
-"	image: url(:/newPrefix/cancel_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);\n"
-"	background-color: rgba(255, 255, 255, 0);\n"
+"border-radius: 6px;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(85, 85, 85, 255), stop:1 rgba(98, 98, 98, 255));\n"
+"color: rgba(157, 221, 176, 219);\n"
+"border: 1px solid rgb(110, 110, 110);\n"
 "}\n"
 "\n"
 "\n"
 "\n"
 "QPushButton:pressed {\n"
-"	background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(118, 141, 103, 255), stop:1 rgba(255, 255, 255, 0));\n"
-"}")
-        self.import_csv = QPushButton(self.settings_frame)
+"	background-color: rgb(128, 157, 123);\n"
+"}background-color: rgb(255, 58, 58);")
+        self.widget = QWidget(self.settings_frame)
+        self.widget.setObjectName(u"widget")
+        self.widget.setGeometry(QRect(31, 9, 184, 191))
+        self.verticalLayout = QVBoxLayout(self.widget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.import_csv = QPushButton(self.widget)
         self.import_csv.setObjectName(u"import_csv")
-        self.import_csv.setGeometry(QRect(31, 39, 184, 51))
         font4 = QFont()
         font4.setFamilies([u"Google Sans"])
         font4.setPointSize(12)
@@ -227,9 +255,11 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background-color: rgb(128, 157, 123);\n"
 "}")
-        self.export_passes_1 = QPushButton(self.settings_frame)
+
+        self.verticalLayout.addWidget(self.import_csv)
+
+        self.export_passes_1 = QPushButton(self.widget)
         self.export_passes_1.setObjectName(u"export_passes_1")
-        self.export_passes_1.setGeometry(QRect(31, 102, 184, 51))
         font5 = QFont()
         font5.setFamilies([u"Google Sans"])
         font5.setPointSize(12)
@@ -249,9 +279,11 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background-color: rgb(128, 157, 123);\n"
 "}")
-        self.export_passes_2 = QPushButton(self.settings_frame)
+
+        self.verticalLayout.addWidget(self.export_passes_1)
+
+        self.export_passes_2 = QPushButton(self.widget)
         self.export_passes_2.setObjectName(u"export_passes_2")
-        self.export_passes_2.setGeometry(QRect(31, 165, 184, 51))
         self.export_passes_2.setFont(font5)
         self.export_passes_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.export_passes_2.setStyleSheet(u"\n"
@@ -267,6 +299,12 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background-color: rgb(128, 157, 123);\n"
 "}")
+
+        self.verticalLayout.addWidget(self.export_passes_2)
+
+        self.import_csv.raise_()
+        self.export_passes_2.raise_()
+        self.export_passes_1.raise_()
         self.manage = QFrame(self.centralwidget)
         self.manage.setObjectName(u"manage")
         self.manage.setEnabled(True)
@@ -598,7 +636,64 @@ class Ui_MainWindow(object):
 "color: rgb(99, 99, 99);")
         self.label_11.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
         self.label_11.setIndent(20)
+        self.back_circle = QLabel(self.centralwidget)
+        self.back_circle.setObjectName(u"back_circle")
+        self.back_circle.setGeometry(QRect(-190, 260, 500, 500))
+        self.back_circle.setStyleSheet(u"background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(165, 173, 126, 67), stop:1 rgba(255, 255, 255, 0));")
+        self.exception = QFrame(self.centralwidget)
+        self.exception.setObjectName(u"exception")
+        self.exception.setGeometry(QRect(111, 506, 286, 44))
+        self.exception.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);")
+        self.exception.setFrameShape(QFrame.Shape.StyledPanel)
+        self.exception.setFrameShadow(QFrame.Shadow.Raised)
+        self.label_8 = QLabel(self.exception)
+        self.label_8.setObjectName(u"label_8")
+        self.label_8.setGeometry(QRect(0, 0, 44, 44))
+        self.label_8.setStyleSheet(u"\n"
+"\n"
+"image: url(:/newPrefix/error_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png);\n"
+"border-radius: 22px;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(53, 53, 53, 255), stop:1 rgba(72, 89, 64, 255));\n"
+"color: rgba(157, 221, 176, 219);\n"
+"border: 1px solid rgb(110, 110, 110);\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.exceptText = QLabel(self.exception)
+        self.exceptText.setObjectName(u"exceptText")
+        self.exceptText.setGeometry(QRect(55, 0, 231, 41))
+        font9 = QFont()
+        font9.setFamilies([u"Google Sans"])
+        font9.setPointSize(10)
+        font9.setBold(True)
+        self.exceptText.setFont(font9)
+        self.exceptText.setStyleSheet(u"\n"
+"\n"
+"border-radius: 20px;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(53, 53, 53, 255), stop:1 rgba(72, 89, 64, 255));\n"
+"color: rgba(157, 221, 176, 219);\n"
+"border: 1px solid rgb(110, 110, 110);\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.exceptText.setAlignment(Qt.AlignmentFlag.AlignCenter)
         MainWindow.setCentralWidget(self.centralwidget)
+        self.back_circle.raise_()
+        self.lableListBackground.raise_()
+        self.PasswordList.raise_()
+        self.lableVersion.raise_()
+        self.settings_frame.raise_()
+        self.manage.raise_()
+        self.parse.raise_()
+        self.search.raise_()
+        self.saved.raise_()
+        self.label_10.raise_()
+        self.label_11.raise_()
+        self.exception.raise_()
 
         self.retranslateUi(MainWindow)
 
@@ -608,8 +703,33 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Passwords Safe", None))
         self.lableListBackground.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:700; color:#a1c292;\">Welcome to Passwords safe</span></p><p align=\"center\"><span style=\" color:#b5b5b5;\">This is a cryptographic manager of passwords<br/><br/></span><span style=\" text-decoration: underline; color:#b5b5b5;\">Open</span><span style=\" color:#b5b5b5;\"> a file or </span><span style=\" text-decoration: underline; color:#b5b5b5;\">create new</span><span style=\" color:#b5b5b5;\"> passwords list</span></p></body></html>", None))
+
+        __sortingEnabled = self.PasswordList.isSortingEnabled()
+        self.PasswordList.setSortingEnabled(False)
+        ___qlistwidgetitem = self.PasswordList.item(0)
+        ___qlistwidgetitem.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u0432\u044b\u0439 \u044d\u043b\u0435\u043c\u0435\u043d\u0442", None))
+        ___qlistwidgetitem1 = self.PasswordList.item(1)
+        ___qlistwidgetitem1.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u0432\u044b\u0439 \u044d\u043b\u0435\u043c\u0435\u043d\u0442", None))
+        ___qlistwidgetitem2 = self.PasswordList.item(2)
+        ___qlistwidgetitem2.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u0432\u044b\u0439 \u044d\u043b\u0435\u043c\u0435\u043d\u0442", None))
+        ___qlistwidgetitem3 = self.PasswordList.item(3)
+        ___qlistwidgetitem3.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u0432\u044b\u0439 \u044d\u043b\u0435\u043c\u0435\u043d\u0442", None))
+        ___qlistwidgetitem4 = self.PasswordList.item(4)
+        ___qlistwidgetitem4.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u0432\u044b\u0439 \u044d\u043b\u0435\u043c\u0435\u043d\u0442", None))
+        ___qlistwidgetitem5 = self.PasswordList.item(5)
+        ___qlistwidgetitem5.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u0432\u044b\u0439 \u044d\u043b\u0435\u043c\u0435\u043d\u0442", None))
+        ___qlistwidgetitem6 = self.PasswordList.item(6)
+        ___qlistwidgetitem6.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u0432\u044b\u0439 \u044d\u043b\u0435\u043c\u0435\u043d\u0442", None))
+        ___qlistwidgetitem7 = self.PasswordList.item(7)
+        ___qlistwidgetitem7.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u0432\u044b\u0439 \u044d\u043b\u0435\u043c\u0435\u043d\u0442", None))
+        ___qlistwidgetitem8 = self.PasswordList.item(8)
+        ___qlistwidgetitem8.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u0432\u044b\u0439 \u044d\u043b\u0435\u043c\u0435\u043d\u0442", None))
+        ___qlistwidgetitem9 = self.PasswordList.item(9)
+        ___qlistwidgetitem9.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u0432\u044b\u0439 \u044d\u043b\u0435\u043c\u0435\u043d\u0442", None))
+        self.PasswordList.setSortingEnabled(__sortingEnabled)
+
         self.lableVersion.setText(QCoreApplication.translate("MainWindow", u"OS / APP VERSION", None))
-        self.close_setngs.setText("")
+        self.close_setngs.setText(QCoreApplication.translate("MainWindow", u"OK", None))
         self.import_csv.setText(QCoreApplication.translate("MainWindow", u"Import \n"
 " Google or Edge .csv", None))
         self.export_passes_1.setText(QCoreApplication.translate("MainWindow", u"Export passwords to \n"
@@ -672,5 +792,8 @@ class Ui_MainWindow(object):
         self.label_6.setText("")
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Author</p></body></html>", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Repository</p></body></html>", None))
+        self.back_circle.setText("")
+        self.label_8.setText("")
+        self.exceptText.setText(QCoreApplication.translate("MainWindow", u"EXCEPTION TEXT NOT EDITED", None))
     # retranslateUi
 

@@ -2,7 +2,7 @@
 import sys, os
 #For create cache in windows temp (in builded pyinstaller app cache not generates (PyInstaller problem))
 sys.pycache_prefix = os.path.expandvars(r"%temp%\passwords_safe\cache")
-import platform, csv
+import platform, csv, random
 from core import parse, key_obj, crypt_utils, cache_obj, helpers, list_obj
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog, QGraphicsBlurEffect
 from PySide6.QtCore import QTimer, Qt
@@ -11,7 +11,7 @@ import pyperclip
 
 
 from ui import edit_add_password, new_file, open_file
-from ui import main_menu_summer_dream as main_menu
+from ui import main_menu as main_menu
 
 #App version
 app_version = '2.1.1'
@@ -28,7 +28,10 @@ class MainWindow(QMainWindow):
         self.blur_status = False
         self.ui.manage.setEnabled(False)
         self.ui.search.setEnabled(False)
-        self.ui.lableVersion.setText(f'Platform: {platform.system()}    Version: {app_version}')
+        self.ui.back_circle.setVisible(False)
+        self.ui.exception.setVisible(False)
+        self.ui.lableVersion.setText(f'{platform.system()} {platform.release()} - {app_version}')
+        self.ui.PasswordList.setVisible(False)
         self.ui.PasswordList.setVisible(False)
         self.ui.settings_frame.setVisible(False)
         self.ui.saved.setVisible(False)
@@ -54,30 +57,59 @@ class MainWindow(QMainWindow):
         self.ui.saved.setVisible(True)
         QTimer.singleShot(3000, lambda: self.ui.saved.setVisible(False))
 
+    def showException(self, text) -> None:
+        self.ui.exceptText.setText(text)
+        self.ui.exception.setVisible(True)
+        QTimer.singleShot(3000, lambda: self.ui.exception.setVisible(False))
+
     def enableManageAndSearch(self) -> None:
         Main_Window.ui.manage.setEnabled(True)
         Main_Window.ui.search.setEnabled(True)
+        Main_Window.ui.back_circle.setVisible(True)
+        backCircleCords = (
+            (190, -80),
+            (190, -30),
+            (180, 190),
+            (-190, 260)
+        )
 
+        randomPos = backCircleCords[random.randint(0,3)]
+        Main_Window.ui.back_circle.move(randomPos[0],randomPos[1])
+        Main_Window.ui.back_circle.setVisible(True)
+            
     def updateList(self) -> None:
-
+        # Clear ui lsit
         self.ui.PasswordList.clear()
-        ac = cache_obj.AppCache
-        font = QFont()
-        font.setBold(True)
-        font.setFamilies([u"Google Sans"])
 
+        # Get lists from cache
+        ac = cache_obj.AppCache
         if ac.search_active:
             data_blocks = ac.ui_lists_srch
         else:
             data_blocks = ac.ui_lists_dflt
 
-        font.setPointSize(14)
+        # Set new list 
         self.ui.PasswordList.addItems(data_blocks[list(data_blocks.keys())[ac.visibility_list-1]]) 
+
+        # Set parametrs on default (visibility modes 2 3)
+        font = QFont()
+        font.setBold(True)
+        font.setFamilies([u"Google Sans"])
+        font.setPointSize(14)
+        passwordBlocks = [Main_Window.ui.PasswordList.item(i) for i in range(Main_Window.ui.PasswordList.count())]
+
         if ac.visibility_list == 1:
             font.setPointSize(17)
-        elif ac.visibility_list == 4:
+            for data in passwordBlocks:
+                data.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+        else:
+            for data in passwordBlocks:
+                data.setTextAlignment(Qt.AlignmentFlag.AlignLeft)
+
+        if ac.visibility_list == 4:
             font.setPointSize(12)
             font.setBold(False)
+
         self.ui.PasswordList.setFont(font)
 
     def setBlurOnElements(self, turn_on) -> None:
@@ -117,11 +149,16 @@ class MainWindow(QMainWindow):
         self.ui.search.setEnabled(turn_on)
 
     def getCurItem(self) -> int:
-        if not cache_obj.AppCache.search_active:
-            return self.ui.PasswordList.currentRow()
-        else:
-            return cache_obj.AppCache.srch_ind_map[self.ui.PasswordList.currentRow()]
 
+        currentRow = self.ui.PasswordList.currentRow()
+        if currentRow != -1:
+            if not cache_obj.AppCache.search_active:
+                return currentRow
+            else:
+                return cache_obj.AppCache.srch_ind_map[currentRow]
+        else:
+            raise ValueError("Data block is not selected!")
+            
     def changeTitleSec(self) -> None:
         self.setWindowTitle('Passwords Safe' + ' - Password copied')
         QTimer.singleShot(1500, lambda: self.setWindowTitle('Passwords Safe'))
@@ -186,9 +223,6 @@ class EditPasswordWindow(QWidget):
 def executeMain() -> None:
     global Main_Window
     Main_Window = MainWindow()
-    Main_Window.ui.lableVersion.setText(f'{platform.system()} {platform.release()} - {app_version}')
-    Main_Window.ui.PasswordList.setVisible(False)
-
     Main_Window.show()
 
 def executeOpenFile() -> None:
@@ -217,19 +251,23 @@ def executePasswordEdit() -> None:
     Edit_Password_Window.ui.ErrorsLable.setVisible(False)
 
     #qol autoadded passwords data
-    cur_data_block = list_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()] 
-    Edit_Password_Window.ui.newNameEdit.setText(cur_data_block[0])
-    Edit_Password_Window.ui.newNicknameEdit.setText(cur_data_block[1])
-    Edit_Password_Window.ui.newMailEdit.setText(cur_data_block[2])
-    Edit_Password_Window.ui.newPassEdit.setText(cur_data_block[3])
-    Edit_Password_Window.ui.newDescEdit.setText(cur_data_block[4])
-    
-    title = f"Edit «{cur_data_block[0]}» data"
-    Edit_Password_Window.setWindowTitle(title)
+    try:
+        cur_data_block = list_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()] 
+    except Exception as e:
+        Main_Window.showException(str(e))
+    else:
+        Edit_Password_Window.ui.newNameEdit.setText(cur_data_block[0])
+        Edit_Password_Window.ui.newNicknameEdit.setText(cur_data_block[1])
+        Edit_Password_Window.ui.newMailEdit.setText(cur_data_block[2])
+        Edit_Password_Window.ui.newPassEdit.setText(cur_data_block[3])
+        Edit_Password_Window.ui.newDescEdit.setText(cur_data_block[4])
+        
+        title = f"Edit «{cur_data_block[0]}» data"
+        Edit_Password_Window.setWindowTitle(title)
 
-    Main_Window.setOffAndBlurredList(True)
-    Main_Window.setEnabledManagment(False)
-    Edit_Password_Window.show()
+        Main_Window.setOffAndBlurredList(True)
+        Main_Window.setEnabledManagment(False)
+        Edit_Password_Window.show()
 
 def executeAddPassword() -> None:
     global Add_Pass_Window
@@ -375,16 +413,23 @@ def cancelAddPassword() -> None:
     Main_Window.setEnabledManagment(True)
 
 def deletePassword() -> None:
-    del list_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()]
-
-    cache_obj.updateCache()
-    Main_Window.updateList()
-    parse.saveFile()
-    Main_Window.showAutosaved()
+    try:
+        del list_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()]
+    except Exception as e:
+        Main_Window.showException(str(e))
+    else:
+        cache_obj.updateCache()
+        Main_Window.updateList()
+        parse.saveFile()
+        Main_Window.showAutosaved()
 
 def copyData(value: int) -> None:
-    data = str(list_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()][value])
-    pyperclip.copy(data if data.replace(" ", "") != "" else "Data is empty")
+    try:
+        data = str(list_obj.UserPasswordsList.passwords_list[Main_Window.getCurItem()][value])
+    except Exception as e:
+        Main_Window.showException(str(e))
+    else:    
+        pyperclip.copy(data if data.replace(" ", "") != "" else "Data is empty")
 
 def checkSearchNull() -> None:
     if Main_Window.ui.Search_Input.text().replace(" ", "") == '':
